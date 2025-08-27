@@ -1,0 +1,94 @@
+
+:root {
+    /*site colors */
+    --title-color: #2C393F;
+    --sub-title-color: #0a5a80;
+    --text-color: #242424;
+    --box-color: #ededed;
+    --background-color: #f4f4f4;
+    --shadow-color: #00000077;
+    --dark: #111111;
+    --margin-sections: 80px;
+    --border-radius: 10px;
+    --fonte-padrao: "Lilita One", sans-serif;
+    --font-family-principal: "Roboto", sans-serif;
+    --box-shadow-button: 10px 10px 10px 0px var(--shadow-color);
+    --drop-shadow-svg: 5px 6px 10px var(--shadow-color);
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+/* FOnte CALIBRI  Hmanist, Helvetica, sans-serif */
+/*========================== Name and current job ==========================*/
+
+body {
+  font-family: 'Calibri', 'Hmanist', Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  margin: 20px;
+  padding: 0;
+}
+h1 {
+  font-size: 5.5rem;
+  font-weight: 700;
+  color: var(--title-color);
+}
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--title-color);
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--title-color);
+}
+p{
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-color);
+}
+#header {
+  display: flex;
+  flex-direction: flex-row;
+}
+
+.header-box{
+    display: flex;
+    flex-direction: column;
+}
+#left-header-box {
+  width: 70%;
+}
+#right-header-box {
+    width: 30%;
+}
+
+#name-complete {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--title-color)
+}
+
+#my-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.enterprise {
+  font-weight: 500;
+  color: var(--title-color);
+}
+.period {
+  font-weight: 500;
+  color: rgb(112, 112, 112)
+}
+
+.section-title {
+  color: var(--sub-title-color)
+}
+
+@media print {
+  body {
+    font-family: 'Calibri', 'Hmanist', Helvetica, sans-serif;
+  }
+}
