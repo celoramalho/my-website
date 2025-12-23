@@ -141,7 +141,54 @@
         width: 40%;
     }
 
+    .about-me--block {
+		display: inline-flex;
+		flex-direction: row;
+		flex-flow: wrap;
+		justify-content: space-between;
+		width: auto;
+		background-color: #cccccca8;
+		border-radius: 20px;
+		height: max-content;
+		overflow: hidden;
+	}
+
+    .about-me--profile-pic{
+		width: 50%;
+		padding-bottom: 30%; /* 16:9 */
+		position: relative;
+	}
+	.about-me--profile-pic--circle{
+		position: absolute; /* 16:9 */
+		top: 0; bottom: 0; left: 0; right: 0;
+		margin: 10% 10% 0 10%;
+		padding-top: 90%;
+		background: #3333334d;
+		box-shadow:  0px 0px 8px 0px #3636367c;
+		border-radius: 50%;
+	}
+
+    .about-me--block--profile-picture--photo {
+
+        img{
+            position: absolute;
+            top: -40%; bottom: 0; left: 0; right: 0;
+            margin-top: 0%;
+            transform: scale(80%);
+            width: 100%;
+        }
+    }
+    .about-me--block--lorem-ipsum{
+        width: 50%;
+        min-width: 394px;
+    }
+    .about-me--block--lorem-ipsum--txt{
+        margin: 50px 50px 50px 50px;
+    }
+    
+
 }
+
 
 
 @media screen and (max-width: 650px) {
