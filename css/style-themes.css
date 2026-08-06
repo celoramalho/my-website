@@ -37,10 +37,13 @@ html[data-site-theme="space"] body.dark {
 
 
 /* ===================== Hiking ===================== */
+/* A primeira tela é o céu: branco. As variáveis --montanha-* descrevem as
+   camadas do cenário, e a camada da frente (--montanha-frente) é a cor que o
+   resto da página assume ao rolar. */
 html[data-site-theme="hiking"] body {
 	--accent: #2e7d4f;
 	--accent-soft: rgba(46, 125, 79, 0.10);
-	--background-color: #f6faf6;
+	--background-color: #ffffff;
 	--sub-title-color: #22312a;
 	--sub2-text-color: #9db3a5;
 	--muted: rgba(34, 49, 42, 0.72);
@@ -49,6 +52,23 @@ html[data-site-theme="hiking"] body {
 	--card-border: rgba(34, 49, 42, 0.13);
 	--card-shadow: rgba(10, 45, 25, 0.22);
 	--line-color: rgba(34, 49, 42, 0.16);
+
+	/* camadas do cenário, da mais distante para a mais próxima; cada -sombra é
+	   a face direita do pico, um tom abaixo da própria camada */
+	--montanha-horizonte: #e1ede6;
+	--montanha-longe: #cfe3d7;
+	--montanha-longe-sombra: #bad6c8;
+	--montanha-meio: #a4c8b3;
+	--montanha-meio-sombra: #8ab69f;
+	--montanha-perto: #5f9a7c;
+	--montanha-perto-sombra: #4e876a;
+	--montanha-frente: #1f4a3a;
+	--montanha-fundo-pagina: #163529;
+	--montanha-neve: #ffffff;
+	--montanha-sol: #f3d7a4;
+	--montanha-arvore: #143026;
+	--montanha-arvore-perto: #3d7a5f;
+	--montanha-passaro: #7ba58f;
 }
 
 html[data-site-theme="hiking"] body.dark {
@@ -63,6 +83,61 @@ html[data-site-theme="hiking"] body.dark {
 	--card-border: rgba(255, 255, 255, 0.12);
 	--card-shadow: rgba(0, 0, 0, 0.6);
 	--line-color: rgba(255, 255, 255, 0.16);
+
+	/* no escuro as camadas distantes clareiam (perspectiva atmosférica) e as
+	   próximas escurecem, então a página continua a mais escura de todas */
+	--montanha-horizonte: #405f52;
+	--montanha-longe: #3a5a4d;
+	--montanha-longe-sombra: #315044;
+	--montanha-meio: #2f4a3f;
+	--montanha-meio-sombra: #274036;
+	--montanha-perto: #24382f;
+	--montanha-perto-sombra: #1d2f27;
+	--montanha-frente: #16241e;
+	--montanha-fundo-pagina: #101a16;
+	--montanha-neve: #cde3d6;
+	/* no escuro o disco vira lua minguante (ver .arte-lua) */
+	--montanha-sol: #dfeae3;
+	--montanha-arvore: #0d1611;
+	--montanha-arvore-perto: #1b2f26;
+	--montanha-passaro: #6f8d7e;
+}
+
+/* --- o resto da página segue a cor da montanha da frente ---------------- */
+/* só no index: as páginas internas (blog) continuam na variante clara */
+html[data-site-theme="hiking"] body:not(.body_interna) {
+	background-color: var(--montanha-fundo-pagina);
+}
+
+html[data-site-theme="hiking"] body:not(.body_interna) .body-2 {
+	background-image: linear-gradient(to bottom,
+			var(--montanha-frente) 0,
+			var(--montanha-frente) 130vh,
+			var(--montanha-fundo-pagina) 340vh);
+	background-repeat: no-repeat;
+}
+
+/* seções depois do herói (e o header quando fixa) invertem a paleta para
+   ficarem legíveis sobre a montanha; o herói fica de fora e segue branco */
+html[data-site-theme="hiking"] body:not(.body_interna) main > section:not(#section-home),
+html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > footer,
+html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > header.sticky {
+	--background-color: var(--montanha-frente);
+	--sub-title-color: #f1f8f3;
+	--sub2-text-color: rgba(241, 248, 243, 0.42);
+	--muted: rgba(241, 248, 243, 0.72);
+	--accent: #8fd8ab;
+	--accent-soft: rgba(143, 216, 171, 0.16);
+	--card-bg: rgba(255, 255, 255, 0.06);
+	--card-bg-hover: rgba(255, 255, 255, 0.1);
+	--card-border: rgba(255, 255, 255, 0.18);
+	--card-shadow: rgba(0, 0, 0, 0.5);
+	--line-color: rgba(255, 255, 255, 0.22);
+}
+
+/* a sombra padrão da header fixa usa a cor do texto — no escuro viraria brilho */
+html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > header.sticky {
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 
@@ -218,7 +293,6 @@ html[data-site-theme="space"] .arte-tema_space {
 
 /* o display fica aqui, e não na regra de moldura abaixo, senão as cinco
    artes venceriam o `display: none` e apareceriam todas de uma vez */
-html[data-site-theme="hiking"] .arte-tema_hiking,
 html[data-site-theme="renascentista"] .arte-tema_renascentista,
 html[data-site-theme="journal"] .arte-tema_journal,
 html[data-site-theme="minimalist"] .arte-tema_minimalist {
@@ -230,8 +304,8 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 	color: var(--accent);
 }
 
-/* moldura comum das artes que não são o tema space */
-.arte-tema_hiking,
+/* moldura comum das artes que não são o tema space (hiking tem a sua, abaixo,
+   porque ocupa a largura toda) */
 .arte-tema_renascentista,
 .arte-tema_journal,
 .arte-tema_minimalist {
@@ -247,7 +321,6 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 	z-index: 0;
 }
 
-.arte-tema_hiking svg,
 .arte-tema_renascentista svg,
 .arte-tema_journal svg,
 .arte-tema_minimalist svg {
@@ -256,40 +329,106 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 	max-height: 88vh;
 }
 
-/* --- Hiking --- */
+/* --- Hiking: montanhas em camadas na largura toda --- */
+html[data-site-theme="hiking"] .arte-tema_hiking {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	/* o céu é opaco de propósito: ele cobre a cor de montanha que pinta o resto
+	   da página, mantendo a primeira tela branca */
+	background-color: var(--background-color);
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 0;
+}
+
 .arte-tema_hiking svg {
-	max-height: none;
-	height: 100%;
+	position: absolute;
+	bottom: 0;
+	/* ancorado à direita: quando a cena é maior que a tela, o que sai de quadro
+	   é o lado esquerdo, e a montanha grande continua sendo o assunto */
+	right: 0;
+	/* A largura vem da altura pela proporção do viewBox (43.06vw ≈ 100 /
+	   (1440/620)), então a cena nunca distorce. A altura é o maior entre 30vh e
+	   a proporção: no desktop manda a proporção (a cena ocupa a largura exata
+	   da tela); no celular manda o 30vh, a cena fica maior que a tela e sobra
+	   para os lados — o container recorta. Em qualquer caso a largura fica >=
+	   100%, que é o que a emenda com a cor da página exige. */
+	width: auto;
+	height: max(30vh, 43.06vw);
 }
 
-.arte-sol {
-	fill: var(--accent);
-	opacity: 0.32;
+.arte-sol-disco,
+.arte-lua {
+	fill: var(--montanha-sol);
 }
 
-.arte-camada-3 {
-	fill: var(--accent);
-	opacity: 0.22;
+/* o disco cheio é o sol do dia; à noite entra a lua minguante no lugar */
+.arte-lua {
+	display: none;
 }
 
-.arte-camada-2 {
-	fill: var(--accent);
-	opacity: 0.34;
+html[data-site-theme="hiking"] body.dark .arte-lua {
+	display: inline;
 }
 
-.arte-camada-1 {
-	fill: var(--accent);
-	opacity: 0.55;
+html[data-site-theme="hiking"] body.dark .arte-sol-disco {
+	display: none;
+}
+
+.arte-passaros {
+	fill: none;
+	stroke: var(--montanha-passaro);
+	stroke-width: 3;
+	stroke-linecap: round;
+}
+
+.arte-camada_horizonte {
+	fill: var(--montanha-horizonte);
+}
+
+.arte-camada_longe {
+	fill: var(--montanha-longe);
+}
+
+.arte-camada_meio {
+	fill: var(--montanha-meio);
+}
+
+.arte-camada_perto {
+	fill: var(--montanha-perto);
+}
+
+.arte-camada_frente {
+	fill: var(--montanha-frente);
+}
+
+/* regras nos próprios elementos: vencem o fill herdado do grupo da camada */
+.arte-sombra_longe {
+	fill: var(--montanha-longe-sombra);
+}
+
+.arte-sombra_meio {
+	fill: var(--montanha-meio-sombra);
+}
+
+.arte-sombra_perto {
+	fill: var(--montanha-perto-sombra);
 }
 
 .arte-neve {
-	fill: var(--background-color);
-	opacity: 0.75;
+	fill: var(--montanha-neve);
 }
 
 .arte-pinheiros {
-	fill: var(--accent);
-	opacity: 0.7;
+	fill: var(--montanha-arvore);
+}
+
+.arte-pinheiros_perto {
+	fill: var(--montanha-arvore-perto);
 }
 
 /* --- Renascentista --- */
@@ -505,7 +644,6 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 		opacity: 0.82;
 	}
 
-	.arte-tema_hiking,
 	.arte-tema_renascentista,
 	.arte-tema_journal,
 	.arte-tema_minimalist {
@@ -514,6 +652,25 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 		width: 100%;
 		height: 55vh;
 		opacity: 0.5;
+	}
+
+	/* o texto do herói é alto no mobile: sobe um pouco para não cair sobre a
+	   crista das montanhas */
+	html[data-site-theme="hiking"] .text-block-home {
+		margin-top: 150px;
+	}
+}
+
+/* Em tela estreita a cena é ampliada e o céu sobra pouco: o sol sai de trás do
+   texto e vai para o lado do cume, e os pássaros (minúsculos nesse tamanho)
+   saem de cena. */
+@media screen and (max-width: 700px) {
+	.arte-sol-pos {
+		transform: translate(300px, -70px);
+	}
+
+	.arte-passaros {
+		display: none;
 	}
 
 	.theme-cloud--icon {

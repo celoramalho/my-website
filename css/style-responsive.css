@@ -62,18 +62,21 @@
         margin-right: 14px;
     }
 
+    /* os tamanhos crescem com a largura, mas com teto: em tablet (768–1024px)
+       o vw puro deixava o texto do herói maior que a primeira tela, e ele
+       transbordava para a seção seguinte. Até ~500px de largura nada muda. */
     .home--title {
-        font-size: 10vw;
+        font-size: min(10vw, 3.6rem);
         text-align: center;
     }
 
     .text-quemsoueu {
         width: 100%;
-        font-size: 4vw;
+        font-size: clamp(1rem, 4vw, 1.4rem);
     }
 
     .fonte-padrao-p {
-        font-size: 4vw;
+        font-size: clamp(0.95rem, 4vw, 1.25rem);
     }
 
     .home--cta {

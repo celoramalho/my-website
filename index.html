@@ -182,18 +182,99 @@
 				</div>
 
 				<!-- ===== Cenário: Hiking ===== -->
+				<!-- O céu é o fundo do próprio container (branco), e as montanhas ficam
+				     ancoradas no rodapé do herói. A camada da frente usa a mesma cor que
+				     pinta o resto da página, então a virada acontece sem emenda visível.
+				     data-parallax = quanto a camada "atrasa" ao rolar (js/script.js). -->
 				<div class="arte-tema arte-tema_hiking" aria-hidden="true">
-					<svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" focusable="false"
-						preserveAspectRatio="xMidYMax slice">
-						<circle class="arte-sol floating-element" cx="580" cy="140" r="66" />
-						<path class="arte-camada-3" d="M0 520 L210 236 L330 372 L430 268 L620 520 Z" />
-						<path class="arte-camada-2" d="M330 520 L520 250 L640 392 L720 300 L800 400 L800 520 Z" />
-						<path class="arte-neve" d="M210 236 L258 292 L232 286 L206 306 L182 282 L162 292 Z" />
-						<path class="arte-camada-1" d="M0 520 L120 388 L250 490 L360 410 L520 520 Z" />
-						<g class="arte-pinheiros">
-							<path d="M96 470 l18 -52 l18 52 Z" />
-							<path d="M150 480 l14 -40 l14 40 Z" />
-							<path d="M636 486 l16 -46 l16 46 Z" />
+					<!-- sem preserveAspectRatio="none": o cenário mantém a proporção do
+					     viewBox (a largura manda, a altura vem da proporção), então nada
+					     estica nem achata. A luz vem da esquerda, por isso as faces
+					     sombreadas ficam sempre no lado direito de cada pico. -->
+					<svg viewBox="0 0 1440 620" xmlns="http://www.w3.org/2000/svg" focusable="false">
+						<defs>
+							<path id="pinheiro"
+								d="M-22 0 l10 -14 l-6 0 l10 -16 l-5 0 l13 -22 l13 22 l-5 0 l10 16 l-6 0 l10 14 Z" />
+							<path id="passaro" d="M-13 0 q6.5 -7 13 0 q6.5 -7 13 0" />
+						</defs>
+
+						<g class="arte-passaros" data-parallax="0.36">
+							<use href="#passaro" transform="translate(742 168) scale(0.9)" />
+							<use href="#passaro" transform="translate(800 132)" />
+							<use href="#passaro" transform="translate(848 186) scale(0.7)" />
+						</g>
+
+					<!-- o <g> de dentro existe só para o celular poder reposicionar o astro
+					     sem brigar com o transform do parallax nem com o do flutuar -->
+						<g class="arte-sol" data-parallax="0.3">
+							<g class="arte-sol-pos">
+								<circle class="arte-sol-disco floating-element" cx="920" cy="122" r="70" />
+								<!-- minguante: o lado iluminado fica à direita, como se vê daqui -->
+								<path class="arte-lua floating-element"
+									d="M920 52 A70 70 0 0 1 920 192 A82 82 0 0 0 920 52 Z" />
+							</g>
+						</g>
+
+						<g class="arte-camada arte-camada_horizonte" data-parallax="0.26">
+							<path
+								d="M240 620 L360 496 L470 536 L560 444 L680 500 L800 420 L920 480 L1060 400 L1200 470 L1330 410 L1440 460 L1440 620 Z" />
+						</g>
+
+						<g class="arte-camada arte-camada_longe" data-parallax="0.2">
+							<path d="M480 620 L700 268 L830 420 L940 330 L1080 470 L1200 380 L1440 470 L1440 620 Z" />
+							<path class="arte-sombra arte-sombra_longe" d="M700 268 L830 420 L830 620 L742 620 Z" />
+							<!-- as calotas ficam recuadas das arestas: encostando nelas, sobrava
+							     um fio da montanha entre a neve e o céu -->
+							<path class="arte-neve" d="M700 268 L714 296 L707 291 L700 300 L693 290 L688 295 Z" />
+							<path class="arte-neve" d="M940 330 L950 348 L944 344 L939 352 L933 342 L926 347 Z" />
+						</g>
+
+						<!-- a montanha grande do canto direito: cume alto, neve recortada e a
+						     face inteira do lado direito na sombra -->
+						<g class="arte-camada arte-camada_meio" data-parallax="0.14">
+							<path d="M700 620 L860 470 L980 402 L1120 296 L1268 78 L1440 340 L1440 620 Z" />
+							<path class="arte-sombra arte-sombra_meio" d="M1268 78 L1440 340 L1440 620 L1290 620 Z" />
+							<path class="arte-neve"
+								d="M1268 78 L1300 152 L1288 146 L1282 168 L1272 152 L1264 180 L1254 154 L1246 172 L1238 148 L1230 160 L1244 130 Z" />
+							<!-- neve acumulada no ombro que sobe até o cume -->
+							<path class="arte-neve"
+								d="M1120 296 L1133 316 L1126 311 L1120 322 L1112 309 L1103 317 Z" />
+						</g>
+
+						<g class="arte-camada arte-camada_perto" data-parallax="0.06">
+							<path
+								d="M0 620 L110 556 L250 592 L400 500 L560 578 L700 520 L860 590 L1010 512 L1160 570 L1300 520 L1440 566 L1440 620 Z" />
+							<path class="arte-sombra arte-sombra_perto" d="M400 500 L560 578 L560 620 L432 620 Z" />
+							<path class="arte-sombra arte-sombra_perto" d="M1010 512 L1160 570 L1160 620 L1040 620 Z" />
+							<g class="arte-pinheiros arte-pinheiros_perto">
+								<use href="#pinheiro" transform="translate(330 547) scale(0.45)" />
+								<use href="#pinheiro" transform="translate(640 549) scale(0.4)" />
+								<use href="#pinheiro" transform="translate(1080 541) scale(0.5)" />
+								<use href="#pinheiro" transform="translate(1370 545) scale(0.4)" />
+							</g>
+						</g>
+
+						<!-- camada da frente: sem parallax, para a emenda com a página
+						     seguir colada no fim da primeira tela -->
+						<g class="arte-camada arte-camada_frente">
+							<!-- passa de propósito da borda do viewBox (o svg recorta): assim a
+							     emenda com a página não fica com 1px de antialiasing -->
+							<path
+								d="M-20 660 L-20 582 Q240 546 480 588 Q720 626 960 578 Q1200 530 1460 586 L1460 660 Z" />
+							<g class="arte-pinheiros">
+								<use href="#pinheiro" transform="translate(90 573) scale(0.9)" />
+								<use href="#pinheiro" transform="translate(150 569) scale(1.15)" />
+								<use href="#pinheiro" transform="translate(205 567) scale(0.7)" />
+								<use href="#pinheiro" transform="translate(310 570) scale(0.95)" />
+								<use href="#pinheiro" transform="translate(390 577) scale(0.6)" />
+								<use href="#pinheiro" transform="translate(720 606) scale(0.5)" />
+								<use href="#pinheiro" transform="translate(840 598) scale(0.75)" />
+								<use href="#pinheiro" transform="translate(1081 562) scale(0.85)" />
+								<use href="#pinheiro" transform="translate(1205 558) scale(1.25)" />
+								<use href="#pinheiro" transform="translate(1250 559) scale(0.7)" />
+								<use href="#pinheiro" transform="translate(1331 566)" />
+								<use href="#pinheiro" transform="translate(1408 577) scale(0.65)" />
+							</g>
 						</g>
 					</svg>
 				</div>

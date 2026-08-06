@@ -116,6 +116,42 @@ if (themeSwitcher && themeToggle) {
 }
 
 
+/* ===================== Parallax do cenário Hiking ===================== */
+/* Cada camada tem um data-parallax: quanto maior, mais ela "atrasa" ao rolar,
+   o que dá a sensação de distância. A camada da frente fica em 0 (sem
+   atributo), para a emenda com a cor da página não se mexer. */
+const cenarioMontanhas = document.querySelector('.arte-tema_hiking');
+const semAnimacao = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (cenarioMontanhas && !semAnimacao.matches) {
+	const camadas = Array.from(
+		cenarioMontanhas.querySelectorAll('[data-parallax]'),
+		(el) => ({ el, fator: parseFloat(el.dataset.parallax) || 0 })
+	);
+
+	let agendado = false;
+
+	const moverCamadas = () => {
+		agendado = false;
+		// o cenário só ocupa a primeira tela; passando dela, para de andar
+		const y = Math.min(window.scrollY, window.innerHeight);
+
+		camadas.forEach(({ el, fator }) => {
+			el.style.transform = `translate3d(0, ${(y * fator).toFixed(1)}px, 0)`;
+		});
+	};
+
+	const agendarMovimento = () => {
+		if (agendado) return;
+		agendado = true;
+		requestAnimationFrame(moverCamadas);
+	};
+
+	window.addEventListener('scroll', agendarMovimento, { passive: true });
+	moverCamadas();
+}
+
+
 /* ===================== Revelação ao rolar ===================== */
 const reveals = document.querySelectorAll('.reveal');
 
