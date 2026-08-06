@@ -311,18 +311,183 @@
 							<path
 								d="M-20 660 L-20 582 Q240 546 480 588 Q720 626 960 578 Q1200 530 1460 586 L1460 660 Z" />
 							<g class="arte-pinheiros">
-								<use href="#pinheiro" transform="translate(90 573) scale(0.9)" />
-								<use href="#pinheiro" transform="translate(150 569) scale(1.15)" />
+								<!-- o trecho da esquerda abriu espaço para a cabana; sobrou o pinheiro
+								     de 205 fazendo o bosquete ao lado dela -->
 								<use href="#pinheiro" transform="translate(205 567) scale(0.7)" />
 								<use href="#pinheiro" transform="translate(310 570) scale(0.95)" />
 								<use href="#pinheiro" transform="translate(390 577) scale(0.6)" />
 								<use href="#pinheiro" transform="translate(720 606) scale(0.5)" />
 								<use href="#pinheiro" transform="translate(840 598) scale(0.75)" />
 								<use href="#pinheiro" transform="translate(1081 562) scale(0.85)" />
-								<use href="#pinheiro" transform="translate(1205 558) scale(1.25)" />
-								<use href="#pinheiro" transform="translate(1250 559) scale(0.7)" />
+								<!-- os dois pinheiros que ficavam aqui saíram para a barraca caber -->
 								<use href="#pinheiro" transform="translate(1331 566)" />
 								<use href="#pinheiro" transform="translate(1408 577) scale(0.65)" />
+							</g>
+
+							<!-- =========================== Acampamento ===========================
+							     Pixel art na mesma linguagem do sol e da lua, em grade de 4
+							     unidades por pixel (metade da grade deles — os astros são grandes e
+							     distantes, estes são miúdos e precisam de detalhe). Ficam dentro da
+							     camada da frente, sem parallax, para não desgrudarem do morro.
+
+							     Aqui as cores são literais, e não variáveis: ao contrário do sol e da
+							     lua, estes elementos são os mesmos de dia e de noite. Cada <path>
+							     junta os quadradinhos de uma cor só, então dentro dele não aparece
+							     costura de antialiasing. O mapa ASCII de cada sprite está no
+							     comentário acima dele — é por ali que se edita o desenho. -->
+							<g class="arte-acampamento">
+
+								<!-- Cabana — 26x24 px, base em y=578
+								     .....................ss...
+								     ....................ss....
+								     ...................ss.....
+								     .................cc.......
+								     .................cc.......
+								     .................cc.......
+								     ...........RRRR..cc.......
+								     .........RRRRRRRRcc.......
+								     .......RRRRRRRRRRRRR......
+								     .....RRRRRRRRRRRRRRRRR....
+								     ...RRRRRRRRRRRRRRRRRRRRR..
+								     .rRRRRRRRRRRRRRRRRRRRRRRr.
+								     rrRRRRRRRRRRRRRRRRRRRRRRrr
+								     ..lWWWWWWWWWWWWWWWWWWWWl..
+								     ..lwwwwwwwwwwwwwwwwwwwwl..
+								     ..lWWWWWWWWWWWWWWWWWWWWl..
+								     ..lwwwwwwwwwwwwwwwddddwl..
+								     ..lWWWWWWWWWWWWWWWdyydWl..
+								     ..lwwwwwwwwwdddwwwdyydwl..
+								     ..lWWWWWWWWWdddWWWddddWl..
+								     ..lwwwwwwwwwdddwwwwwwwwl..
+								     ..lWWWWWWWWWdddWWWWWWWWl..
+								     ..lwwwwwwwwwdddwwwwwwwwl..
+								     ..llllllllllddllllllllll..
+								     w/W tora e tora clara, l ponta de tora, R/r telhado, c chaminé,
+								     s fumaça, d porta e caixilho, y janela acesa -->
+								<path fill="#a9714b"
+									d="M60 538h80v4h-80zM60 546h60v4h-60zM136 546h4v4h-4zM60 554h36v4h-36zM108 554h12v4h-12zM136 554h4v4h-4zM60 562h36v4h-36zM108 562h32v4h-32zM60 570h36v4h-36zM108 570h32v4h-32z" />
+								<path fill="#c08a5e"
+									d="M60 534h80v4h-80zM60 542h80v4h-80zM60 550h60v4h-60zM136 550h4v4h-4zM60 558h36v4h-36zM108 558h12v4h-12zM136 558h4v4h-4zM60 566h36v4h-36zM108 566h32v4h-32z" />
+								<path fill="#8a5738"
+									d="M56 534h4v4h-4zM140 534h4v4h-4zM56 538h4v4h-4zM140 538h4v4h-4zM56 542h4v4h-4zM140 542h4v4h-4zM56 546h4v4h-4zM140 546h4v4h-4zM56 550h4v4h-4zM140 550h4v4h-4zM56 554h4v4h-4zM140 554h4v4h-4zM56 558h4v4h-4zM140 558h4v4h-4zM56 562h4v4h-4zM140 562h4v4h-4zM56 566h4v4h-4zM140 566h4v4h-4zM56 570h4v4h-4zM140 570h4v4h-4zM56 574h40v4h-40zM104 574h40v4h-40z" />
+								<path fill="#4a2e30"
+									d="M92 506h16v4h-16zM84 510h32v4h-32zM76 514h52v4h-52zM68 518h68v4h-68zM60 522h84v4h-84zM56 526h88v4h-88zM56 530h88v4h-88z" />
+								<path fill="#5e3a3c"
+									d="M52 526h4v4h-4zM144 526h4v4h-4zM48 530h8v4h-8zM144 530h8v4h-8z" />
+								<path fill="#59504a"
+									d="M116 494h8v4h-8zM116 498h8v4h-8zM116 502h8v4h-8zM116 506h8v4h-8zM116 510h8v4h-8z" />
+								<path fill="#b9c6bd" d="M132 482h8v4h-8zM128 486h8v4h-8zM124 490h8v4h-8z" />
+								<path fill="#33231f"
+									d="M120 546h16v4h-16zM120 550h4v4h-4zM132 550h4v4h-4zM96 554h12v4h-12zM120 554h4v4h-4zM132 554h4v4h-4zM96 558h12v4h-12zM120 558h16v4h-16zM96 562h12v4h-12zM96 566h12v4h-12zM96 570h12v4h-12zM96 574h8v4h-8z" />
+								<!-- vidro: apagado de dia, aceso de noite (var --montanha-janela) -->
+								<path class="arte-janela" d="M124 550h8v4h-8zM124 554h8v4h-8z" />
+
+								<!-- ===== só de dia: o hiker caminhando com o cão acordado ==========
+								     De noite os dois somem — ele foi dormir na barraca e o cão ficou
+								     enrodilhado ao lado da fogueira (o sprite dele à noite está mais
+								     abaixo). A visibilidade vem de --montanha-dia, pelo mesmo motivo
+								     do sol e da lua: variável, não display. -->
+								<g class="arte-acampamento-dia">
+
+									<!-- Cão de perfil, olhando para a esquerda — 9x6 px, base em y=584
+									     .oo....O.
+									     ooooOOOOO
+									     oooaOOOOO
+									     ...ooOOOO
+									     ...o..o..
+									     ...o..o..
+									     o pelo claro, O mancha, a coleira -->
+									<path fill="#f0ece4"
+										d="M942 568h8v4h-8zM938 572h16v4h-16zM938 576h12v4h-12zM950 580h8v4h-8zM950 584h4v4h-4zM962 584h4v4h-4zM950 588h4v4h-4zM962 588h4v4h-4z" />
+									<path fill="#8a5a3a"
+										d="M966 568h4v4h-4zM954 572h20v4h-20zM954 576h20v4h-20zM958 580h16v4h-16z" />
+									<path fill="#4aa3c0" d="M950 576h4v4h-4z" />
+
+									<!-- Hiker de costas, com mochila e cajado — 8x12 px, base em y=576
+									     ...hh...
+									     ..hhhh.p
+									     ..CBBC.p
+									     .kCBBCkp
+									     .kCBBCkp
+									     .kCBBCkp
+									     ..SSSSkp
+									     ..SSSS.p
+									     ..k..k.p
+									     ..k..k.p
+									     ..k..k.p
+									     ..b..b.p
+									     h cabelo, C camisa, B mochila, S bermuda, k pele, b bota, p cajado -->
+									<path fill="#8a6a3f"
+										d="M1016 532h4v4h-4zM1016 536h4v4h-4zM1016 540h4v4h-4zM1016 544h4v4h-4zM1016 548h4v4h-4zM1016 552h4v4h-4zM1016 556h4v4h-4zM1016 560h4v4h-4zM1016 564h4v4h-4zM1016 568h4v4h-4zM1016 572h4v4h-4z" />
+									<path fill="#c0523f"
+										d="M996 536h4v4h-4zM1008 536h4v4h-4zM996 540h4v4h-4zM1008 540h4v4h-4zM996 544h4v4h-4zM1008 544h4v4h-4zM996 548h4v4h-4zM1008 548h4v4h-4z" />
+									<path fill="#d8b26a"
+										d="M1000 536h8v4h-8zM1000 540h8v4h-8zM1000 544h8v4h-8zM1000 548h8v4h-8z" />
+									<path fill="#46525e" d="M996 552h16v4h-16zM996 556h16v4h-16z" />
+									<path fill="#e8b88f"
+										d="M992 540h4v4h-4zM1012 540h4v4h-4zM992 544h4v4h-4zM1012 544h4v4h-4zM992 548h4v4h-4zM1012 548h4v4h-4zM1012 552h4v4h-4zM996 560h4v4h-4zM1008 560h4v4h-4zM996 564h4v4h-4zM1008 564h4v4h-4zM996 568h4v4h-4zM1008 568h4v4h-4z" />
+									<path fill="#6a4a2a" d="M1000 528h8v4h-8zM996 532h16v4h-16z" />
+									<path fill="#4a3a2a" d="M996 572h4v4h-4zM1008 572h4v4h-4z" />
+								</g>
+
+								<!-- ===== só de noite: o cão dormindo e a chama acesa ===============
+								     De dia a fogueira fica só com as toras, apagada. -->
+								<g class="arte-acampamento-noite">
+
+									<!-- Cão dormindo ao lado da fogueira — 10x4 px, base em y=560
+									     .....OOOO.
+									     .ooaOOOOOO
+									     ooooOOOOOO
+									     .o......o.
+									     o pelo claro, O mancha, a coleira -->
+									<path fill="#f0ece4"
+										d="M1136 548h8v4h-8zM1132 552h16v4h-16zM1136 556h4v4h-4zM1164 556h4v4h-4z" />
+									<path fill="#8a5a3a" d="M1152 544h16v4h-16zM1148 548h24v4h-24zM1148 552h24v4h-24z" />
+									<path fill="#4aa3c0" d="M1144 548h4v4h-4z" />
+
+									<!-- chama da fogueira (as toras ficam fora do grupo, sempre visíveis)
+									     ...f...
+									     ..fFf..
+									     ..FYF..
+									     .fFYFf.
+									     f/F/Y fogo do externo ao quente -->
+									<path fill="#d94f1e"
+										d="M1184 536h4v4h-4zM1180 540h4v4h-4zM1188 540h4v4h-4zM1176 548h4v4h-4zM1192 548h4v4h-4z" />
+									<path fill="#ff9f30"
+										d="M1184 540h4v4h-4zM1180 544h4v4h-4zM1188 544h4v4h-4zM1180 548h4v4h-4zM1188 548h4v4h-4z" />
+									<path fill="#ffe6a8" d="M1184 544h4v4h-4zM1184 548h4v4h-4z" />
+								</g>
+
+								<!-- Toras da fogueira — 7x2 px, base em y=560
+								     mMmMmMm
+								     .MmMmM.
+								     m/M lenha -->
+
+								<path fill="#8a5a34"
+									d="M1172 552h4v4h-4zM1180 552h4v4h-4zM1188 552h4v4h-4zM1196 552h4v4h-4zM1180 556h4v4h-4zM1188 556h4v4h-4z" />
+								<path fill="#6b4426"
+									d="M1176 552h4v4h-4zM1184 552h4v4h-4zM1192 552h4v4h-4zM1176 556h4v4h-4zM1184 556h4v4h-4zM1192 556h4v4h-4z" />
+
+								<!-- Barraca — 16x11 px, base em y=560
+								     .......p........
+								     .......gG.......
+								     ......ggGG......
+								     .....gggGGG.....
+								     ....ggggGGGG....
+								     ...gggggGGGGG...
+								     ..gggggddGGGGG..
+								     .ggggggddGGGGGG.
+								     ggggggddddGGGGGG
+								     ggggggddddGGGGGG
+								     GGGGGGddddGGGGGG
+								     g/G lona iluminada e na sombra, p ponta da vara, d vão -->
+								<path fill="#33231f"
+									d="M1244 540h8v4h-8zM1244 544h8v4h-8zM1240 548h16v4h-16zM1240 552h16v4h-16zM1240 556h16v4h-16z" />
+								<path fill="#6f9c4f"
+									d="M1244 520h4v4h-4zM1240 524h8v4h-8zM1236 528h12v4h-12zM1232 532h16v4h-16zM1228 536h20v4h-20zM1224 540h20v4h-20zM1220 544h24v4h-24zM1216 548h24v4h-24zM1216 552h24v4h-24z" />
+								<path fill="#4a7034"
+									d="M1248 520h4v4h-4zM1248 524h8v4h-8zM1248 528h12v4h-12zM1248 532h16v4h-16zM1248 536h20v4h-20zM1252 540h20v4h-20zM1252 544h24v4h-24zM1256 548h24v4h-24zM1256 552h24v4h-24zM1216 556h24v4h-24zM1256 556h24v4h-24z" />
+								<path fill="#8a6a3f" d="M1244 516h4v4h-4z" />
 							</g>
 						</g>
 					</svg>

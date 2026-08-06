@@ -77,6 +77,12 @@ html[data-site-theme="hiking"] body {
 	--montanha-arvore: #143026;
 	--montanha-arvore-perto: #3d7a5f;
 	--montanha-passaro: #7ba58f;
+
+	/* acampamento: de dia o hiker passeia com o cão, a janela da cabana está
+	   apagada e a fogueira também */
+	--montanha-dia: 1;
+	--montanha-noite: 0;
+	--montanha-janela: #4b3b33;
 }
 
 html[data-site-theme="hiking"] body.dark {
@@ -116,6 +122,12 @@ html[data-site-theme="hiking"] body.dark {
 	--montanha-arvore: #0d1611;
 	--montanha-arvore-perto: #1b2f26;
 	--montanha-passaro: #6f8d7e;
+
+	/* de noite o hiker recolhe (dormindo na barraca), o cão fica enrodilhado ao
+	   lado da fogueira acesa, e a janela da cabana acende */
+	--montanha-dia: 0;
+	--montanha-noite: 1;
+	--montanha-janela: #f6d98f;
 }
 
 /* --- o resto da página segue a cor da montanha da frente ---------------- */
@@ -421,6 +433,26 @@ html[data-site-theme="hiking"] .arte-tema_hiking {
 	stroke: var(--montanha-passaro);
 	stroke-width: 3;
 	stroke-linecap: round;
+}
+
+/* O acampamento é o mesmo de dia e de noite, com três exceções: o hiker e o
+   cão acordado só saem de dia, o cão dormindo e a chama só de noite, e o vidro
+   da janela troca de cor. Como no sol e na lua, quem manda é a variável — o
+   fill-opacity é herdado pelos <path> de dentro do grupo, que continuam com as
+   cores literais deles. */
+.arte-acampamento-dia {
+	fill-opacity: var(--montanha-dia);
+	transition: fill-opacity 0.5s ease;
+}
+
+.arte-acampamento-noite {
+	fill-opacity: var(--montanha-noite);
+	transition: fill-opacity 0.5s ease;
+}
+
+.arte-janela {
+	fill: var(--montanha-janela);
+	transition: fill 0.5s ease;
 }
 
 .arte-camada_horizonte {
