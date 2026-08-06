@@ -208,16 +208,61 @@
 					     sem brigar com o transform do parallax nem com o do flutuar -->
 						<g class="arte-sol" data-parallax="0.3">
 							<g class="arte-sol-pos">
-								<!-- dois círculos iguais, deslocados. De dia o de cima tem a cor do
-								     sol e o disco fica inteiro; de noite ele assume a cor do céu,
-								     morde o disco e sobra a minguante — com o lado iluminado à
-								     direita, como se vê daqui. Só o fill muda. -->
+								<!-- Sol e lua ocupam o mesmo lugar e o mesmo quadrado de 140: o sol
+								     de dia, a lua de noite. Quem manda é a cor — cada peça puxa o
+								     fill de uma variável que fica transparente no tema em que ela não
+								     aparece (ver as duas paletas em css/style-themes.css). Nada de
+								     display/opacity, só fill.
+
+								     Os dois são pixel art de verdade, na mesma grade de 20x20 de 7
+								     unidades. Cada <path> junta os quadradinhos de um tom só (num
+								     único path eles se fundem sem costura de antialiasing).
+
+								     Sol — 1 claro, 2 médio, 3 laranja; a luz vem de cima-esquerda, o
+								     mesmo lado que decide as faces sombreadas das montanhas:
+
+								       .......111122.......    11111111111122222333
+								       .....1111112222.....    11111111111222223333
+								       ...11111111122222...    11111111112222223333
+								       ..1111111111222223..    22111111122222223333
+								       ..1111111111122223..    22221112222222233333
+								       .111111111111222233.    .222222222222233333.
+								       .111111111111222233.    .222222222222333333.
+								       11111111111122222333   (e fecha em 3 nas últimas linhas)
+
+								     Lua — S = sombra do terminador, o = cratera:
+
+								       .......SS####.......    ..........SS#####...
+								       .........SS####.....    ...........SS##o##..
+								       ..........SS#####...    ............SS####..
+								       ...........SS##o##..    .............SS#o##.
+								       ............SS####..    .............SSooo#.
+								       .............SS#o##.    .............SS#o###
+								       .............SSooo#.    ..............SS####
+								       .............SS#o###   (segue espelhado até a linha 19)
+
+								     Minguante: o lado iluminado fica à direita, como se vê daqui. -->
 								<g class="floating-element">
-									<circle class="arte-sol-disco" cx="920" cy="122" r="70" />
-									<circle class="arte-sol-recorte" cx="888" cy="122" r="70" />
+									<path class="arte-sol-corpo"
+										d="M899 52h28v7h-28zM885 59h42v7h-42zM871 66h63v7h-63zM864 73h70v7h-70zM864 80h77v7h-77zM857 87h84v7h-84zM857 94h84v7h-84zM850 101h84v7h-84zM850 108h84v7h-84zM850 115h77v7h-77zM850 122h70v7h-70zM864 129h49v7h-49zM878 136h21v7h-21z" />
+									<path class="arte-sol-meio"
+										d="M927 52h14v7h-14zM927 59h28v7h-28zM934 66h35v7h-35zM934 73h35v7h-35zM941 80h28v7h-28zM941 87h28v7h-28zM941 94h28v7h-28zM934 101h35v7h-35zM934 108h35v7h-35zM927 115h35v7h-35zM920 122h42v7h-42zM850 129h14v7h-14zM913 129h49v7h-49zM850 136h28v7h-28zM899 136h56v7h-56zM857 143h91v7h-91zM857 150h84v7h-84zM864 157h70v7h-70zM864 164h49v7h-49z" />
+									<path class="arte-sol-borda"
+										d="M969 73h7v7h-7zM969 80h7v7h-7zM969 87h14v7h-14zM969 94h14v7h-14zM969 101h21v7h-21zM969 108h21v7h-21zM962 115h28v7h-28zM962 122h28v7h-28zM962 129h28v7h-28zM955 136h35v7h-35zM948 143h35v7h-35zM941 150h42v7h-42zM934 157h42v7h-42zM913 164h63v7h-63zM871 171h98v7h-98zM885 178h70v7h-70zM899 185h42v7h-42z" />
+
+									<path class="arte-lua-corpo"
+										d="M899 52h42v7h-42zM913 59h42v7h-42zM920 66h49v7h-49zM927 73h49v7h-49zM934 80h42v7h-42zM941 87h42v7h-42zM941 94h42v7h-42zM941 101h49v7h-49zM948 108h42v7h-42zM948 115h42v7h-42zM948 122h42v7h-42zM948 129h42v7h-42zM941 136h49v7h-49zM941 143h42v7h-42zM941 150h42v7h-42zM934 157h42v7h-42zM927 164h49v7h-49zM920 171h49v7h-49zM913 178h42v7h-42zM899 185h42v7h-42z" />
+									<path class="arte-lua-sombra"
+										d="M899 52h14v7h-14zM913 59h14v7h-14zM920 66h14v7h-14zM927 73h14v7h-14zM934 80h14v7h-14zM941 87h14v7h-14zM941 94h14v7h-14zM941 101h14v7h-14zM948 108h14v7h-14zM948 115h14v7h-14zM948 122h14v7h-14zM948 129h14v7h-14zM941 136h14v7h-14zM941 143h14v7h-14zM941 150h14v7h-14zM934 157h14v7h-14zM927 164h14v7h-14zM920 171h14v7h-14zM913 178h14v7h-14zM899 185h14v7h-14z" />
+									<path class="arte-lua-cratera"
+										d="M955 73h7v7h-7zM962 87h7v7h-7zM955 94h21v7h-21zM962 101h7v7h-7zM969 122h14v7h-14zM969 129h7v7h-7zM969 136h7v7h-7zM962 150h7v7h-7zM955 164h7v7h-7zM941 171h7v7h-7z" />
 								</g>
 							</g>
 						</g>
+
+						<!-- estrelas: mesmos quadradinhos da lua, só aparecem no tema escuro -->
+						<path class="arte-estrelas" data-parallax="0.34"
+							d="M686 42h7v7h-7zM798 28h7v7h-7zM1050 35h14v14h-14zM1120 91h7v7h-7zM1015 140h7v7h-7zM1176 21h7v7h-7zM1246 63h14v14h-14zM1330 28h7v7h-7zM1400 105h7v7h-7zM924 224h7v7h-7zM868 245h7v7h-7zM1078 210h7v7h-7zM1358 154h7v7h-7zM700 245h7v7h-7z" />
 
 						<g class="arte-camada arte-camada_horizonte" data-parallax="0.26">
 							<path

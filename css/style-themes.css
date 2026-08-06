@@ -65,9 +65,15 @@ html[data-site-theme="hiking"] body {
 	--montanha-frente: #1f4a3a;
 	--montanha-fundo-pagina: #163529;
 	--montanha-neve: #ffffff;
-	--montanha-sol: #f3d7a4;
-	/* de dia o recorte não pinta nada: o sol fica um disco inteiro */
-	--montanha-recorte: transparent;
+	/* de dia só o sol pinta (três tons quentes, do claro ao laranja do canto
+	   sombreado); lua e estrelas ficam transparentes */
+	--montanha-sol: #f8dda2;
+	--montanha-sol-meio: #f0bf6a;
+	--montanha-sol-borda: #e0913f;
+	--montanha-lua: transparent;
+	--montanha-lua-sombra: transparent;
+	--montanha-lua-cratera: transparent;
+	--montanha-estrela: transparent;
 	--montanha-arvore: #143026;
 	--montanha-arvore-perto: #3d7a5f;
 	--montanha-passaro: #7ba58f;
@@ -98,10 +104,15 @@ html[data-site-theme="hiking"] body.dark {
 	--montanha-frente: #16241e;
 	--montanha-fundo-pagina: #101a16;
 	--montanha-neve: #cde3d6;
-	--montanha-sol: #dfeae3;
-	/* de noite o recorte assume a cor do céu (--background-color, o mesmo valor
-	   que pinta o céu do herói): ele morde o disco e sobra a lua minguante */
-	--montanha-recorte: var(--background-color);
+	/* de noite os três tons do sol somem e entram a lua (também em três tons,
+	   para as crateras aparecerem) e as estrelas */
+	--montanha-sol: transparent;
+	--montanha-sol-meio: transparent;
+	--montanha-sol-borda: transparent;
+	--montanha-lua: #e8f1ec;
+	--montanha-lua-sombra: #b5cbc0;
+	--montanha-lua-cratera: #93aa9d;
+	--montanha-estrela: #d3e2d9;
 	--montanha-arvore: #0d1611;
 	--montanha-arvore-perto: #1b2f26;
 	--montanha-passaro: #6f8d7e;
@@ -365,21 +376,43 @@ html[data-site-theme="hiking"] .arte-tema_hiking {
 	height: max(30vh, 43.06vw);
 }
 
-/* Sol de dia, minguante de noite: o disco é sempre o mesmo, e o que muda é a
-   cor do círculo de recorte por cima dele (ver os dois <circle> no
-   index.html) — transparente de dia, cor do céu de noite, quando ele morde o
-   disco e sobra a lua.
-
-   As duas regras abaixo valem para claro e escuro: quem troca é a variável
-   --montanha-recorte, declarada junto com o resto da paleta lá no começo do
-   arquivo. É de propósito — assim a lua depende do mesmo mecanismo que já
-   escurece a página inteira, e não de um seletor próprio. */
-.arte-sol-disco {
+/* Sol de dia, lua em pixel art de noite, no mesmo lugar. Nenhuma regra abaixo
+   distingue os temas: cada peça puxa uma variável que fica `transparent` no
+   tema em que ela não deve aparecer (as duas paletas estão no começo do
+   arquivo). É de propósito — assim a troca depende do mesmo mecanismo que já
+   escurece a página inteira, e não de um seletor próprio de cada peça. */
+.arte-sol-corpo {
 	fill: var(--montanha-sol);
+	transition: fill 0.5s ease;
 }
 
-.arte-sol-recorte {
-	fill: var(--montanha-recorte);
+.arte-sol-meio {
+	fill: var(--montanha-sol-meio);
+	transition: fill 0.5s ease;
+}
+
+.arte-sol-borda {
+	fill: var(--montanha-sol-borda);
+	transition: fill 0.5s ease;
+}
+
+.arte-lua-corpo {
+	fill: var(--montanha-lua);
+	transition: fill 0.5s ease;
+}
+
+.arte-lua-sombra {
+	fill: var(--montanha-lua-sombra);
+	transition: fill 0.5s ease;
+}
+
+.arte-lua-cratera {
+	fill: var(--montanha-lua-cratera);
+	transition: fill 0.5s ease;
+}
+
+.arte-estrelas {
+	fill: var(--montanha-estrela);
 	transition: fill 0.5s ease;
 }
 
@@ -677,15 +710,17 @@ html[data-site-theme="hiking"] .arte-tema_hiking {
 	}
 }
 
-/* Em tela estreita a cena é ampliada e o céu sobra pouco: o astro sai de trás
-   do texto e vai para o lado do cume, e os pássaros (minúsculos nesse tamanho)
-   saem de cena. */
+/* Em tela estreita a cena é ampliada e o céu sobra pouco. O astro sai de trás
+   do texto, encolhe e encaixa na faixa de céu à esquerda do cume (sem o scale
+   a lua ficaria escondida atrás da montanha). Pássaros e estrelas, miúdos
+   demais nesse tamanho, saem de cena — no botão eles pareciam sujeira. */
 @media screen and (max-width: 700px) {
 	.arte-sol-pos {
-		transform: translate(300px, -70px);
+		transform: translate(582px, -19px) scale(0.65);
 	}
 
-	.arte-passaros {
+	.arte-passaros,
+	.arte-estrelas {
 		display: none;
 	}
 }
