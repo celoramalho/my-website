@@ -66,6 +66,8 @@ html[data-site-theme="hiking"] body {
 	--montanha-fundo-pagina: #163529;
 	--montanha-neve: #ffffff;
 	--montanha-sol: #f3d7a4;
+	/* de dia o recorte não pinta nada: o sol fica um disco inteiro */
+	--montanha-recorte: transparent;
 	--montanha-arvore: #143026;
 	--montanha-arvore-perto: #3d7a5f;
 	--montanha-passaro: #7ba58f;
@@ -96,8 +98,10 @@ html[data-site-theme="hiking"] body.dark {
 	--montanha-frente: #16241e;
 	--montanha-fundo-pagina: #101a16;
 	--montanha-neve: #cde3d6;
-	/* no escuro o disco vira lua minguante (ver .arte-lua) */
 	--montanha-sol: #dfeae3;
+	/* de noite o recorte assume a cor do céu (--background-color, o mesmo valor
+	   que pinta o céu do herói): ele morde o disco e sobra a lua minguante */
+	--montanha-recorte: var(--background-color);
 	--montanha-arvore: #0d1611;
 	--montanha-arvore-perto: #1b2f26;
 	--montanha-passaro: #6f8d7e;
@@ -361,22 +365,22 @@ html[data-site-theme="hiking"] .arte-tema_hiking {
 	height: max(30vh, 43.06vw);
 }
 
-.arte-sol-disco,
-.arte-lua {
+/* Sol de dia, minguante de noite: o disco é sempre o mesmo, e o que muda é a
+   cor do círculo de recorte por cima dele (ver os dois <circle> no
+   index.html) — transparente de dia, cor do céu de noite, quando ele morde o
+   disco e sobra a lua.
+
+   As duas regras abaixo valem para claro e escuro: quem troca é a variável
+   --montanha-recorte, declarada junto com o resto da paleta lá no começo do
+   arquivo. É de propósito — assim a lua depende do mesmo mecanismo que já
+   escurece a página inteira, e não de um seletor próprio. */
+.arte-sol-disco {
 	fill: var(--montanha-sol);
 }
 
-/* o disco cheio é o sol do dia; à noite entra a lua minguante no lugar */
-.arte-lua {
-	display: none;
-}
-
-html[data-site-theme="hiking"] body.dark .arte-lua {
-	display: inline;
-}
-
-html[data-site-theme="hiking"] body.dark .arte-sol-disco {
-	display: none;
+.arte-sol-recorte {
+	fill: var(--montanha-recorte);
+	transition: fill 0.5s ease;
 }
 
 .arte-passaros {
@@ -659,19 +663,6 @@ html[data-site-theme="hiking"] body.dark .arte-sol-disco {
 	html[data-site-theme="hiking"] .text-block-home {
 		margin-top: 150px;
 	}
-}
-
-/* Em tela estreita a cena é ampliada e o céu sobra pouco: o sol sai de trás do
-   texto e vai para o lado do cume, e os pássaros (minúsculos nesse tamanho)
-   saem de cena. */
-@media screen and (max-width: 700px) {
-	.arte-sol-pos {
-		transform: translate(300px, -70px);
-	}
-
-	.arte-passaros {
-		display: none;
-	}
 
 	.theme-cloud--icon {
 		width: 52px;
@@ -683,6 +674,19 @@ html[data-site-theme="hiking"] body.dark .arte-sol-disco {
 		width: 62px;
 		height: 62px;
 		font-size: 1.4rem;
+	}
+}
+
+/* Em tela estreita a cena é ampliada e o céu sobra pouco: o astro sai de trás
+   do texto e vai para o lado do cume, e os pássaros (minúsculos nesse tamanho)
+   saem de cena. */
+@media screen and (max-width: 700px) {
+	.arte-sol-pos {
+		transform: translate(300px, -70px);
+	}
+
+	.arte-passaros {
+		display: none;
 	}
 }
 

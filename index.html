@@ -199,19 +199,23 @@
 						</defs>
 
 						<g class="arte-passaros" data-parallax="0.36">
-							<use href="#passaro" transform="translate(742 168) scale(0.9)" />
-							<use href="#passaro" transform="translate(800 132)" />
-							<use href="#passaro" transform="translate(848 186) scale(0.7)" />
+							<use href="#passaro" transform="translate(658 154) scale(0.9)" />
+							<use href="#passaro" transform="translate(716 118)" />
+							<use href="#passaro" transform="translate(764 172) scale(0.7)" />
 						</g>
 
 					<!-- o <g> de dentro existe só para o celular poder reposicionar o astro
 					     sem brigar com o transform do parallax nem com o do flutuar -->
 						<g class="arte-sol" data-parallax="0.3">
 							<g class="arte-sol-pos">
-								<circle class="arte-sol-disco floating-element" cx="920" cy="122" r="70" />
-								<!-- minguante: o lado iluminado fica à direita, como se vê daqui -->
-								<path class="arte-lua floating-element"
-									d="M920 52 A70 70 0 0 1 920 192 A82 82 0 0 0 920 52 Z" />
+								<!-- dois círculos iguais, deslocados. De dia o de cima tem a cor do
+								     sol e o disco fica inteiro; de noite ele assume a cor do céu,
+								     morde o disco e sobra a minguante — com o lado iluminado à
+								     direita, como se vê daqui. Só o fill muda. -->
+								<g class="floating-element">
+									<circle class="arte-sol-disco" cx="920" cy="122" r="70" />
+									<circle class="arte-sol-recorte" cx="888" cy="122" r="70" />
+								</g>
 							</g>
 						</g>
 
