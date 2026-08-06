@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html lang="" pt-br" id="home-section">
+<html lang="pt-BR">
 
 <head>
-	<title>Marcelo Ramalho</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Marcelo Ramalho — Analista de Cibersegurança | IAM &amp; Zero Trust</title>
+	<meta name="description"
+		content="Portfólio de Marcelo Ramalho — Analista de Cibersegurança na FIT Energia (Grupo Santander). Zero Trust, IAM, gestão de vulnerabilidades, pentest e automação em Python.">
+	<meta name="author" content="Marcelo Ramalho">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Marcelo Ramalho — Analista de Cibersegurança">
+	<meta property="og:description"
+		content="Zero Trust, IAM, gestão de vulnerabilidades, pentest e automação em Python.">
+	<meta property="og:image" content="img/profile-picture.png">
+
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/style-animation.css">
 	<link rel="stylesheet" href="css/style-responsive.css">
@@ -12,260 +23,595 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
 		rel="stylesheet">
-	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/df085564fc.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/df085564fc.js" crossorigin="anonymous" defer></script>
+
+	<!-- habilita as animações de scroll só quando há JS, evitando conteúdo invisível -->
+	<script>
+		if ('IntersectionObserver' in window) document.documentElement.classList.add('reveal-enabled');
+	</script>
 </head>
 
 <body class="body">
 	<div class="body-2">
+
+		<!-- =================== Header =================== -->
 		<header>
-			<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-				<div class="burger">
-					<div class="line1"></div>
-					<div class="line2"></div>
-					<div class="line3"></div>
-				</div>
+			<nav class="navbar" aria-label="Navegação principal">
+				<button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false"
+					aria-controls="primary-menu">
+					<span class="line1"></span>
+					<span class="line2"></span>
+					<span class="line3"></span>
+				</button>
+
 				<div class="navbar--site-logo">
-					<a class="navbar--site-logo--link" href="index.html">
-						<h2>M</h2>
-						<h3>R<h3>
-					</a> <!-- Logo -->
+					<a class="navbar--site-logo--link" href="#section-home" aria-label="Marcelo Ramalho — início">
+						<span class="logo-light">M</span><span class="logo-bold">R</span>
+					</a>
 				</div>
-				<ul class="navbar--links">
 
-					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#home-section">HOME</a></li>
-
-					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#section-about-me">SOBRE MIM</a>
-					</li>
-
-					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#section-jobxp">EXPERIÊNCIA</a>
-					</li>
-					<li class="navbar--links-item"><a class="js-scroll-trigger"
-							href="#section-certifications">CERTIFICADOS</a>
-					</li>
-
-					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#useless-section">CONTATO</a>
-					</li>
+				<ul class="navbar--links" id="primary-menu">
+					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#section-home">HOME</a></li>
+					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#section-about-me">SOBRE</a></li>
+					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#section-jobxp">EXPERIÊNCIA</a></li>
+					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#section-stack">STACK</a></li>
+					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#section-education">FORMAÇÃO</a></li>
+					<li class="navbar--links-item"><a class="js-scroll-trigger" href="#section-contact">CONTATO</a></li>
 				</ul>
+
 				<div class="icons-navbar">
-					<a class="clickable--icons" href="https://github.com/celoramalho" target="_blank"><i
-							class="fab fa-github"></i></a>
-					<a class="clickable--icons"
-						href="https://www.linkedin.com/in/marcelo-ramalho-de-rodrigues-7240381b9" target="_blank"><i
-							class="fab fa-linkedin"></i></a>
+					<a class="clickable--icons" href="https://github.com/celoramalho" target="_blank" rel="noopener"
+						aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+					<a class="clickable--icons" href="https://www.linkedin.com/in/marcelo-ramalho-de-rodrigues-7240381b9"
+						target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"
+							aria-hidden="true"></i></a>
 					<input type="checkbox" id="colortheme-checkbox">
-					<label for="colortheme-checkbox" class="fa-solid fa-circle-half-stroke clickable--icons"></label>
+					<label for="colortheme-checkbox" class="fa-solid fa-circle-half-stroke clickable--icons"
+						title="Alternar tema claro/escuro"><span class="sr-only">Alternar tema</span></label>
 				</div>
 			</nav>
-
 		</header>
 
-		<!-- Choose the site Theme-->
+		<!-- Botão de tema do site -->
 		<div class="theme--buttom">
 			<input type="checkbox" id="theme--buttom--checkbox">
-			<label for="theme--buttom--checkbox" class="fa-solid fa-mountain-sun clickable--icons"></label>
+			<label for="theme--buttom--checkbox" class="fa-solid fa-mountain-sun clickable--icons"
+				title="Alternar cenário"><span class="sr-only">Alternar cenário</span></label>
 		</div>
 
-		<!-- Section Home, first section-->
-		<section id="section-home">
-			<div class="home--container-text">
-				<div class="text-block-home">
+		<main>
+			<!-- =================== Home =================== -->
+			<section id="section-home">
+				<div class="home--container-text">
+					<div class="text-block-home">
 
-					<div class="home--title">
-						<h2>Marcelo</h2>
-						<h1>Ramalho</h1>
-					</div>
-					<div class="text-block-home-padding">
-						<div class="biografia-home">
-							<p class="text-quemsoueu">Quem sou eu?</p>
-							<p class="text-biografia fonte-padrao-p">Cybersecurity Analyst e Full Stack Developer, com experiência em infraestrutura, gerenciamento de identidade & acesso, pentest e RPA.					</p>
+						<p class="home--eyebrow">Cybersecurity · IAM · Zero Trust</p>
+
+						<div class="home--title">
+							<h2>Marcelo</h2>
+							<h1>Ramalho</h1>
 						</div>
 
-						<div class="saiba-mais-buttom">
-							<a class="js-scroll-trigger" href="#section-about-me">
-								<p>Sobre mim</p>
-							</a>
+						<div class="text-block-home-padding">
+							<div class="biografia-home">
+								<p class="text-quemsoueu">Analista de Cibersegurança</p>
+								<p class="text-biografia fonte-padrao-p">Atuo na FIT Energia, empresa do grupo Santander,
+									criando e implementando políticas de segurança baseadas em Zero Trust — de identidade e
+									acesso a pentest, gestão de vulnerabilidades e resposta a incidentes. Automatizo o que dá
+									para automatizar, em Python.</p>
+							</div>
+
+							<div class="home--cta">
+								<div class="saiba-mais-buttom">
+									<a class="js-scroll-trigger" href="#section-about-me">
+										<p>Sobre mim</p>
+									</a>
+								</div>
+								<a class="home--cta-ghost" href="curriculumvitae/index.html">
+									<i class="fa-regular fa-file-lines" aria-hidden="true"></i> Ver currículo
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- Space Theme -->
-			<div class="arte-home space">
-				<div class="blob-2"></div>
-				<svg class="blob-3" id="10015.io" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink">
-					<path fill="#660094" fill-opacity="0.5"
-						d="M402,275.5Q388,311,359.5,333Q331,355,300.5,362.5Q270,370,234.5,396Q199,422,155,412Q111,402,69,372.5Q27,343,71,291.5Q115,240,132,218Q149,196,151.5,164Q154,132,177.5,100.5Q201,69,240,68.5Q279,68,300.5,102.5Q322,137,381,140.5Q440,144,428,192Q416,240,402,275.5Z" />
-				</svg>
-				<div class="spacecadet">
-					<img class="floating-element" src="img/atronauta.png">
+				<!-- Tema espacial -->
+				<div class="arte-home space" aria-hidden="true">
+					<div class="blob-2"></div>
+					<svg class="blob-3" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" focusable="false">
+						<path fill="#660094" fill-opacity="0.5"
+							d="M402,275.5Q388,311,359.5,333Q331,355,300.5,362.5Q270,370,234.5,396Q199,422,155,412Q111,402,69,372.5Q27,343,71,291.5Q115,240,132,218Q149,196,151.5,164Q154,132,177.5,100.5Q201,69,240,68.5Q279,68,300.5,102.5Q322,137,381,140.5Q440,144,428,192Q416,240,402,275.5Z" />
+					</svg>
+					<div class="spacecadet">
+						<img class="floating-element" src="img/atronauta.png" alt="" width="480" height="480">
+					</div>
 				</div>
-			</div>
-			<!-- end of space theme in home -->
+			</section>
 
-			<!-- Montain
-			  Theme -->
-		</section>
+			<!-- =================== Sobre mim =================== -->
+			<section id="section-about-me" aria-labelledby="about-me-title">
+				<div class="container">
+					<div class="container-pro-xp">
 
-		<!-- Section About me, second section-->
-		<section id="section-about-me">
-			<div class="container">
-				<div class="container-pro-xp">
-					<div class="about-me--block">
+						<div class="about-me--block reveal">
+							<div class="about-me--profile-pic">
+								<div class="about-me--profile-pic--circle"></div>
+								<div class="about-me--block--profile-picture--photo">
+									<img src="img/profile-picture.png" alt="Foto de Marcelo Ramalho">
+								</div>
+							</div>
 
-						<div class="about-me--profile-pic">
-							<div class="about-me--profile-pic--circle"></div>
-							<div class="about-me--block--profile-picture--photo">
-								<img src="img\profile-picture.png">
+							<div class="about-me--block--lorem-ipsum">
+								<div class="about-me--block--lorem-ipsum--txt">
+									<h2 id="about-me-title">Sobre Mim</h2>
+									<p class="fonte-padrao-p">Profissional de tecnologia especializado em cibersegurança, com
+										atuação em IAM, infraestrutura, redes e automação (RPA). Na FIT Energia, empresa do
+										grupo Santander, atuo na criação e implementação de políticas de segurança baseadas em
+										Zero Trust, em ambientes on-premise, cloud, aplicações SaaS e sistemas de identidade
+										como Microsoft Entra ID, além de conduzir testes de penetração, gestão de
+										vulnerabilidades e resposta a incidentes em conformidade com os padrões do banco.</p>
+									<p class="fonte-padrao-p">Desenvolvo automações em Python para otimizar processos de
+										segurança e operação, unindo conhecimento técnico de infraestrutura com a capacidade de
+										construir soluções próprias.</p>
+								</div>
 							</div>
 						</div>
 
-						<div class="about-me--block--lorem-ipsum">
-							<div class="about-me--block--lorem-ipsum--txt">
-							<h2>Sobre Mim</h2>
-							<p class="fonte-padrao-p"> Atuo na gestão de identidade e acesso (IAM) e na gestão e
-								manutenção
-								de
-								ativos de TI (ITAM), incluindo
-								endpoints e equipamentos de rede. Utilizo habilidades de programação para automatizar
-								processos
-								e
-								desenvolver soluções que auxiliam na gestão de TI. Implemento soluções de
-								cibersegurança,
-								incluindo
-								a
-								configuração de firewalls on-premise,
-								ferramentas de detecção e resposta de endpoint (EDR), prevenção
-								de perda de dados (DLP) e gerenciamento de dispositivos usando ferramentas como Intune,
-								crowdstrike
-								e
-								cyberguardian.
-							</p>
-						</div>
-						</div>
-					</div>
-					<div class="about-me-skills">
-						<p>Minhas habilidades</p>
-						<ul class="my-skills">
-							<li class="skill-bar"><a class="js-scroll-trigger" href="#home-section">Cybersecurity</a></li>
-							<li class="skill-bar"><a class="js-scroll-trigger" href="#home-section">Engenharia de Software</a></li>
-							<li class="skill-bar"><a class="js-scroll-trigger" href="#home-section">Desenvolvimento Web</a></li>
-							<li class="skill-bar"><a class="js-scroll-trigger" href="#home-section">IAM</a></li>
-							<li class="skill-bar"><a class="js-scroll-trigger" href="#home-section">ITAM</a></li>
-							<li class="skill-bar"><a class="js-scroll-trigger" href="#home-section">Cloud Infrastructure</a>/a></li>
-							<li class="skill-bar"><a class="js-scroll-trigger" href="#home-section">RPA</a></li>
+						<ul class="stats reveal">
+							<li class="stats--item">
+								<span class="stats--number">5+</span>
+								<span class="stats--label">anos em tecnologia</span>
+							</li>
+							<li class="stats--item">
+								<span class="stats--number">3+</span>
+								<span class="stats--label">anos em cibersegurança</span>
+							</li>
+							<li class="stats--item">
+								<span class="stats--number">4</span>
+								<span class="stats--label">idiomas</span>
+							</li>
 						</ul>
+
+						<div class="about-me-skills reveal">
+							<p class="about-me-skills--label">Áreas de atuação</p>
+							<ul class="my-skills">
+								<li class="skill-bar">Cibersegurança</li>
+								<li class="skill-bar">Zero Trust</li>
+								<li class="skill-bar">IAM</li>
+								<li class="skill-bar">ITAM · SAM</li>
+								<li class="skill-bar">Gestão de Vulnerabilidades</li>
+								<li class="skill-bar">Resposta a Incidentes</li>
+								<li class="skill-bar">Pentest</li>
+								<li class="skill-bar">Cloud &amp; Infraestrutura</li>
+								<li class="skill-bar">RPA</li>
+							</ul>
+						</div>
+
 					</div>
-					<div></div>
 				</div>
+			</section>
 
+			<!-- =================== Experiência =================== -->
+			<section id="section-jobxp" aria-labelledby="jobxp-title">
+				<div class="container">
 
-			</div>
-		</section>
+					<header class="section-header reveal">
+						<p class="section-header--eyebrow">Carreira</p>
+						<h2 class="section-header--title" id="jobxp-title">Experiência Profissional</h2>
+						<p class="section-header--subtitle">Cinco anos construindo e protegendo a infraestrutura de TI de
+							empresas de energia — do suporte técnico à cibersegurança sob os padrões do Santander.</p>
+					</header>
 
-		<!-- Section Job Experience, third section-->
-		<section id="section-jobxp">
+					<ol class="timeline">
+
+						<li class="timeline--item timeline--item_current reveal">
+							<div class="timeline--marker"><span class="timeline--dot"></span></div>
+							<article class="timeline--card">
+								<p class="timeline--period">
+									<i class="fa-regular fa-calendar" aria-hidden="true"></i>
+									mar 2025 — o momento
+									<span class="timeline--badge">Atual</span>
+								</p>
+								<h3 class="timeline--role">Analista de Cibersegurança Pleno</h3>
+								<p class="timeline--company">
+									<i class="fa-regular fa-building" aria-hidden="true"></i> FIT Energia · Grupo Santander
+								</p>
+								<ul class="timeline--list">
+									<li>Defini e implementei políticas de cibersegurança para aplicações, infraestrutura em
+										nuvem, redes, DLP, endpoints e controle de acessos.</li>
+									<li>Apoiei o time de Cyber Security do Santander em auditorias e adequações, mantendo a FIT
+										Energia em conformidade com os padrões de segurança e IAM do banco.</li>
+									<li>Monitorei e mitiguei ameaças via EDR, atuando na gestão de vulnerabilidades e Cyber
+										Security Management dos ambientes AWS, Azure, Intune, Entra ID e aplicações web.</li>
+									<li>Desenvolvi automações (RPA) em Python com Selenium, FastAPI, OpenCV e Microsoft Graph,
+										incluindo pentest integrado ao processo de CI/CD.</li>
+								</ul>
+								<ul class="timeline--tags">
+									<li>Zero Trust</li>
+									<li>Pentest</li>
+									<li>EDR &amp; DLP</li>
+									<li>AWS · Azure</li>
+									<li>Python</li>
+								</ul>
+							</article>
+						</li>
+
+						<li class="timeline--item reveal">
+							<div class="timeline--marker"><span class="timeline--dot"></span></div>
+							<article class="timeline--card">
+								<p class="timeline--period">
+									<i class="fa-regular fa-calendar" aria-hidden="true"></i>
+									mar 2024 — mar 2025
+								</p>
+								<h3 class="timeline--role">Analista de Infraestrutura Pleno</h3>
+								<p class="timeline--company">
+									<i class="fa-regular fa-building" aria-hidden="true"></i> FIT Energia · Grupo Santander
+								</p>
+								<ul class="timeline--list">
+									<li>Gestão de redes, infraestrutura em nuvem e administração de sistemas, assegurando a
+										disponibilidade e a continuidade dos serviços de TI.</li>
+									<li>Gestão de identidade e acessos (IAM) e de ativos de software, hardware e licenciamento
+										(ITAM, HAM, SAM) com Entra ID, Intune, AWS e GLPI.</li>
+									<li>Ponto focal na adequação da FIT Energia aos padrões do Santander após a aquisição da
+										empresa, garantindo conformidade regulatória e continuidade operacional.</li>
+									<li>Adequação de SaaS e softwares a SSO via SAML, com organização de provisionamento e
+										gestão de grupos de acesso no Entra ID.</li>
+								</ul>
+								<ul class="timeline--tags">
+									<li>IAM</li>
+									<li>ITAM · HAM · SAM</li>
+									<li>SSO / SAML</li>
+									<li>GLPI</li>
+									<li>Cloud</li>
+								</ul>
+							</article>
+						</li>
+
+						<li class="timeline--item reveal">
+							<div class="timeline--marker"><span class="timeline--dot"></span></div>
+							<article class="timeline--card">
+								<p class="timeline--period">
+									<i class="fa-regular fa-calendar" aria-hidden="true"></i>
+									abr 2023 — mar 2024
+								</p>
+								<h3 class="timeline--role">Analista de ITAM / IAM</h3>
+								<p class="timeline--company">
+									<i class="fa-regular fa-building" aria-hidden="true"></i> FIT Energia · Grupo Santander
+								</p>
+								<ul class="timeline--list">
+									<li>Implantei e configurei o ambiente Microsoft (Intune, Azure AD, Exchange Online,
+										SharePoint), com gestão centralizada de identidades, dispositivos e conformidade.</li>
+									<li>Automatizei processos de provisionamento e desprovisionamento de identidades, apoiando a
+										governança de acessos da organização.</li>
+									<li>Administrei redes e sistemas, protegendo endpoints com criptografia e soluções de
+										segurança, e garantindo a disponibilidade dos serviços.</li>
+								</ul>
+								<ul class="timeline--tags">
+									<li>Entra ID</li>
+									<li>Intune</li>
+									<li>Exchange Online</li>
+									<li>SharePoint</li>
+								</ul>
+							</article>
+						</li>
+
+						<li class="timeline--item reveal">
+							<div class="timeline--marker"><span class="timeline--dot"></span></div>
+							<article class="timeline--card">
+								<p class="timeline--period">
+									<i class="fa-regular fa-calendar" aria-hidden="true"></i>
+									abr 2023 — nov 2024
+									<span class="timeline--badge timeline--badge_alt">Consultoria</span>
+								</p>
+								<h3 class="timeline--role">Especialista em TI</h3>
+								<p class="timeline--company">
+									<i class="fa-regular fa-building" aria-hidden="true"></i> Hy Brazil
+								</p>
+								<ul class="timeline--list">
+									<li>Gestão de identidade e acessos (IAM), administrando contas e dispositivos via Microsoft
+										Intune e Entra ID / Azure AD.</li>
+									<li>Apoio ao controle de ativos de software e hardware, contribuindo para conformidade e
+										disponibilidade dos recursos de TI.</li>
+									<li>Definição das práticas iniciais de segurança da informação e coordenação da equipe de
+										suporte técnico.</li>
+								</ul>
+								<ul class="timeline--tags">
+									<li>IAM</li>
+									<li>Gestão de ativos</li>
+									<li>Liderança de equipe</li>
+									<li>Python</li>
+								</ul>
+							</article>
+						</li>
+
+						<li class="timeline--item reveal">
+							<div class="timeline--marker"><span class="timeline--dot"></span></div>
+							<article class="timeline--card">
+								<p class="timeline--period">
+									<i class="fa-regular fa-calendar" aria-hidden="true"></i>
+									ago 2022 — abr 2023
+								</p>
+								<h3 class="timeline--role">Consultor de TI</h3>
+								<p class="timeline--company">
+									<i class="fa-regular fa-building" aria-hidden="true"></i> Prefeitura Municipal de Nova Lima
+								</p>
+								<ul class="timeline--list">
+									<li>Implementei políticas de segurança cibernética para os diferentes setores da prefeitura.
+									</li>
+									<li>Coordenei e atuei no suporte técnico e no treinamento de usuários.</li>
+									<li>Realizei gerenciamento de identidade e acesso (IAM) com Active Directory e automatizei
+										processos com Python e PowerShell.</li>
+								</ul>
+								<ul class="timeline--tags">
+									<li>Active Directory</li>
+									<li>Políticas de segurança</li>
+									<li>PowerShell</li>
+								</ul>
+							</article>
+						</li>
+
+						<li class="timeline--item reveal">
+							<div class="timeline--marker"><span class="timeline--dot"></span></div>
+							<article class="timeline--card">
+								<p class="timeline--period">
+									<i class="fa-regular fa-calendar" aria-hidden="true"></i>
+									ago 2022 — abr 2023
+								</p>
+								<h3 class="timeline--role">Analista de TI</h3>
+								<p class="timeline--company">
+									<i class="fa-regular fa-building" aria-hidden="true"></i> G4F Soluções Corporativas
+								</p>
+								<ul class="timeline--list">
+									<li>Gestão de redes, dispositivos de segurança (firewalls, switches) e identidade / acessos,
+										garantindo desempenho, governança e conformidade.</li>
+									<li>Implementação de políticas de cibersegurança e automação de processos de TI com Python.
+									</li>
+									<li>Suporte técnico e implementação de soluções corporativas, assegurando a continuidade dos
+										serviços.</li>
+								</ul>
+								<ul class="timeline--tags">
+									<li>Firewalls &amp; Switches</li>
+									<li>IAM</li>
+									<li>Automação</li>
+								</ul>
+							</article>
+						</li>
+
+						<li class="timeline--item reveal">
+							<div class="timeline--marker"><span class="timeline--dot"></span></div>
+							<article class="timeline--card">
+								<p class="timeline--period">
+									<i class="fa-regular fa-calendar" aria-hidden="true"></i>
+									abr 2021 — ago 2022
+								</p>
+								<h3 class="timeline--role">Técnico em Informática</h3>
+								<p class="timeline--company">
+									<i class="fa-regular fa-building" aria-hidden="true"></i> INTIP Inteligência em Internet
+								</p>
+								<ul class="timeline--list">
+									<li>Manutenção e configuração de computadores, notebooks e softwares essenciais.</li>
+									<li>Administração de roteadores, firewalls, servidores e redes cabeadas / sem fio,
+										garantindo conectividade e segurança.</li>
+									<li>Suporte técnico N1, N2 e N3, assegurando atendimento ágil e resolução de incidentes.
+									</li>
+								</ul>
+								<ul class="timeline--tags">
+									<li>Redes</li>
+									<li>Servidores</li>
+									<li>Suporte N1–N3</li>
+								</ul>
+							</article>
+						</li>
+
+					</ol>
+				</div>
+			</section>
+
+			<!-- =================== Stack =================== -->
+			<section id="section-stack" aria-labelledby="stack-title">
+				<div class="container">
+
+					<header class="section-header reveal">
+						<p class="section-header--eyebrow">Stack</p>
+						<h2 class="section-header--title" id="stack-title">Ferramentas &amp; Tecnologias</h2>
+						<p class="section-header--subtitle">O que uso no dia a dia para proteger ambientes, governar
+							identidades e construir automações.</p>
+					</header>
+
+					<div class="stack--grid">
+
+						<article class="stack--card reveal">
+							<h3 class="stack--card-title">
+								<i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Cibersegurança
+							</h3>
+							<ul class="stack--tags">
+								<li>Zero Trust</li>
+								<li>MITRE ATT&amp;CK</li>
+								<li>Resposta a Incidentes</li>
+								<li>Análise de Vulnerabilidades</li>
+								<li>Microsoft Defender</li>
+								<li>Microsoft Sentinel</li>
+								<li>Microsoft Purview (DLP)</li>
+								<li>Qualys</li>
+								<li>Bitsight</li>
+								<li>Burp Suite</li>
+								<li>Kali Linux</li>
+								<li>Wireshark</li>
+							</ul>
+						</article>
+
+						<article class="stack--card reveal">
+							<h3 class="stack--card-title">
+								<i class="fa-solid fa-fingerprint" aria-hidden="true"></i> Identidade &amp; Acesso
+							</h3>
+							<ul class="stack--tags">
+								<li>Entra ID / Azure AD</li>
+								<li>Microsoft Intune</li>
+								<li>Conditional Access</li>
+								<li>SailPoint</li>
+								<li>PIM</li>
+								<li>SSO / SAML</li>
+								<li>Microsoft 365</li>
+								<li>Exchange Online</li>
+							</ul>
+						</article>
+
+						<article class="stack--card reveal">
+							<h3 class="stack--card-title">
+								<i class="fa-solid fa-code" aria-hidden="true"></i> Linguagens
+							</h3>
+							<ul class="stack--tags">
+								<li>Python</li>
+								<li>Ruby</li>
+								<li>C++</li>
+								<li>JavaScript</li>
+								<li>PowerShell</li>
+								<li>Bash</li>
+								<li>SQL</li>
+							</ul>
+						</article>
+
+						<article class="stack--card reveal">
+							<h3 class="stack--card-title">
+								<i class="fa-solid fa-laptop-code" aria-hidden="true"></i> Desenvolvimento
+							</h3>
+							<ul class="stack--tags">
+								<li>React</li>
+								<li>HTML</li>
+								<li>CSS</li>
+								<li>Tailwind</li>
+								<li>FastAPI</li>
+								<li>Django</li>
+								<li>Selenium</li>
+								<li>OpenCV</li>
+								<li>Pandas</li>
+								<li>Microsoft Graph</li>
+							</ul>
+						</article>
+
+						<article class="stack--card reveal">
+							<h3 class="stack--card-title">
+								<i class="fa-solid fa-server" aria-hidden="true"></i> Infra, Cloud &amp; Dados
+							</h3>
+							<ul class="stack--tags">
+								<li>AWS</li>
+								<li>Docker</li>
+								<li>Linux</li>
+								<li>Git / GitHub</li>
+								<li>Cisco</li>
+								<li>SASE</li>
+								<li>MySQL</li>
+								<li>MongoDB</li>
+							</ul>
+						</article>
+
+						<article class="stack--card reveal">
+							<h3 class="stack--card-title">
+								<i class="fa-solid fa-language" aria-hidden="true"></i> Idiomas
+							</h3>
+							<ul class="stack--languages">
+								<li><span>Português</span> <em>Nativo</em></li>
+								<li><span>Inglês</span> <em>Avançado</em></li>
+								<li><span>Italiano</span> <em>Intermediário</em></li>
+								<li><span>Espanhol</span> <em>Intermediário</em></li>
+								<li><span>Japonês</span> <em>Iniciante</em></li>
+							</ul>
+						</article>
+
+					</div>
+				</div>
+			</section>
+
+			<!-- =================== Formação =================== -->
+			<section id="section-education" aria-labelledby="education-title">
+				<div class="container">
+
+					<header class="section-header reveal">
+						<p class="section-header--eyebrow">Formação</p>
+						<h2 class="section-header--title" id="education-title">Educação Acadêmica</h2>
+						<p class="section-header--subtitle">Base técnica construída no IFMG e aprofundada em duas graduações
+							em paralelo — engenharia e segurança.</p>
+					</header>
+
+					<div class="education--grid">
+
+						<article class="education--card reveal">
+							<div class="education--icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+							<p class="education--period">2026 — 2028</p>
+							<h3 class="education--course">Segurança da Informação</h3>
+							<p class="education--degree">Graduação · Pontifícia Universidade Católica de Minas Gerais</p>
+							<p class="education--desc">Disciplinas com foco em cibersegurança, Zero Trust, pentest e gestão de
+								vulnerabilidades e risco.</p>
+						</article>
+
+						<article class="education--card reveal">
+							<div class="education--icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></div>
+							<p class="education--period">2025 — 2029</p>
+							<h3 class="education--course">Engenharia da Computação</h3>
+							<p class="education--degree">Graduação · Universidade Federal de Minas Gerais</p>
+							<p class="education--desc">Disciplinas voltadas para IoT, sistemas computacionais, inteligência
+								artificial, algoritmos, combinatória e projetos de hardware.</p>
+						</article>
+
+						<article class="education--card reveal">
+							<div class="education--icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+							<p class="education--period">2018 — 2021</p>
+							<h3 class="education--course">Tecnologia da Informação</h3>
+							<p class="education--degree">Técnico integrado · Instituto Federal de Minas Gerais</p>
+							<p class="education--desc">Formação da base de todas as principais áreas de tecnologia: redes,
+								hardware, programação e banco de dados.</p>
+						</article>
+
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- =================== Contato =================== -->
+		<footer id="section-contact" aria-labelledby="contact-title">
 			<div class="container">
-				<!-- Job Experience Timeline -->
+				<header class="section-header reveal">
+					<p class="section-header--eyebrow">Contato</p>
+					<h2 class="section-header--title" id="contact-title">Vamos conversar</h2>
+					<p class="section-header--subtitle">Aberto a oportunidades e colaborações em cibersegurança,
+						identidade e automação.</p>
+				</header>
 
-				<div class="jobxp-timeline">
-					<div class="jobxp-block jobxp-block_bg">
-						<h2 class="jobxp-timeline--title">Especialista em TI</h2>
-						<p class="jobxp-timeline--paragraph">FIT Energia</p>
-					</div>
-					<!-- Middle_bar -->
-					<div class="jobxp-timeline-middle_bar">
-						<div class="jobxp-timeline-point"></div>
-					</div>
-					<!-- End of Middle_bar -->
-					<div class="jobxp-block">
-						<div class="jobxp-timeline-date">abr de 2023 - o momento</div>
-					</div>
-					<div class="jobxp-block">
-						<div class="jobxp-timeline-date jobxp-timeline-date_right">abr de 2024 - o momento</div>
-					</div>
-					<!-- Middle_bar -->
-					<div class="jobxp-timeline-middle_bar">
-						<div class="jobxp-timeline-point"></div>
-					</div>
-					<!-- End of Middle_bar -->
-					<div class="jobxp-block jobxp-block_bg">
-						<h2 class="jobxp-timeline--title">Analista de infraestrutura de TI Pleno II</h2>
-						<p class="jobxp-timeline--paragraph">Hy Brazil Energia</p>
-					</div>
-					<div class="jobxp-block jobxp-block_bg">
-						<h2 class="jobxp-timeline--title">Analista de Suporte Computacional Pleno II</h2>
-						<p class="jobxp-timeline--paragraph">Hy Brazil Energia</p>
-					</div>
-					<!-- Middle_bar -->
-					<div class="jobxp-timeline-middle_bar">
-						<div class="jobxp-timeline-point"></div>
-					</div>
-					<!-- End of Middle_bar -->
+				<ul class="contact--links reveal">
+					<li>
+						<a href="mailto:marceloramalho.info@gmail.com">
+							<i class="fa-regular fa-envelope" aria-hidden="true"></i>
+							<span>marceloramalho.info@gmail.com</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/celoramalho" target="_blank" rel="noopener">
+							<i class="fab fa-github" aria-hidden="true"></i>
+							<span>github.com/celoramalho</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/marcelo-ramalho-de-rodrigues-7240381b9" target="_blank"
+							rel="noopener">
+							<i class="fab fa-linkedin" aria-hidden="true"></i>
+							<span>LinkedIn</span>
+						</a>
+					</li>
+					<li>
+						<a href="curriculumvitae/index.html">
+							<i class="fa-regular fa-file-lines" aria-hidden="true"></i>
+							<span>Currículo completo</span>
+						</a>
+					</li>
+				</ul>
 
-					<div class="jobxp-block">
-						<div class="jobxp-timeline-date">abr de 2023 - abr de 2024</div>
-					</div>
-					<div class="jobxp-block">
-						<div class="jobxp-timeline-date jobxp-timeline-date_right">ago de 2022 - abr de 2023</div>
-					</div>
-
-					<!-- Middle_bar -->
-					<div class="jobxp-timeline-middle_bar">
-						<div class="jobxp-timeline-point"></div>
-					</div>
-					<!-- End of Middle_bar -->
-
-
-					<div class="jobxp-block jobxp-block_bg">
-						<h2 class="jobxp-timeline--title">Consultor de Tecnologia da Informação</h2>
-						<p class="jobxp-timeline--paragraph">Prefeitura Municipal de Nova Lima</p>
-					</div>
-
-					<div class="jobxp-block jobxp-block_bg">
-						<h2 class="jobxp-timeline--title">Técnico de suporte em TI</h2>
-						<p class="jobxp-timeline--paragraph">G4F</p>
-					</div>
-
-					<!-- Middle_bar -->
-					<div class="jobxp-timeline-middle_bar">
-						<div class="jobxp-timeline-point"></div>
-					</div>
-					<!-- End of Middle_bar -->
-
-					<div class="jobxp-block">
-						<div class="jobxp-timeline-date">ago de 2022 - abr de 2023 · 9 meses</div>
-					</div>
-					<div class="jobxp-block">
-						<div class="jobxp-timeline-date jobxp-timeline-date_right">abr de 2021 - mai de 2022</div>
-					</div>
-
-					<!-- Middle_bar -->
-					<div class="jobxp-timeline-middle_bar">
-						<div class="jobxp-timeline-point"></div>
-						<div class="jobxp-timeline-point jobxp-timeline-point_bottom"></div>
-					</div>
-					<!-- End of Middle_bar -->
-
-					<div class="jobxp-block jobxp-block_bottom jobxp-block_bg">
-						<h2 class="jobxp-timeline--title">Técnico de TI</h2>
-						<p class="jobxp-timeline--paragraph">INTIP Inteligência em Internet</p>
-					</div>
-
-				</div>
+				<p class="contact--copyright">© 2026 Marcelo Ramalho · Belo Horizonte, MG</p>
 			</div>
-		</section>
+		</footer>
 
-		<!-- Section certifications, fourth section-->
-		<section id="section-certifications">
-
-		</section>
 	</div>
-	<script type="text/javascript" src="js/script.js"></script>
+
+	<script src="js/script.js"></script>
 </body>
 
-
 </html>
-
-<!-- dash-case  section- -->

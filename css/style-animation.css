@@ -1,5 +1,32 @@
 /* ================== Animation CSS code ========================= */
 
+/* Revelação ao rolar a página.
+   O estado escondido só é aplicado quando o <html> recebe .reveal-enabled
+   (feito por um script inline no <head>), então sem JS nada fica invisível. */
+.reveal-enabled .reveal {
+	opacity: 0;
+	transform: translateY(32px);
+	transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-enabled .reveal.reveal_visible {
+	opacity: 1;
+	transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal-enabled .reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	.floating-element {
+		animation: none;
+	}
+}
+
+
 @keyframes floating {
     0% { transform: translate(0,  0px); }
     50%  { transform: translate(0, 15px); }

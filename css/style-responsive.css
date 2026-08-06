@@ -19,7 +19,7 @@
         padding: 0;
     }
 
-    header {
+    .body-2 > header {
         max-width: 100vw;
         position: fixed;
     }
@@ -68,7 +68,7 @@
         width: 100%;
         margin-top: 270px;
     }
-    header.sticky{
+    .body-2 > header.sticky{
         position: absolute;
         top: 0;
         left: 0;
@@ -82,16 +82,18 @@
     .navbar--links {
         position: fixed;
         left: 0px;
-        height: 100vh;
+        height: 92vh;
         width: 100vw;
         top: 8vh;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        gap: clamp(14px, 4vh, 34px);
         background: var(--background-color);
         align-items: center;
-        transition: all 0.3s ease;
+        transition: transform 0.3s ease;
         transform: translateX(-100%);
-        /*coluna: colum; */
+        overflow-y: auto;
     }
 
     .navbar--links li {
@@ -99,17 +101,13 @@
     }
 
     .navbar--links li a {
-        font-size: 50px;
-        color: var(--sub-text-color);
+        font-size: clamp(1.6rem, 7vw, 2.4rem);
+        letter-spacing: 4px;
+        color: var(--sub-title-color);
     }
 
     .navbar--links li a:hover {
-        color: aqua;
-        font-size: 50px;
-        /* border-bottom-color: #FBFBF8; */
-        border-bottom-right-radius: 1px;
-        border-bottom-left-radius: 1px;
-        /* colocar animação */
+        color: var(--accent);
     }
 
     .burger {
@@ -141,59 +139,79 @@
         width: 40%;
     }
 
-    .about-me--block {
-		display: inline-flex;
-		flex-direction: row;
-		flex-flow: wrap;
-		justify-content: space-between;
-		width: auto;
-		background-color: #cccccca8;
-		border-radius: 20px;
-		height: max-content;
-		overflow: hidden;
-	}
-
-    .about-me--profile-pic{
-		width: 50%;
-		padding-bottom: 30%; /* 16:9 */
-		position: relative;
-	}
-	.about-me--profile-pic--circle{
-		position: absolute; /* 16:9 */
-		top: 0; bottom: 0; left: 0; right: 0;
-		margin: 10% 10% 0 10%;
-		padding-top: 90%;
-		background: #3333334d;
-		box-shadow:  0px 0px 8px 0px #3636367c;
-		border-radius: 50%;
-	}
-
-    .about-me--block--profile-picture--photo {
-
-        img{
-            position: absolute;
-            top: -40%; bottom: 0; left: 0; right: 0;
-            margin-top: 0%;
-            transform: scale(80%);
-            width: 100%;
-        }
+    /* Sobre mim: foto acima do texto, centralizada */
+    .container-pro-xp .about-me--block {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
     }
-    .about-me--block--lorem-ipsum{
-        width: 50%;
-        min-width: 394px;
-    }
-    .about-me--block--lorem-ipsum--txt{
-        margin: 50px 50px 50px 50px;
-    }
-    
 
+    .container-pro-xp .about-me--profile-pic {
+        max-width: 260px;
+    }
+
+    .container-pro-xp .about-me--block--lorem-ipsum--txt {
+        text-align: left;
+    }
 }
 
 
 
+/* ===== Timeline de experiência: uma coluna ===== */
+@media screen and (max-width: 900px) {
+    .timeline--item {
+        grid-template-columns: 36px 1fr;
+    }
+
+    .timeline--marker {
+        grid-column: 1;
+    }
+
+    .timeline--item:nth-child(odd) .timeline--card,
+    .timeline--item:nth-child(even) .timeline--card {
+        grid-column: 2;
+        margin-left: 6px;
+    }
+
+    .timeline--item:nth-child(odd) .timeline--card::before,
+    .timeline--item:nth-child(even) .timeline--card::before {
+        right: auto;
+        left: -7px;
+        border-top: 0;
+        border-right: 0;
+        border-left: 1px solid var(--card-border);
+        border-bottom: 1px solid var(--card-border);
+    }
+
+    .timeline--item:nth-child(odd) .timeline--card:hover::before,
+    .timeline--item:nth-child(even) .timeline--card:hover::before {
+        border-left-color: var(--accent);
+        border-bottom-color: var(--accent);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .navbar--site-logo {
+        margin-left: 20px;
+    }
+}
+
 @media screen and (max-width: 650px) {
     .container-useless {
         width: 100%;
+    }
+
+    .timeline--item {
+        grid-template-columns: 28px 1fr;
+    }
+
+    .about-me--block--lorem-ipsum,
+    .about-me--block--lorem-ipsum--txt {
+        min-width: 0;
+    }
+
+    .about-me--block--lorem-ipsum--txt {
+        margin: 30px 24px;
     }
 
     .projetos-useless {
