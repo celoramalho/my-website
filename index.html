@@ -193,8 +193,15 @@
 					     sombreadas ficam sempre no lado direito de cada pico. -->
 					<svg viewBox="0 0 1440 620" xmlns="http://www.w3.org/2000/svg" focusable="false">
 						<defs>
-							<path id="pinheiro"
-								d="M-22 0 l10 -14 l-6 0 l10 -16 l-5 0 l13 -22 l13 22 l-5 0 l10 16 l-6 0 l10 14 Z" />
+							<!-- pinheiros pixelados, em três tamanhos fixos na grade de 4u. São
+							     três sprites e não um com scale: escalar mudaria o tamanho do
+							     pixel de árvore para árvore. -->
+							<path id="pinheiro-g"
+								d="M0 -56h4v4h-4zM-4 -52h12v4h-12zM-8 -48h20v4h-20zM-12 -44h28v4h-28zM-4 -40h12v4h-12zM-8 -36h20v4h-20zM-12 -32h28v4h-28zM-16 -28h36v4h-36zM-8 -24h20v4h-20zM-12 -20h28v4h-28zM-16 -16h36v4h-36zM-20 -12h44v4h-44zM0 -8h4v4h-4zM0 -4h4v4h-4z" />
+							<path id="pinheiro-m"
+								d="M0 -32h4v4h-4zM-4 -28h12v4h-12zM-8 -24h20v4h-20zM-4 -20h12v4h-12zM-8 -16h20v4h-20zM-12 -12h28v4h-28zM0 -8h4v4h-4zM0 -4h4v4h-4z" />
+							<path id="pinheiro-p"
+								d="M0 -24h4v4h-4zM-4 -20h12v4h-12zM-4 -16h12v4h-12zM-8 -12h20v4h-20zM0 -8h4v4h-4zM0 -4h4v4h-4z" />
 							<path id="passaro" d="M-13 0 q6.5 -7 13 0 q6.5 -7 13 0" />
 						</defs>
 
@@ -266,40 +273,40 @@
 
 						<g class="arte-camada arte-camada_horizonte" data-parallax="0.26">
 							<path
-								d="M240 620 L360 496 L470 536 L560 444 L680 500 L800 420 L920 480 L1060 400 L1200 470 L1330 410 L1440 460 L1440 620 Z" />
+								d="M240 620V612H248V604H256V596H264V580H272V572H280V564H288V556H296V548H304V540H312V532H320V524H328V516H336V508H344V500H352V492H360H368H376V500H384H392H400V508H408H416V516H424H432H440V524H448H456H464V532H472V524H480V516H488V508H496V500H504V492H512V484H520V476H528V468H536V460H544V452H552V444H560H568H576H584V452H592H600V460H608H616V468H624H632V476H640H648V484H656H664V492H672H680H688V484H696H704V476H712V468H720H728V460H736V452H744H752V444H760V436H768H776V428H784V420H792H800H808H816V428H824H832V436H840H848V444H856H864V452H872H880V460H888H896V468H904H912V476H920V468H928H936V460H944H952V452H960H968V444H976V436H984H992V428H1000H1008V420H1016H1024V412H1032V404H1040H1048V396H1056H1064H1072V404H1080H1088V412H1096H1104V420H1112H1120V428H1128H1136V436H1144H1152V444H1160H1168V452H1176H1184V460H1192H1200H1208H1216V452H1224H1232V444H1240H1248H1256V436H1264H1272V428H1280H1288V420H1296H1304V412H1312H1320V404H1328H1336V412H1344H1352V420H1360H1368H1376V428H1384H1392V436H1400H1408V444H1416H1424V452H1432H1440V620Z" />
 						</g>
 
 						<g class="arte-camada arte-camada_longe" data-parallax="0.2">
-							<path d="M480 620 L700 268 L830 420 L940 330 L1080 470 L1200 380 L1440 470 L1440 620 Z" />
-							<path class="arte-sombra arte-sombra_longe" d="M700 268 L830 420 L830 620 L742 620 Z" />
+							<path d="M480 620V604H488V588H496V580H504V564H512V556H520V540H528V524H536V516H544V500H552V492H560V476H568V460H576V452H584V436H592V428H600V412H608V396H616V388H624V372H632V364H640V348H648V332H656V324H664V308H672V300H680V284H688V268H696H704H712V276H720V292H728V300H736V308H744V316H752V324H760V332H768V348H776V356H784V364H792V372H800V380H808V388H816V404H824V412H832H840V404H848V396H856V388H864V380H872V372H880H888V364H896V356H904V348H912V340H920H928V332H936V324H944V332H952V340H960V348H968V356H976V364H984V372H992V380H1000V388H1008V396H1016V404H1024V412H1032V420H1040V428H1048V436H1056V444H1064V452H1072V460H1080H1088V452H1096H1104V444H1112V436H1120V428H1128H1136V420H1144V412H1152V404H1160H1168V396H1176V388H1184V380H1192H1200H1208H1216H1224V388H1232H1240H1248V396H1256H1264V404H1272H1280H1288V412H1296H1304H1312V420H1320H1328V428H1336H1344H1352V436H1360H1368H1376V444H1384H1392V452H1400H1408H1416V460H1424H1432H1440V620Z" />
+							<path class="arte-sombra arte-sombra_longe" d="M696 268h8v32h-8zM704 268h8v96h-8zM712 276h8v160h-8zM720 292h8v208h-8zM728 300h8v264h-8zM736 308h8v312h-8zM744 316h8v304h-8zM752 324h8v296h-8zM760 332h8v288h-8zM768 348h8v272h-8zM776 356h8v264h-8zM784 364h8v256h-8zM792 372h8v248h-8zM800 380h8v240h-8zM808 388h8v232h-8zM816 404h8v216h-8zM824 412h8v208h-8z" />
 							<!-- as calotas ficam recuadas das arestas: encostando nelas, sobrava
 							     um fio da montanha entre a neve e o céu -->
-							<path class="arte-neve" d="M700 268 L714 296 L707 291 L700 300 L693 290 L688 295 Z" />
-							<path class="arte-neve" d="M940 330 L950 348 L944 344 L939 352 L933 342 L926 347 Z" />
+							<path class="arte-neve" d="M696 268h8v8h-8zM696 276h8v8h-8zM688 284h24v8h-24zM696 292h8v8h-8z" />
+							<path class="arte-neve" d="M936 332h8v8h-8zM936 340h8v8h-8z" />
 						</g>
 
 						<!-- a montanha grande do canto direito: cume alto, neve recortada e a
 						     face inteira do lado direito na sombra -->
 						<g class="arte-camada arte-camada_meio" data-parallax="0.14">
-							<path d="M700 620 L860 470 L980 402 L1120 296 L1268 78 L1440 340 L1440 620 Z" />
-							<path class="arte-sombra arte-sombra_meio" d="M1268 78 L1440 340 L1440 620 L1290 620 Z" />
+							<path d="M696 620V612H704V604H712V596H720V588H728V580H736V572H744H752V564H760V556H768V548H776V540H784V532H792V524H800V516H808V508H816V500H824V492H832V484H840V476H848V468H856H864V460H872V452H880H888V444H896H904V436H912H920V428H928V420H936H944V412H952H960V404H968H976V396H984V388H992V380H1000H1008V372H1016V364H1024V356H1032H1040V348H1048V340H1056V332H1064H1072V324H1080V316H1088V308H1096H1104V300H1112V292H1120V284H1128V268H1136V260H1144V244H1152V236H1160V220H1168V212H1176V196H1184V188H1192V172H1200V164H1208V148H1216V140H1224V132H1232V116H1240V108H1248V92H1256V84H1264V76H1272V84H1280V92H1288V108H1296V116H1304V132H1312V140H1320V156H1328V164H1336V180H1344V188H1352V204H1360V212H1368V228H1376V236H1384V252H1392V268H1400V276H1408V292H1416V300H1424V316H1432V324H1440V620Z" />
+							<path class="arte-sombra arte-sombra_meio" d="M1264 76h8v88h-8zM1272 84h8v272h-8zM1280 92h8v464h-8zM1288 108h8v512h-8zM1296 116h8v504h-8zM1304 132h8v488h-8zM1312 140h8v480h-8zM1320 156h8v464h-8zM1328 164h8v456h-8zM1336 180h8v440h-8zM1344 188h8v432h-8zM1352 204h8v416h-8zM1360 212h8v408h-8zM1368 228h8v392h-8zM1376 236h8v384h-8zM1384 252h8v368h-8zM1392 268h8v352h-8zM1400 276h8v344h-8zM1408 292h8v328h-8zM1416 300h8v320h-8zM1424 316h8v304h-8zM1432 324h8v296h-8z" />
 							<path class="arte-neve"
-								d="M1268 78 L1300 152 L1288 146 L1282 168 L1272 152 L1264 180 L1254 154 L1246 172 L1238 148 L1230 160 L1244 130 Z" />
+								d="M1264 76h8v8h-8zM1264 84h8v8h-8zM1256 92h16v8h-16zM1256 100h24v8h-24zM1256 108h24v8h-24zM1248 116h40v8h-40zM1248 124h40v8h-40zM1240 132h56v8h-56zM1240 140h56v8h-56zM1240 148h48v8h-48zM1240 156h8v8h-8zM1256 156h16v8h-16zM1280 156h8v8h-8zM1256 164h8v8h-8z" />
 							<!-- neve acumulada no ombro que sobe até o cume -->
 							<path class="arte-neve"
-								d="M1120 296 L1133 316 L1126 311 L1120 322 L1112 309 L1103 317 Z" />
+								d="M1112 300h16v8h-16zM1104 308h24v8h-24z" />
 						</g>
 
 						<g class="arte-camada arte-camada_perto" data-parallax="0.06">
 							<path
-								d="M0 620 L110 556 L250 592 L400 500 L560 578 L700 520 L860 590 L1010 512 L1160 570 L1300 520 L1440 566 L1440 620 Z" />
-							<path class="arte-sombra arte-sombra_perto" d="M400 500 L560 578 L560 620 L432 620 Z" />
-							<path class="arte-sombra arte-sombra_perto" d="M1010 512 L1160 570 L1160 620 L1040 620 Z" />
+								d="M0 620V612H8V604H16H24V596H32H40V588H48V580H56H64V572H72H80V564H88H96V556H104H112H120H128H136H144V564H152H160H168H176V572H184H192H200H208V580H216H224H232H240V588H248H256V580H264V572H272H280V564H288H296V556H304V548H312H320V540H328V532H336H344V524H352H360V516H368V508H376H384V500H392H400H408H416V508H424H432H440V516H448H456V524H464H472V532H480H488V540H496H504V548H512H520V556H528H536V564H544H552V572H560H568V564H576H584H592V556H600H608V548H616H624H632V540H640H648V532H656H664V524H672H680H688V516H696H704H712V524H720H728V532H736H744H752V540H760H768V548H776H784V556H792H800V564H808H816H824V572H832H840V580H848H856V588H864V580H872H880V572H888V564H896H904V556H912H920V548H928H936V540H944H952V532H960H968V524H976H984V516H992H1000V508H1008H1016H1024V516H1032H1040H1048V524H1056H1064V532H1072H1080H1088V540H1096H1104V548H1112H1120H1128V556H1136H1144V564H1152H1160H1168H1176V556H1184H1192H1200V548H1208H1216V540H1224H1232H1240V532H1248H1256H1264V524H1272H1280H1288V516H1296H1304H1312V524H1320H1328H1336V532H1344H1352H1360H1368V540H1376H1384H1392V548H1400H1408H1416V556H1424H1432H1440V620Z" />
+							<path class="arte-sombra arte-sombra_perto" d="M400 500h8v32h-8zM408 500h8v64h-8zM416 508h8v80h-8zM424 508h16v112h-16zM440 516h16v104h-16zM456 524h16v96h-16zM472 532h16v88h-16zM488 540h16v80h-16zM504 548h16v72h-16zM520 556h16v64h-16zM536 564h16v56h-16zM552 572h8v48h-8z" />
+							<path class="arte-sombra arte-sombra_perto" d="M1008 508h8v24h-8zM1016 508h8v56h-8zM1024 516h8v80h-8zM1032 516h16v104h-16zM1048 524h16v96h-16zM1064 532h24v88h-24zM1088 540h16v80h-16zM1104 548h24v72h-24zM1128 556h16v64h-16zM1144 564h16v56h-16z" />
 							<g class="arte-pinheiros arte-pinheiros_perto">
-								<use href="#pinheiro" transform="translate(330 547) scale(0.45)" />
-								<use href="#pinheiro" transform="translate(640 549) scale(0.4)" />
-								<use href="#pinheiro" transform="translate(1080 541) scale(0.5)" />
-								<use href="#pinheiro" transform="translate(1370 545) scale(0.4)" />
+								<use href="#pinheiro-p" transform="translate(330 549)" />
+								<use href="#pinheiro-p" transform="translate(640 551)" />
+								<use href="#pinheiro-p" transform="translate(1080 543)" />
+								<use href="#pinheiro-p" transform="translate(1370 547)" />
 							</g>
 						</g>
 
@@ -309,19 +316,19 @@
 							<!-- passa de propósito da borda do viewBox (o svg recorta): assim a
 							     emenda com a página não fica com 1px de antialiasing -->
 							<path
-								d="M-20 660 L-20 582 Q240 546 480 588 Q720 626 960 578 Q1200 530 1460 586 L1460 660 Z" />
+								d="M-24 660V580H-16H-8V572H0H8H16H24H32H40H48H56H64V564H72H80H88H96H104H112H120H128H136H144H152H160H168H176H184H192H200H208H216H224H232H240H248H256H264H272H280H288H296H304H312H320H328H336H344H352H360V572H368H376H384H392H400H408H416H424H432V580H440H448H456H464H472H480V588H488H496H504H512H520H528H536H544V596H552H560H568H576H584H592H600H608H616H624H632H640H648V604H656H664H672H680H688H696H704H712H720H728H736V596H744H752H760H768H776H784H792H800H808H816H824H832H840V588H848H856H864H872H880H888H896H904V580H912H920H928H936H944V572H952H960H968H976H984H992V564H1000H1008H1016H1024H1032H1040H1048V556H1056H1064H1072H1080H1088H1096H1104H1112H1120H1128H1136H1144H1152H1160H1168V548H1176H1184H1192H1200H1208V556H1216H1224H1232H1240H1248H1256H1264H1272H1280H1288H1296H1304H1312H1320H1328H1336V564H1344H1352H1360H1368H1376H1384H1392V572H1400H1408H1416H1424H1432H1440V580H1448H1456H1464V660Z" />
 							<g class="arte-pinheiros">
 								<!-- o trecho da esquerda abriu espaço para a cabana; sobrou o pinheiro
 								     de 205 fazendo o bosquete ao lado dela -->
-								<use href="#pinheiro" transform="translate(205 567) scale(0.7)" />
-								<use href="#pinheiro" transform="translate(310 570) scale(0.95)" />
-								<use href="#pinheiro" transform="translate(390 577) scale(0.6)" />
-								<use href="#pinheiro" transform="translate(720 606) scale(0.5)" />
-								<use href="#pinheiro" transform="translate(840 598) scale(0.75)" />
-								<use href="#pinheiro" transform="translate(1081 562) scale(0.85)" />
+								<use href="#pinheiro-m" transform="translate(205 569)" />
+								<use href="#pinheiro-g" transform="translate(310 572)" />
+								<use href="#pinheiro-m" transform="translate(390 579)" />
+								<use href="#pinheiro-p" transform="translate(720 608)" />
+								<use href="#pinheiro-m" transform="translate(840 600)" />
+								<use href="#pinheiro-g" transform="translate(1081 564)" />
 								<!-- os dois pinheiros que ficavam aqui saíram para a barraca caber -->
-								<use href="#pinheiro" transform="translate(1331 566)" />
-								<use href="#pinheiro" transform="translate(1408 577) scale(0.65)" />
+								<use href="#pinheiro-g" transform="translate(1331 568)" />
+								<use href="#pinheiro-m" transform="translate(1408 579)" />
 							</g>
 
 							<!-- =========================== Acampamento ===========================
@@ -337,50 +344,69 @@
 							     comentário acima dele — é por ali que se edita o desenho. -->
 							<g class="arte-acampamento">
 
-								<!-- Cabana — 26x24 px, base em y=578
-								     .....................ss...
-								     ....................ss....
-								     ...................ss.....
-								     .................cc.......
-								     .................cc.......
-								     .................cc.......
-								     ...........RRRR..cc.......
-								     .........RRRRRRRRcc.......
-								     .......RRRRRRRRRRRRR......
-								     .....RRRRRRRRRRRRRRRRR....
-								     ...RRRRRRRRRRRRRRRRRRRRR..
-								     .rRRRRRRRRRRRRRRRRRRRRRRr.
-								     rrRRRRRRRRRRRRRRRRRRRRRRrr
-								     ..lWWWWWWWWWWWWWWWWWWWWl..
-								     ..lwwwwwwwwwwwwwwwwwwwwl..
-								     ..lWWWWWWWWWWWWWWWWWWWWl..
-								     ..lwwwwwwwwwwwwwwwddddwl..
-								     ..lWWWWWWWWWWWWWWWdyydWl..
-								     ..lwwwwwwwwwdddwwwdyydwl..
-								     ..lWWWWWWWWWdddWWWddddWl..
-								     ..lwwwwwwwwwdddwwwwwwwwl..
-								     ..lWWWWWWWWWdddWWWWWWWWl..
-								     ..lwwwwwwwwwdddwwwwwwwwl..
-								     ..llllllllllddllllllllll..
-								     w/W tora e tora clara, l ponta de tora, R/r telhado, c chaminé,
-								     s fumaça, d porta e caixilho, y janela acesa -->
-								<path fill="#a9714b"
-									d="M60 538h80v4h-80zM60 546h60v4h-60zM136 546h4v4h-4zM60 554h36v4h-36zM108 554h12v4h-12zM136 554h4v4h-4zM60 562h36v4h-36zM108 562h32v4h-32zM60 570h36v4h-36zM108 570h32v4h-32z" />
-								<path fill="#c08a5e"
-									d="M60 534h80v4h-80zM60 542h80v4h-80zM60 550h60v4h-60zM136 550h4v4h-4zM60 558h36v4h-36zM108 558h12v4h-12zM136 558h4v4h-4zM60 566h36v4h-36zM108 566h32v4h-32z" />
-								<path fill="#8a5738"
-									d="M56 534h4v4h-4zM140 534h4v4h-4zM56 538h4v4h-4zM140 538h4v4h-4zM56 542h4v4h-4zM140 542h4v4h-4zM56 546h4v4h-4zM140 546h4v4h-4zM56 550h4v4h-4zM140 550h4v4h-4zM56 554h4v4h-4zM140 554h4v4h-4zM56 558h4v4h-4zM140 558h4v4h-4zM56 562h4v4h-4zM140 562h4v4h-4zM56 566h4v4h-4zM140 566h4v4h-4zM56 570h4v4h-4zM140 570h4v4h-4zM56 574h40v4h-40zM104 574h40v4h-40z" />
-								<path fill="#4a2e30"
-									d="M92 506h16v4h-16zM84 510h32v4h-32zM76 514h52v4h-52zM68 518h68v4h-68zM60 522h84v4h-84zM56 526h88v4h-88zM56 530h88v4h-88z" />
-								<path fill="#5e3a3c"
-									d="M52 526h4v4h-4zM144 526h4v4h-4zM48 530h8v4h-8zM144 530h8v4h-8z" />
+								<!-- Cabana de três quartos, com o canto virado para quem olha (como
+								     na referência): a face da frente leva a porta, a lateral recua
+								     para a direita com a janela, e as pontas de tora alternam de tom
+								     fiada a fiada, marcando os três cantos. 28x26 px de 4u, base 578.
+
+								     .....................ss.....
+								     ....................ss......
+								     ...................ss.......
+								     ...................cc.......
+								     ...................cc.......
+								     ...................cc.......
+								     ................AABcc.......
+								     ..............AAAABcc.......
+								     ............AAAAAABccB......
+								     ..........AAAAAAAABBBBBB....
+								     ........AAAAAAAAAABBBBBBB...
+								     .....AAAAAAAAAAAAABBBBBBBB..
+								     ..AAAAAAAAAAAAAAAABBBBBBBBB.
+								     AAAAAAAAAAAAAAAAAABBBBBBBBBB
+								     ..ttWWWWWWWWWWWttXXXXXXXXT..
+								     ..uuwwwwwwwwwwwuuxxxxxxxxv..
+								     ..ttWWWWWWWWWWWttXXXXXXXXT..
+								     ..uuwwwwwwwwwwwuuxxddddxxv..
+								     ..ttWWWWWWWWWWWttXXdyydXXT..
+								     ..uuwwwddddwwwwuuxxdyydxxv..
+								     ..ttWWWddddWWWWttXXddddXXT..
+								     ..uuwwwddddwwwwuuxxxxxxxxv..
+								     ..ttWWWddddWWWWttXXXXXXXXT..
+								     ..uuwwwddddwwwwuuxxxxxxxxv..
+								     ..ttWWWddddWWWWttXXXXXXXXT..
+								     ..uuwwwddddwwwwuuxxxxxxxxv..
+
+								     A/B águas do telhado (iluminada / na sombra), c chaminé, s fumaça,
+								     t/u ponta de tora, T/v idem na lateral em sombra, W/w fiada da
+								     frente, X/x fiada da lateral, d porta e caixilho, y vidro -->
+								<path fill="#5a3739"
+									d="M108 498h8v4h-8zM100 502h16v4h-16zM92 506h24v4h-24zM84 510h32v4h-32zM76 514h40v4h-40zM64 518h52v4h-52zM52 522h64v4h-64zM44 526h72v4h-72z" />
+								<path fill="#452b2d"
+									d="M116 498h4v4h-4zM116 502h4v4h-4zM116 506h4v4h-4zM128 506h4v4h-4zM116 510h24v4h-24zM116 514h28v4h-28zM116 518h32v4h-32zM116 522h36v4h-36zM116 526h40v4h-40z" />
 								<path fill="#59504a"
-									d="M116 494h8v4h-8zM116 498h8v4h-8zM116 502h8v4h-8zM116 506h8v4h-8zM116 510h8v4h-8z" />
-								<path fill="#b9c6bd" d="M132 482h8v4h-8zM128 486h8v4h-8zM124 490h8v4h-8z" />
+									d="M120 486h8v4h-8zM120 490h8v4h-8zM120 494h8v4h-8zM120 498h8v4h-8zM120 502h8v4h-8zM120 506h8v4h-8z" />
+								<path fill="#b9c6bd"
+									d="M128 474h8v4h-8zM124 478h8v4h-8zM120 482h8v4h-8z" />
+								<path fill="#c9946a"
+									d="M52 530h8v4h-8zM104 530h8v4h-8zM52 538h8v4h-8zM104 538h8v4h-8zM52 546h8v4h-8zM104 546h8v4h-8zM52 554h8v4h-8zM104 554h8v4h-8zM52 562h8v4h-8zM104 562h8v4h-8zM52 570h8v4h-8zM104 570h8v4h-8z" />
+								<path fill="#ad7a52"
+									d="M52 534h8v4h-8zM104 534h8v4h-8zM52 542h8v4h-8zM104 542h8v4h-8zM52 550h8v4h-8zM104 550h8v4h-8zM52 558h8v4h-8zM104 558h8v4h-8zM52 566h8v4h-8zM104 566h8v4h-8zM52 574h8v4h-8zM104 574h8v4h-8z" />
+								<path fill="#9a6b47"
+									d="M144 530h4v4h-4zM144 538h4v4h-4zM144 546h4v4h-4zM144 554h4v4h-4zM144 562h4v4h-4zM144 570h4v4h-4z" />
+								<path fill="#82573a"
+									d="M144 534h4v4h-4zM144 542h4v4h-4zM144 550h4v4h-4zM144 558h4v4h-4zM144 566h4v4h-4zM144 574h4v4h-4z" />
+								<path fill="#c08a5e"
+									d="M60 530h44v4h-44zM60 538h44v4h-44zM60 546h44v4h-44zM60 554h12v4h-12zM88 554h16v4h-16zM60 562h12v4h-12zM88 562h16v4h-16zM60 570h12v4h-12zM88 570h16v4h-16z" />
+								<path fill="#a9714b"
+									d="M60 534h44v4h-44zM60 542h44v4h-44zM60 550h12v4h-12zM88 550h16v4h-16zM60 558h12v4h-12zM88 558h16v4h-16zM60 566h12v4h-12zM88 566h16v4h-16zM60 574h12v4h-12zM88 574h16v4h-16z" />
+								<path fill="#96603e"
+									d="M112 530h32v4h-32zM112 538h32v4h-32zM112 546h8v4h-8zM136 546h8v4h-8zM112 554h8v4h-8zM136 554h8v4h-8zM112 562h32v4h-32zM112 570h32v4h-32z" />
+								<path fill="#7d4e33"
+									d="M112 534h32v4h-32zM112 542h8v4h-8zM136 542h8v4h-8zM112 550h8v4h-8zM136 550h8v4h-8zM112 558h32v4h-32zM112 566h32v4h-32zM112 574h32v4h-32z" />
 								<path fill="#33231f"
-									d="M120 546h16v4h-16zM120 550h4v4h-4zM132 550h4v4h-4zM96 554h12v4h-12zM120 554h4v4h-4zM132 554h4v4h-4zM96 558h12v4h-12zM120 558h16v4h-16zM96 562h12v4h-12zM96 566h12v4h-12zM96 570h12v4h-12zM96 574h8v4h-8z" />
+									d="M120 542h16v4h-16zM120 546h4v4h-4zM132 546h4v4h-4zM72 550h16v4h-16zM120 550h4v4h-4zM132 550h4v4h-4zM72 554h16v4h-16zM120 554h16v4h-16zM72 558h16v4h-16zM72 562h16v4h-16zM72 566h16v4h-16zM72 570h16v4h-16zM72 574h16v4h-16z" />
 								<!-- vidro: apagado de dia, aceso de noite (var --montanha-janela) -->
-								<path class="arte-janela" d="M124 550h8v4h-8zM124 554h8v4h-8z" />
+								<path class="arte-janela" d="M124 546h8v4h-8zM124 550h8v4h-8z" />
 
 								<!-- ===== só de dia: o hiker caminhando com o cão acordado ==========
 								     De noite os dois somem — ele foi dormir na barraca e o cão ficou
@@ -434,16 +460,16 @@
 								     De dia a fogueira fica só com as toras, apagada. -->
 								<g class="arte-acampamento-noite">
 
-									<!-- Cão dormindo ao lado da fogueira — 10x4 px, base em y=560
+									<!-- Cão dormindo a alguma distância da fogueira — 10x4 px, base y=560
 									     .....OOOO.
 									     .ooaOOOOOO
 									     ooooOOOOOO
 									     .o......o.
 									     o pelo claro, O mancha, a coleira -->
 									<path fill="#f0ece4"
-										d="M1136 548h8v4h-8zM1132 552h16v4h-16zM1136 556h4v4h-4zM1164 556h4v4h-4z" />
-									<path fill="#8a5a3a" d="M1152 544h16v4h-16zM1148 548h24v4h-24zM1148 552h24v4h-24z" />
-									<path fill="#4aa3c0" d="M1144 548h4v4h-4z" />
+										d="M1116 548h8v4h-8zM1112 552h16v4h-16zM1116 556h4v4h-4zM1144 556h4v4h-4z" />
+									<path fill="#8a5a3a" d="M1132 544h16v4h-16zM1128 548h24v4h-24zM1128 552h24v4h-24z" />
+									<path fill="#4aa3c0" d="M1124 548h4v4h-4z" />
 
 									<!-- chama da fogueira (as toras ficam fora do grupo, sempre visíveis)
 									     ...f...
@@ -468,26 +494,25 @@
 								<path fill="#6b4426"
 									d="M1176 552h4v4h-4zM1184 552h4v4h-4zM1192 552h4v4h-4zM1176 556h4v4h-4zM1184 556h4v4h-4zM1192 556h4v4h-4z" />
 
-								<!-- Barraca — 16x11 px, base em y=560
-								     .......p........
-								     .......gG.......
-								     ......ggGG......
-								     .....gggGGG.....
-								     ....ggggGGGG....
-								     ...gggggGGGGG...
-								     ..gggggddGGGGG..
-								     .ggggggddGGGGGG.
-								     ggggggddddGGGGGG
-								     ggggggddddGGGGGG
-								     GGGGGGddddGGGGGG
-								     g/G lona iluminada e na sombra, p ponta da vara, d vão -->
-								<path fill="#33231f"
-									d="M1244 540h8v4h-8zM1244 544h8v4h-8zM1240 548h16v4h-16zM1240 552h16v4h-16zM1240 556h16v4h-16z" />
-								<path fill="#6f9c4f"
-									d="M1244 520h4v4h-4zM1240 524h8v4h-8zM1236 528h12v4h-12zM1232 532h16v4h-16zM1228 536h20v4h-20zM1224 540h20v4h-20zM1220 544h24v4h-24zM1216 548h24v4h-24zM1216 552h24v4h-24z" />
+								<!-- Barraca de três quartos, recuando para a direita — grade de 4u,
+								     base em y=564. É a geometria da cabana da referência, espelhada:
+								     vemos a face da frente inteira (iluminada) e a lateral fugindo
+								     para a direita (na sombra).
+
+								     Os vértices, antes de virarem degraus:
+								       frente     (1216,564) (1240,520) (1264,564)
+								       lateral    (1240,520) (1272,532) (1284,560) (1264,564)
+								       vão        (1230,564) (1240,536) (1250,564)
+								     A silhueta inteira vai primeiro, na cor da sombra, e a face da
+								     frente é pintada por cima — assim nenhum degrau abre buraco na
+								     junção das duas. -->
 								<path fill="#4a7034"
-									d="M1248 520h4v4h-4zM1248 524h8v4h-8zM1248 528h12v4h-12zM1248 532h16v4h-16zM1248 536h20v4h-20zM1252 540h20v4h-20zM1252 544h24v4h-24zM1256 548h24v4h-24zM1256 552h24v4h-24zM1216 556h24v4h-24zM1256 556h24v4h-24z" />
-								<path fill="#8a6a3f" d="M1244 516h4v4h-4z" />
+									d="M1216 556h4v8h-4zM1220 548h4v16h-4zM1224 540h4v24h-4zM1228 532h4v32h-4zM1232 528h4v36h-4zM1236 520h16v44h-16zM1252 524h12v40h-12zM1264 528h8v36h-8zM1272 532h4v32h-4zM1276 540h4v24h-4zM1280 548h4v16h-4z" />
+								<path fill="#6f9c4f"
+									d="M1216 556h4v8h-4zM1220 548h4v16h-4zM1224 540h4v24h-4zM1228 532h4v32h-4zM1232 528h4v36h-4zM1236 520h8v44h-8zM1244 528h4v36h-4zM1248 532h4v32h-4zM1252 540h4v24h-4zM1256 548h4v16h-4zM1260 556h4v8h-4z" />
+								<path fill="#33231f"
+									d="M1228 556h4v8h-4zM1232 548h4v16h-4zM1236 536h8v28h-8zM1244 548h4v16h-4zM1248 556h4v8h-4z" />
+								<path fill="#8a6a3f" d="M1236 516h4v4h-4z" />
 							</g>
 						</g>
 					</svg>

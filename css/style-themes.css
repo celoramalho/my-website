@@ -64,7 +64,9 @@ html[data-site-theme="hiking"] body {
 	--montanha-perto-sombra: #4e876a;
 	--montanha-frente: #1f4a3a;
 	--montanha-fundo-pagina: #163529;
-	--montanha-neve: #ffffff;
+	/* não é branco puro de propósito: com o céu branco, a neve do cume
+	   desapareceria no fundo e o pico pareceria cortado */
+	--montanha-neve: #e4ede8;
 	/* de dia só o sol pinta (três tons quentes, do claro ao laranja do canto
 	   sombreado); lua e estrelas ficam transparentes */
 	--montanha-sol: #f8dda2;
