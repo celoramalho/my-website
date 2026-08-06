@@ -61,6 +61,61 @@ if (checkbox && bodyclass) {
 }
 
 
+/* ===================== Cenário do site (space, hiking, ...) ===================== */
+const themeSwitcher = document.getElementById('theme-switcher');
+const themeToggle = document.getElementById('theme-toggle');
+
+if (themeSwitcher && themeToggle) {
+	const opcoes = themeSwitcher.querySelectorAll('.theme-cloud--option');
+	const temasValidos = Array.from(opcoes, (o) => o.dataset.theme);
+
+	const marcarAtivo = (tema) => {
+		opcoes.forEach((opcao) => {
+			opcao.setAttribute('aria-pressed', String(opcao.dataset.theme === tema));
+		});
+	};
+
+	const aplicarTema = (tema) => {
+		if (!temasValidos.includes(tema)) tema = 'space';
+		document.documentElement.dataset.siteTheme = tema;
+		marcarAtivo(tema);
+		try { localStorage.setItem('siteTheme', tema); } catch (e) { /* modo privado */ }
+	};
+
+	const abrirNuvem = (abrir) => {
+		themeSwitcher.classList.toggle('theme--buttom_open', abrir);
+		themeToggle.setAttribute('aria-expanded', String(abrir));
+	};
+
+	// o script inline do <head> já escolheu o tema; aqui só sincronizamos os botões
+	marcarAtivo(document.documentElement.dataset.siteTheme || 'space');
+
+	themeToggle.addEventListener('click', (evento) => {
+		evento.stopPropagation();
+		abrirNuvem(!themeSwitcher.classList.contains('theme--buttom_open'));
+	});
+
+	opcoes.forEach((opcao) => {
+		opcao.addEventListener('click', () => {
+			aplicarTema(opcao.dataset.theme);
+			abrirNuvem(false);
+		});
+	});
+
+	// fecha ao clicar fora ou apertar Esc
+	document.addEventListener('click', (evento) => {
+		if (!themeSwitcher.contains(evento.target)) abrirNuvem(false);
+	});
+
+	document.addEventListener('keydown', (evento) => {
+		if (evento.key !== 'Escape') return;
+		if (!themeSwitcher.classList.contains('theme--buttom_open')) return;
+		abrirNuvem(false);
+		themeToggle.focus();
+	});
+}
+
+
 /* ===================== Revelação ao rolar ===================== */
 const reveals = document.querySelectorAll('.reveal');
 

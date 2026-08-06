@@ -1,0 +1,537 @@
+/* =========================================================================
+   Cenários do site (space, hiking, renascentista, journal, minimalist)
+
+   O atributo data-site-theme fica no <html> (aplicado por um script inline
+   no <head>, para não piscar). As variáveis são declaradas em `body` para
+   que a variante escura — `body.dark`, de especificidade maior — vença.
+   ========================================================================= */
+
+/* ===================== Space (padrão) ===================== */
+html[data-site-theme="space"] body {
+	--accent: #6d00a3;
+	--accent-soft: rgba(109, 0, 163, 0.09);
+	--background-color: #ffffff;
+	--sub-title-color: rgb(51, 51, 51);
+	--sub2-text-color: #cccccc;
+	--muted: rgba(51, 51, 51, 0.72);
+	--card-bg: rgba(255, 255, 255, 0.72);
+	--card-bg-hover: #ffffff;
+	--card-border: rgba(51, 51, 51, 0.12);
+	--card-shadow: rgba(31, 0, 48, 0.18);
+	--line-color: rgba(51, 51, 51, 0.15);
+}
+
+html[data-site-theme="space"] body.dark {
+	--accent: #c77dff;
+	--accent-soft: rgba(199, 125, 255, 0.16);
+	--background-color: #333333;
+	--sub-title-color: #ffffff;
+	--sub2-text-color: #cccccc;
+	--muted: rgba(255, 255, 255, 0.68);
+	--card-bg: rgba(255, 255, 255, 0.055);
+	--card-bg-hover: rgba(255, 255, 255, 0.09);
+	--card-border: rgba(255, 255, 255, 0.12);
+	--card-shadow: rgba(0, 0, 0, 0.55);
+	--line-color: rgba(255, 255, 255, 0.18);
+}
+
+
+/* ===================== Hiking ===================== */
+html[data-site-theme="hiking"] body {
+	--accent: #2e7d4f;
+	--accent-soft: rgba(46, 125, 79, 0.10);
+	--background-color: #f6faf6;
+	--sub-title-color: #22312a;
+	--sub2-text-color: #9db3a5;
+	--muted: rgba(34, 49, 42, 0.72);
+	--card-bg: rgba(255, 255, 255, 0.8);
+	--card-bg-hover: #ffffff;
+	--card-border: rgba(34, 49, 42, 0.13);
+	--card-shadow: rgba(10, 45, 25, 0.22);
+	--line-color: rgba(34, 49, 42, 0.16);
+}
+
+html[data-site-theme="hiking"] body.dark {
+	--accent: #7fd8a2;
+	--accent-soft: rgba(127, 216, 162, 0.14);
+	--background-color: #1e2a24;
+	--sub-title-color: #eef7f1;
+	--sub2-text-color: #6f8a7c;
+	--muted: rgba(238, 247, 241, 0.68);
+	--card-bg: rgba(255, 255, 255, 0.05);
+	--card-bg-hover: rgba(255, 255, 255, 0.085);
+	--card-border: rgba(255, 255, 255, 0.12);
+	--card-shadow: rgba(0, 0, 0, 0.6);
+	--line-color: rgba(255, 255, 255, 0.16);
+}
+
+
+/* ===================== Renascentista ===================== */
+html[data-site-theme="renascentista"] body {
+	--accent: #9a6b1f;
+	--accent-soft: rgba(154, 107, 31, 0.11);
+	--background-color: #faf4e8;
+	--sub-title-color: #3b2f1d;
+	--sub2-text-color: #c1ab84;
+	--muted: rgba(59, 47, 29, 0.75);
+	--card-bg: rgba(255, 251, 243, 0.85);
+	--card-bg-hover: #fffdf8;
+	--card-border: rgba(59, 47, 29, 0.16);
+	--card-shadow: rgba(80, 55, 15, 0.24);
+	--line-color: rgba(59, 47, 29, 0.2);
+	--font-family-principal: Georgia, "Times New Roman", "Palatino Linotype", serif;
+}
+
+html[data-site-theme="renascentista"] body.dark {
+	--accent: #e2b45c;
+	--accent-soft: rgba(226, 180, 92, 0.14);
+	--background-color: #241d14;
+	--sub-title-color: #f6ecd9;
+	--sub2-text-color: #8a7550;
+	--muted: rgba(246, 236, 217, 0.7);
+	--card-bg: rgba(255, 255, 255, 0.05);
+	--card-bg-hover: rgba(255, 255, 255, 0.085);
+	--card-border: rgba(226, 180, 92, 0.22);
+	--card-shadow: rgba(0, 0, 0, 0.6);
+	--line-color: rgba(226, 180, 92, 0.24);
+}
+
+/* toque tipográfico: títulos em versalete */
+html[data-site-theme="renascentista"] .section-header--title,
+html[data-site-theme="renascentista"] .home--title h1,
+html[data-site-theme="renascentista"] .home--title h2 {
+	font-variant: small-caps;
+	letter-spacing: 2px;
+}
+
+
+/* ===================== Journal ===================== */
+html[data-site-theme="journal"] body {
+	--accent: #3d4f63;
+	--accent-soft: rgba(61, 79, 99, 0.09);
+	--background-color: #f5f2ea;
+	--sub-title-color: #23282e;
+	--sub2-text-color: #b3ada0;
+	--muted: rgba(35, 40, 46, 0.72);
+	--card-bg: rgba(255, 253, 247, 0.85);
+	--card-bg-hover: #fffdf7;
+	--card-border: rgba(35, 40, 46, 0.15);
+	--card-shadow: rgba(40, 35, 25, 0.2);
+	--line-color: rgba(35, 40, 46, 0.18);
+	--font-family-principal: Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+
+html[data-site-theme="journal"] body.dark {
+	--accent: #a9c2dd;
+	--accent-soft: rgba(169, 194, 221, 0.13);
+	--background-color: #22242a;
+	--sub-title-color: #eef1f5;
+	--sub2-text-color: #6d7480;
+	--muted: rgba(238, 241, 245, 0.68);
+	--card-bg: rgba(255, 255, 255, 0.045);
+	--card-bg-hover: rgba(255, 255, 255, 0.08);
+	--card-border: rgba(255, 255, 255, 0.12);
+	--card-shadow: rgba(0, 0, 0, 0.6);
+	--line-color: rgba(255, 255, 255, 0.16);
+}
+
+/* cartões com cara de papel pautado */
+html[data-site-theme="journal"] .timeline--card,
+html[data-site-theme="journal"] .stack--card,
+html[data-site-theme="journal"] .education--card {
+	border-radius: 4px;
+	border-left: 3px solid var(--accent);
+}
+
+
+/* ===================== Minimalist ===================== */
+html[data-site-theme="minimalist"] body {
+	--accent: #111111;
+	--accent-soft: rgba(17, 17, 17, 0.055);
+	--background-color: #ffffff;
+	--sub-title-color: #111111;
+	--sub2-text-color: #c9c9c9;
+	--muted: rgba(17, 17, 17, 0.58);
+	--card-bg: transparent;
+	--card-bg-hover: rgba(17, 17, 17, 0.03);
+	--card-border: rgba(17, 17, 17, 0.14);
+	--card-shadow: transparent;
+	--line-color: rgba(17, 17, 17, 0.14);
+}
+
+html[data-site-theme="minimalist"] body.dark {
+	--accent: #ffffff;
+	--accent-soft: rgba(255, 255, 255, 0.07);
+	--background-color: #0d0d0d;
+	--sub-title-color: #ffffff;
+	--sub2-text-color: #4a4a4a;
+	--muted: rgba(255, 255, 255, 0.6);
+	--card-bg: transparent;
+	--card-bg-hover: rgba(255, 255, 255, 0.045);
+	--card-border: rgba(255, 255, 255, 0.16);
+	--card-shadow: transparent;
+	--line-color: rgba(255, 255, 255, 0.16);
+}
+
+/* sem sombras, cantos retos, tudo respirando */
+html[data-site-theme="minimalist"] .timeline--card,
+html[data-site-theme="minimalist"] .stack--card,
+html[data-site-theme="minimalist"] .education--card,
+html[data-site-theme="minimalist"] .stats--item,
+html[data-site-theme="minimalist"] .container-pro-xp .about-me--block {
+	border-radius: 0;
+	box-shadow: none;
+}
+
+html[data-site-theme="minimalist"] .my-skills .skill-bar,
+html[data-site-theme="minimalist"] .contact--links a,
+html[data-site-theme="minimalist"] .home--cta-ghost {
+	border-radius: 0;
+}
+
+html[data-site-theme="minimalist"] .stack--tags li,
+html[data-site-theme="minimalist"] .timeline--tags li {
+	border-radius: 0;
+}
+
+html[data-site-theme="minimalist"] .timeline--tags li {
+	border: 1px solid var(--card-border);
+	background-color: transparent;
+}
+
+html[data-site-theme="minimalist"] .section-header--title::after {
+	width: 32px;
+	height: 1px;
+}
+
+
+/* =========================================================================
+   Arte do herói por cenário
+   ========================================================================= */
+.arte-tema {
+	display: none;
+}
+
+html[data-site-theme="space"] .arte-tema_space {
+	display: block;
+}
+
+/* o display fica aqui, e não na regra de moldura abaixo, senão as cinco
+   artes venceriam o `display: none` e apareceriam todas de uma vez */
+html[data-site-theme="hiking"] .arte-tema_hiking,
+html[data-site-theme="renascentista"] .arte-tema_renascentista,
+html[data-site-theme="journal"] .arte-tema_journal,
+html[data-site-theme="minimalist"] .arte-tema_minimalist {
+	display: flex;
+}
+
+/* o blob do tema space passa a seguir a cor de destaque */
+.blob-3 {
+	color: var(--accent);
+}
+
+/* moldura comum das artes que não são o tema space */
+.arte-tema_hiking,
+.arte-tema_renascentista,
+.arte-tema_journal,
+.arte-tema_minimalist {
+	position: absolute;
+	top: 0;
+	right: 0;
+	align-items: center;
+	justify-content: center;
+	width: min(54vw, 760px);
+	height: 100vh;
+	color: var(--accent);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.arte-tema_hiking svg,
+.arte-tema_renascentista svg,
+.arte-tema_journal svg,
+.arte-tema_minimalist svg {
+	width: 100%;
+	height: 100%;
+	max-height: 88vh;
+}
+
+/* --- Hiking --- */
+.arte-tema_hiking svg {
+	max-height: none;
+	height: 100%;
+}
+
+.arte-sol {
+	fill: var(--accent);
+	opacity: 0.32;
+}
+
+.arte-camada-3 {
+	fill: var(--accent);
+	opacity: 0.22;
+}
+
+.arte-camada-2 {
+	fill: var(--accent);
+	opacity: 0.34;
+}
+
+.arte-camada-1 {
+	fill: var(--accent);
+	opacity: 0.55;
+}
+
+.arte-neve {
+	fill: var(--background-color);
+	opacity: 0.75;
+}
+
+.arte-pinheiros {
+	fill: var(--accent);
+	opacity: 0.7;
+}
+
+/* --- Renascentista --- */
+.arte-traco {
+	opacity: 0.55;
+}
+
+.arte-rosacea {
+	opacity: 0.75;
+	transform-origin: center;
+}
+
+/* --- Journal --- */
+.arte-folha rect,
+.arte-folha-tras rect {
+	fill: var(--card-bg-hover);
+	stroke: var(--card-border);
+	stroke-width: 2;
+}
+
+.arte-folha-tras rect {
+	opacity: 0.55;
+}
+
+.arte-linhas path {
+	stroke: var(--accent);
+	stroke-width: 2;
+	opacity: 0.25;
+}
+
+.arte-pena-corpo {
+	fill: var(--accent);
+	opacity: 0.55;
+}
+
+.arte-pena-haste {
+	stroke: var(--accent);
+	stroke-width: 3;
+	stroke-linecap: round;
+	opacity: 0.75;
+}
+
+.arte-tinta {
+	fill: var(--accent);
+	opacity: 0.45;
+}
+
+.arte-tinta_pequena {
+	opacity: 0.3;
+}
+
+/* --- Minimalist --- */
+.arte-tema_minimalist {
+	opacity: 0.85;
+}
+
+
+/* =========================================================================
+   Seletor de cenário (nuvem de ícones)
+   ========================================================================= */
+.theme--buttom {
+	z-index: 10000;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	margin: 0 20px 20px 0;
+}
+
+.theme-cloud {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 12px;
+	margin: 0 0 14px;
+	padding: 0;
+	list-style: none;
+	pointer-events: none;
+}
+
+.theme--buttom_open .theme-cloud {
+	pointer-events: auto;
+}
+
+.theme-cloud--option {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	opacity: 0;
+	transform: translateY(16px) scale(0.6);
+	transition: opacity 0.25s ease, transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme--buttom_open .theme-cloud--option {
+	opacity: 1;
+	transform: none;
+}
+
+/* abre de baixo para cima, uma atrás da outra */
+.theme--buttom_open li:nth-child(5) .theme-cloud--option { transition-delay: 0.03s; }
+.theme--buttom_open li:nth-child(4) .theme-cloud--option { transition-delay: 0.07s; }
+.theme--buttom_open li:nth-child(3) .theme-cloud--option { transition-delay: 0.11s; }
+.theme--buttom_open li:nth-child(2) .theme-cloud--option { transition-delay: 0.15s; }
+.theme--buttom_open li:nth-child(1) .theme-cloud--option { transition-delay: 0.19s; }
+
+.theme-cloud--label {
+	padding: 6px 13px;
+	border: 1px solid var(--card-border);
+	border-radius: 999px;
+	background-color: var(--background-color);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: var(--muted);
+	box-shadow: 0 10px 24px -18px var(--card-shadow);
+	transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-cloud--icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 46px;
+	height: 46px;
+	border: 1px solid var(--card-border);
+	border-radius: 50%;
+	background-color: var(--background-color);
+	color: var(--sub-title-color);
+	font-size: 1.05rem;
+	box-shadow: 0 12px 26px -16px var(--card-shadow);
+	transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease,
+		background-color 0.25s ease;
+}
+
+.theme-cloud--option:hover .theme-cloud--icon {
+	transform: scale(1.12);
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
+.theme-cloud--option:hover .theme-cloud--label {
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
+.theme-cloud--option[aria-pressed="true"] .theme-cloud--icon {
+	border-color: var(--accent);
+	background-color: var(--accent);
+	color: var(--background-color);
+}
+
+.theme-cloud--option[aria-pressed="true"] .theme-cloud--label {
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
+.theme--buttom-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border: 1px solid var(--card-border);
+	border-radius: 50%;
+	background-color: var(--background-color);
+	color: var(--accent);
+	font-size: 1.25rem;
+	cursor: pointer;
+	box-shadow: 0 14px 30px -16px var(--card-shadow);
+	transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease,
+		color 0.3s ease;
+}
+
+.theme--buttom-toggle:hover {
+	transform: scale(1.08);
+	border-color: var(--accent);
+}
+
+.theme--buttom_open .theme--buttom-toggle {
+	border-color: var(--accent);
+	background-color: var(--accent);
+	color: var(--background-color);
+}
+
+.theme-cloud--option:focus-visible .theme-cloud--icon,
+.theme--buttom-toggle:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+}
+
+
+/* ===================== Responsivo ===================== */
+@media screen and (max-width: 1024px) {
+
+	/* véu atrás da nuvem para os rótulos não competirem com o texto do herói */
+	.theme--buttom_open::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		background-color: var(--background-color);
+		opacity: 0.82;
+	}
+
+	.arte-tema_hiking,
+	.arte-tema_renascentista,
+	.arte-tema_journal,
+	.arte-tema_minimalist {
+		top: auto;
+		bottom: 0;
+		width: 100%;
+		height: 55vh;
+		opacity: 0.5;
+	}
+
+	.theme-cloud--icon {
+		width: 52px;
+		height: 52px;
+		font-size: 1.2rem;
+	}
+
+	.theme--buttom-toggle {
+		width: 62px;
+		height: 62px;
+		font-size: 1.4rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.theme-cloud--option {
+		transition: opacity 0.2s ease;
+		transform: none;
+	}
+}

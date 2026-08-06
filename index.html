@@ -16,6 +16,7 @@
 	<meta property="og:image" content="img/profile-picture.png">
 
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style-themes.css">
 	<link rel="stylesheet" href="css/style-animation.css">
 	<link rel="stylesheet" href="css/style-responsive.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +29,15 @@
 	<!-- habilita as animações de scroll só quando há JS, evitando conteúdo invisível -->
 	<script>
 		if ('IntersectionObserver' in window) document.documentElement.classList.add('reveal-enabled');
+		// aplica o tema salvo antes da primeira pintura, para não piscar
+		try {
+			var temaSalvo = localStorage.getItem('siteTheme');
+			var temasValidos = ['space', 'hiking', 'renascentista', 'journal', 'minimalist'];
+			document.documentElement.dataset.siteTheme =
+				temasValidos.indexOf(temaSalvo) > -1 ? temaSalvo : 'space';
+		} catch (e) {
+			document.documentElement.dataset.siteTheme = 'space';
+		}
 	</script>
 </head>
 
@@ -72,11 +82,52 @@
 			</nav>
 		</header>
 
-		<!-- Botão de tema do site -->
-		<div class="theme--buttom">
-			<input type="checkbox" id="theme--buttom--checkbox">
-			<label for="theme--buttom--checkbox" class="fa-solid fa-mountain-sun clickable--icons"
-				title="Alternar cenário"><span class="sr-only">Alternar cenário</span></label>
+		<!-- Seletor de cenário do site -->
+		<div class="theme--buttom" id="theme-switcher">
+			<ul class="theme-cloud" id="theme-cloud" aria-label="Cenários disponíveis">
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="space" aria-pressed="true">
+						<span class="theme-cloud--label">Space</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Space</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="hiking" aria-pressed="false">
+						<span class="theme-cloud--label">Hiking</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Hiking</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="renascentista" aria-pressed="false">
+						<span class="theme-cloud--label">Renascentista</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Renascentista</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="journal" aria-pressed="false">
+						<span class="theme-cloud--label">Journal</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-feather-pointed"
+								aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Journal</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="minimalist" aria-pressed="false">
+						<span class="theme-cloud--label">Minimalist</span>
+						<span class="theme-cloud--icon"><i class="fa-regular fa-circle" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Minimalist</span>
+					</button>
+				</li>
+			</ul>
+
+			<button type="button" class="theme--buttom-toggle" id="theme-toggle" aria-expanded="false"
+				aria-controls="theme-cloud" title="Escolher cenário do site">
+				<i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+				<span class="sr-only">Escolher cenário do site</span>
+			</button>
 		</div>
 
 		<main>
@@ -115,16 +166,96 @@
 					</div>
 				</div>
 
-				<!-- Tema espacial -->
-				<div class="arte-home space" aria-hidden="true">
+				<!-- ===== Cenário: Space ===== -->
+				<div class="arte-home arte-tema arte-tema_space space" aria-hidden="true">
 					<div class="blob-2"></div>
 					<svg class="blob-3" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" focusable="false">
-						<path fill="#660094" fill-opacity="0.5"
+						<path fill="currentColor" fill-opacity="0.5"
 							d="M402,275.5Q388,311,359.5,333Q331,355,300.5,362.5Q270,370,234.5,396Q199,422,155,412Q111,402,69,372.5Q27,343,71,291.5Q115,240,132,218Q149,196,151.5,164Q154,132,177.5,100.5Q201,69,240,68.5Q279,68,300.5,102.5Q322,137,381,140.5Q440,144,428,192Q416,240,402,275.5Z" />
 					</svg>
 					<div class="spacecadet">
 						<img class="floating-element" src="img/atronauta.png" alt="" width="480" height="480">
 					</div>
+				</div>
+
+				<!-- ===== Cenário: Hiking ===== -->
+				<div class="arte-tema arte-tema_hiking" aria-hidden="true">
+					<svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" focusable="false"
+						preserveAspectRatio="xMidYMax slice">
+						<circle class="arte-sol floating-element" cx="580" cy="140" r="66" />
+						<path class="arte-camada-3" d="M0 520 L210 236 L330 372 L430 268 L620 520 Z" />
+						<path class="arte-camada-2" d="M330 520 L520 250 L640 392 L720 300 L800 400 L800 520 Z" />
+						<path class="arte-neve" d="M210 236 L258 292 L232 286 L206 306 L182 282 L162 292 Z" />
+						<path class="arte-camada-1" d="M0 520 L120 388 L250 490 L360 410 L520 520 Z" />
+						<g class="arte-pinheiros">
+							<path d="M96 470 l18 -52 l18 52 Z" />
+							<path d="M150 480 l14 -40 l14 40 Z" />
+							<path d="M636 486 l16 -46 l16 46 Z" />
+						</g>
+					</svg>
+				</div>
+
+				<!-- ===== Cenário: Renascentista ===== -->
+				<div class="arte-tema arte-tema_renascentista" aria-hidden="true">
+					<svg viewBox="0 0 520 620" xmlns="http://www.w3.org/2000/svg" focusable="false">
+						<g class="arte-traco" fill="none" stroke="currentColor" stroke-width="3">
+							<path d="M110 600 V270 a150 150 0 0 1 300 0 V600" />
+							<path d="M142 600 V272 a118 118 0 0 1 236 0 V600" opacity="0.55" />
+							<rect x="78" y="596" width="364" height="16" rx="4" />
+							<rect x="96" y="248" width="48" height="352" rx="6" opacity="0.7" />
+							<rect x="376" y="248" width="48" height="352" rx="6" opacity="0.7" />
+							<path d="M86 248 h68 M366 248 h68" stroke-width="6" />
+						</g>
+						<g class="arte-rosacea floating-element">
+							<circle cx="260" cy="250" r="52" fill="none" stroke="currentColor" stroke-width="3" />
+							<circle cx="260" cy="250" r="20" fill="currentColor" opacity="0.35" />
+							<g stroke="currentColor" stroke-width="2.5" opacity="0.8">
+								<path d="M260 198 V214 M260 286 V302 M208 250 H224 M296 250 H312" />
+								<path d="M223 213 l12 12 M285 275 l12 12 M297 213 l-12 12 M235 275 l-12 12" />
+							</g>
+						</g>
+						<g class="arte-folhas" fill="currentColor" opacity="0.55">
+							<path d="M150 176 q34 -32 74 -22 q-22 36 -74 22 Z" />
+							<path d="M370 176 q-34 -32 -74 -22 q22 36 74 22 Z" />
+						</g>
+					</svg>
+				</div>
+
+				<!-- ===== Cenário: Journal ===== -->
+				<div class="arte-tema arte-tema_journal" aria-hidden="true">
+					<svg viewBox="0 0 560 620" xmlns="http://www.w3.org/2000/svg" focusable="false">
+						<g class="arte-folha-tras">
+							<rect x="92" y="96" width="330" height="440" rx="8" transform="rotate(-7 257 316)" />
+						</g>
+						<g class="arte-folha">
+							<rect x="130" y="80" width="330" height="452" rx="8" transform="rotate(4 295 306)" />
+						</g>
+						<g class="arte-linhas" transform="rotate(4 295 306)">
+							<path d="M166 168 H420 M166 212 H420 M166 256 H392 M166 300 H420 M166 344 H420
+								M166 388 H364 M166 432 H420 M166 476 H336" />
+						</g>
+						<g class="arte-pena floating-element">
+							<path class="arte-pena-corpo"
+								d="M436 118 q-96 34 -150 118 q-30 46 -34 96 l40 -18 q18 -66 62 -114 q-30 62 -34 106 l44 -26 q52 -70 72 -162 Z" />
+							<path class="arte-pena-haste" d="M296 330 L232 424" />
+						</g>
+						<circle class="arte-tinta" cx="196" cy="516" r="17" />
+						<circle class="arte-tinta arte-tinta_pequena" cx="228" cy="536" r="7" />
+					</svg>
+				</div>
+
+				<!-- ===== Cenário: Minimalist ===== -->
+				<div class="arte-tema arte-tema_minimalist" aria-hidden="true">
+					<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" focusable="false">
+						<g fill="none" stroke="currentColor">
+							<circle class="floating-element" cx="300" cy="270" r="176" stroke-width="2" />
+							<circle cx="300" cy="270" r="116" stroke-width="1.5" opacity="0.55" />
+							<circle cx="300" cy="270" r="56" stroke-width="1" opacity="0.35" />
+							<path d="M56 270 H108 M492 270 H544 M300 26 V78 M300 462 V514" stroke-width="1.5"
+								opacity="0.5" />
+						</g>
+						<circle cx="300" cy="94" r="9" fill="currentColor" />
+					</svg>
 				</div>
 			</section>
 

@@ -1,22 +1,9 @@
-@media (prefers-color-scheme: dark) {
-	.greece:root {
-		/*site colors */
-		--sub2-text-color: #ffffff;
-		--sub2-text-color-rgb: 255, 255, 255;
-		--sub-title-color: #cccccc;
-		--background-color: #333333;
-		--dark: #111111;
-	}
-}
-
-.sub-title-color {
-	color: var(--sub-title-color);
-}
+/* Paleta base (cenário "space"). Cada cenário sobrescreve estas variáveis
+   em css/style-themes.css — veja o data-site-theme no <html>. */
 
 .dark {
 	/*site colors */
 	--sub2-text-color: #cccccc;
-	--sub2-text-color-rgb: 204, 204, 204;
 	--sub-title-color: #FFFFFF;
 	--background-color: #333333;
 	--dark: #111111;
@@ -35,7 +22,6 @@
 :root {
 	/*site colors */
 	--sub2-text-color: #cccccc;
-	--sub-title-color-rgb: 51, 51, 51;
 	--sub-title-color: rgb(51, 51, 51);
 	--dark: #111111;
 	--margin-sections: clamp(20px, 7vw, 120px);
@@ -161,23 +147,6 @@ footer {
 	font-size: 1.15em;
 	line-height: 1.7;
 	color: var(--sub-title-color);
-}
-
-.theme--buttom {
-	z-index: 10000;
-	display: flex;
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	margin: 20px 20px 20px 0;
-
-	input {
-		display: none;
-	}
-
-	label {
-		cursor: pointer;
-	}
 }
 
 /* =================== Header =================== */
@@ -903,22 +872,15 @@ footer {
 	padding: 3px 10px;
 	border-radius: 999px;
 	background-color: var(--accent);
-	color: #ffffff;
+	/* acompanha o cenário: o texto usa a cor de fundo do tema */
+	color: var(--background-color);
 	font-size: 0.68rem;
 	letter-spacing: 1.5px;
-}
-
-.dark .timeline--badge {
-	color: #1a0028;
 }
 
 .timeline--badge_alt {
 	background-color: transparent;
 	border: 1px solid var(--accent);
-	color: var(--accent);
-}
-
-.dark .timeline--badge_alt {
 	color: var(--accent);
 }
 
