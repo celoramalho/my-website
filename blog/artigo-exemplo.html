@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Zero Trust na prática: por onde começar no Entra ID — Marcelo Ramalho</title>
+	<meta name="description"
+		content="Acesso condicional, MFA resistente a phishing e o mínimo privilégio que realmente se sustenta no dia a dia de uma empresa.">
+	<meta name="author" content="Marcelo Ramalho">
+
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Zero Trust na prática: por onde começar no Entra ID">
+	<meta property="og:description"
+		content="Acesso condicional, MFA resistente a phishing e o mínimo privilégio que se sustenta no dia a dia.">
+	<meta property="og:image" content="../img/profile-picture.png">
+
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/style-themes.css">
+	<link rel="stylesheet" href="../css/style-blog.css">
+	<link rel="stylesheet" href="../css/style-animation.css">
+	<link rel="stylesheet" href="../css/style-responsive.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<script src="https://kit.fontawesome.com/df085564fc.js" crossorigin="anonymous" defer></script>
+
+	<script>
+		if ('IntersectionObserver' in window) document.documentElement.classList.add('reveal-enabled');
+		try {
+			var temaSalvo = localStorage.getItem('siteTheme');
+			var temasValidos = ['space', 'hiking', 'renascentista', 'journal', 'minimalist'];
+			document.documentElement.dataset.siteTheme =
+				temasValidos.indexOf(temaSalvo) > -1 ? temaSalvo : 'space';
+		} catch (e) {
+			document.documentElement.dataset.siteTheme = 'space';
+		}
+	</script>
+</head>
+
+<body class="body body_interna">
+	<div class="body-2">
+
+		<!-- =================== Header =================== -->
+		<header>
+			<nav class="navbar" aria-label="Navegação principal">
+				<button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false"
+					aria-controls="primary-menu">
+					<span class="line1"></span>
+					<span class="line2"></span>
+					<span class="line3"></span>
+				</button>
+
+				<div class="navbar--site-logo">
+					<a class="navbar--site-logo--link" href="../index.html" aria-label="Marcelo Ramalho — início">
+						<span class="logo-light">M</span><span class="logo-bold">R</span>
+					</a>
+				</div>
+
+				<ul class="navbar--links" id="primary-menu">
+					<li class="navbar--links-item"><a href="../index.html">HOME</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-about-me">SOBRE</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-jobxp">EXPERIÊNCIA</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-stack">STACK</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-education">FORMAÇÃO</a></li>
+					<li class="navbar--links-item"><a href="index.html" aria-current="page">BLOG</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-contact">CONTATO</a></li>
+				</ul>
+
+				<div class="icons-navbar">
+					<a class="clickable--icons" href="https://github.com/celoramalho" target="_blank" rel="noopener"
+						aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+					<a class="clickable--icons" href="https://medium.com/@celoramalho" target="_blank" rel="noopener"
+						aria-label="Medium"><i class="fab fa-medium" aria-hidden="true"></i></a>
+					<a class="clickable--icons" href="https://www.linkedin.com/in/marcelo-ramalho-de-rodrigues-7240381b9"
+						target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"
+							aria-hidden="true"></i></a>
+					<input type="checkbox" id="colortheme-checkbox">
+					<label for="colortheme-checkbox" class="fa-solid fa-circle-half-stroke clickable--icons"
+						title="Alternar tema claro/escuro"><span class="sr-only">Alternar tema</span></label>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Seletor de cenário do site -->
+		<div class="theme--buttom" id="theme-switcher">
+			<ul class="theme-cloud" id="theme-cloud" aria-label="Cenários disponíveis">
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="space" aria-pressed="true">
+						<span class="theme-cloud--label">Space</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Space</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="hiking" aria-pressed="false">
+						<span class="theme-cloud--label">Hiking</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Hiking</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="renascentista" aria-pressed="false">
+						<span class="theme-cloud--label">Renascentista</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Renascentista</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="journal" aria-pressed="false">
+						<span class="theme-cloud--label">Journal</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-feather-pointed"
+								aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Journal</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="minimalist" aria-pressed="false">
+						<span class="theme-cloud--label">Minimalist</span>
+						<span class="theme-cloud--icon"><i class="fa-regular fa-circle" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Minimalist</span>
+					</button>
+				</li>
+			</ul>
+
+			<button type="button" class="theme--buttom-toggle" id="theme-toggle" aria-expanded="false"
+				aria-controls="theme-cloud" title="Escolher cenário do site">
+				<i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+				<span class="sr-only">Escolher cenário do site</span>
+			</button>
+		</div>
+
+		<main>
+			<section>
+				<div class="container">
+					<article class="artigo">
+
+						<a class="artigo--voltar" href="index.html">
+							<i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Voltar para o blog
+						</a>
+
+						<!-- ============================================================
+						     CONTEÚDO DE EXEMPLO — troque tudo daqui para baixo pelo
+						     seu artigo. Duplique este arquivo para cada publicação e
+						     registre-a em js/posts.js.
+						     ============================================================ -->
+
+						<header>
+							<span class="artigo--categoria">Cibersegurança</span>
+							<h1 class="artigo--titulo">Zero Trust na prática: por onde começar no Entra ID</h1>
+							<p class="artigo--meta">
+								<time datetime="2026-07-28">28 de julho de 2026</time>
+								<span aria-hidden="true">·</span>
+								<span>9 min de leitura</span>
+							</p>
+							<ul class="artigo--tags">
+								<li>Zero Trust</li>
+								<li>Entra ID</li>
+								<li>Conditional Access</li>
+								<li>IAM</li>
+							</ul>
+						</header>
+
+						<hr class="artigo--divisor">
+
+						<div class="artigo--corpo">
+							<p class="artigo--lide">Zero Trust virou palavra de slide. Na prática, é uma sequência de
+								decisões chatas sobre quem entra, de onde e com qual dispositivo — e quase todas elas
+								passam pelo seu provedor de identidade.</p>
+
+							<p>A tentação inicial é comprar uma ferramenta e declarar vitória. Mas Zero Trust não é
+								produto: é o princípio de nunca presumir confiança pelo fato de alguém estar "dentro da
+								rede". Se o seu ambiente é Microsoft, o Entra ID já entrega quase tudo que você precisa
+								para os primeiros passos. O trabalho é decidir a ordem certa.</p>
+
+							<h2>1. Antes de tudo, saiba o que você tem</h2>
+
+							<p>Não dá para proteger o que não está inventariado. Antes de criar a primeira política,
+								levante três listas:</p>
+
+							<ul>
+								<li><strong>Identidades</strong> — contas de usuário, de serviço, convidados e quais
+									estão de fato ativas nos últimos 90 dias.</li>
+								<li><strong>Aplicações</strong> — o que já está integrado ao Entra ID e o que ainda vive
+									com senha local.</li>
+								<li><strong>Dispositivos</strong> — quantos estão gerenciados no Intune e quantos são
+									desconhecidos.</li>
+							</ul>
+
+							<p>Essa terceira lista costuma doer. É normal descobrir que uma fatia relevante do acesso
+								vem de máquinas que ninguém administra.</p>
+
+							<h2>2. MFA que resiste a phishing</h2>
+
+							<p>Habilitar MFA é o item mais citado e o mais mal executado. SMS e código de seis dígitos
+								elevam a barra, mas não param um ataque de <em>adversary-in-the-middle</em>, que hoje é
+								commodity. O que realmente resiste:</p>
+
+							<ul>
+								<li>Chaves FIDO2 ou passkeys.</li>
+								<li>Windows Hello for Business.</li>
+								<li>Autenticação por certificado.</li>
+							</ul>
+
+							<div class="artigo--nota">
+								<p>Comece pelos administradores. São poucas contas, o impacto de um comprometimento é
+									enorme e a resistência à mudança é menor do que na base inteira de usuários.</p>
+							</div>
+
+							<h2>3. Acesso condicional: a política que faz o trabalho</h2>
+
+							<p>É aqui que Zero Trust deixa de ser conceito. Uma política de acesso condicional avalia
+								sinais — usuário, dispositivo, localização, risco da sessão — e decide conceder, exigir
+								mais provas ou bloquear.</p>
+
+							<p>Um conjunto inicial que cobre muito terreno:</p>
+
+							<ol>
+								<li>Exigir MFA para todos os papéis administrativos.</li>
+								<li>Bloquear protocolos de autenticação legados (eles ignoram MFA).</li>
+								<li>Exigir dispositivo compatível ou híbrido para acessar dados corporativos.</li>
+								<li>Exigir MFA quando o risco de entrada for médio ou alto.</li>
+							</ol>
+
+							<p>Sempre crie as políticas em modo <strong>somente relatório</strong> primeiro. Deixe
+								rodando alguns dias, olhe quem seria bloqueado e só então ative. Pular essa etapa é a
+								forma mais rápida de derrubar o acesso da empresa numa segunda-feira de manhã.</p>
+
+							<h3>Verificando o impacto antes de ativar</h3>
+
+							<p>Dá para consultar os registros de entrada e ver quais sessões bateriam na política:</p>
+
+							<pre><code>Connect-MgGraph -Scopes "AuditLog.Read.All","Policy.Read.All"
+
+Get-MgAuditLogSignIn -Filter "createdDateTime ge 2026-07-01T00:00:00Z" -All |
+    Where-Object { $_.ConditionalAccessStatus -eq "notApplied" } |
+    Group-Object AppDisplayName |
+    Sort-Object Count -Descending |
+    Select-Object Count, Name -First 20</code></pre>
+
+							<p>O resultado costuma revelar aplicações que ninguém lembrava que existiam — e que
+								continuam autenticando alegremente sem nenhum controle.</p>
+
+							<h2>4. Mínimo privilégio que sobrevive ao dia a dia</h2>
+
+							<p>Privilégio permanente é dívida acumulando juros. A alternativa é acesso sob demanda: o
+								administrador ativa o papel quando precisa, justifica, e ele expira sozinho.</p>
+
+							<blockquote>
+								<p>Se um papel administrativo está ativo 24 horas por dia, ele não é um privilégio — é
+									uma superfície de ataque permanente.</p>
+							</blockquote>
+
+							<p>Junto com isso, revisões de acesso periódicas. Não precisa ser sofisticado no começo:
+								uma revisão trimestral dos grupos que dão acesso a dados sensíveis já elimina boa parte
+								do acúmulo histórico.</p>
+
+							<h2>5. Meça, senão não existe</h2>
+
+							<p>Escolha três ou quatro indicadores e acompanhe mês a mês:</p>
+
+							<ul>
+								<li>Percentual de usuários com método resistente a phishing.</li>
+								<li>Número de contas com privilégio permanente.</li>
+								<li>Aplicações integradas ao SSO versus total conhecido.</li>
+								<li>Tentativas de autenticação legada ainda ocorrendo.</li>
+							</ul>
+
+							<p>Nenhum deles precisa chegar a 100% no primeiro trimestre. O que importa é a curva. Zero
+								Trust não tem linha de chegada — tem direção.</p>
+
+							<h2>Por onde eu começaria amanhã</h2>
+
+							<p>Se você tem uma semana e nenhum orçamento: inventarie identidades e dispositivos, ative
+								MFA resistente a phishing para os administradores, bloqueie autenticação legada em modo
+								relatório e agende a primeira revisão de acesso. É pouco, cabe na semana, e derruba a
+								maior parte dos caminhos de ataque baratos.</p>
+						</div>
+
+						<footer class="artigo--fim">
+							<div class="artigo--assinatura">
+								<img src="../img/profile-picture.png" alt="Foto de Marcelo Ramalho">
+								<div class="artigo--assinatura-texto">
+									<p><strong>Marcelo Ramalho</strong></p>
+									<p>Analista de Cibersegurança. Escrevo sobre identidade, Zero Trust e as automações
+										que nascem no meio do caminho.</p>
+								</div>
+							</div>
+
+							<a class="artigo--voltar" href="index.html" style="margin-top: 28px;">
+								<i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Ver todos os artigos
+							</a>
+						</footer>
+
+					</article>
+				</div>
+			</section>
+		</main>
+
+	</div>
+
+	<script src="../js/script.js"></script>
+</body>
+
+</html>

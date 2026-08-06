@@ -74,6 +74,11 @@ footer {
 	padding-top: clamp(90px, 14vw, 200px);
 }
 
+/* o atributo hidden precisa vencer os `display` declarados nas classes */
+[hidden] {
+	display: none !important;
+}
+
 /* acessibilidade: texto só para leitores de tela */
 .sr-only {
 	position: absolute;

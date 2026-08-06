@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Blog — Marcelo Ramalho</title>
+	<meta name="description"
+		content="Artigos de Marcelo Ramalho sobre cibersegurança, Zero Trust, identidade e acesso, infraestrutura e programação.">
+	<meta name="author" content="Marcelo Ramalho">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Blog — Marcelo Ramalho">
+	<meta property="og:description"
+		content="Artigos sobre cibersegurança, Zero Trust, identidade e acesso, infraestrutura e programação.">
+	<meta property="og:image" content="../img/profile-picture.png">
+
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/style-themes.css">
+	<link rel="stylesheet" href="../css/style-blog.css">
+	<link rel="stylesheet" href="../css/style-animation.css">
+	<link rel="stylesheet" href="../css/style-responsive.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<script src="https://kit.fontawesome.com/df085564fc.js" crossorigin="anonymous" defer></script>
+
+	<script>
+		if ('IntersectionObserver' in window) document.documentElement.classList.add('reveal-enabled');
+		try {
+			var temaSalvo = localStorage.getItem('siteTheme');
+			var temasValidos = ['space', 'hiking', 'renascentista', 'journal', 'minimalist'];
+			document.documentElement.dataset.siteTheme =
+				temasValidos.indexOf(temaSalvo) > -1 ? temaSalvo : 'space';
+		} catch (e) {
+			document.documentElement.dataset.siteTheme = 'space';
+		}
+	</script>
+</head>
+
+<body class="body body_interna">
+	<div class="body-2">
+
+		<!-- =================== Header =================== -->
+		<header>
+			<nav class="navbar" aria-label="Navegação principal">
+				<button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false"
+					aria-controls="primary-menu">
+					<span class="line1"></span>
+					<span class="line2"></span>
+					<span class="line3"></span>
+				</button>
+
+				<div class="navbar--site-logo">
+					<a class="navbar--site-logo--link" href="../index.html" aria-label="Marcelo Ramalho — início">
+						<span class="logo-light">M</span><span class="logo-bold">R</span>
+					</a>
+				</div>
+
+				<ul class="navbar--links" id="primary-menu">
+					<li class="navbar--links-item"><a href="../index.html">HOME</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-about-me">SOBRE</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-jobxp">EXPERIÊNCIA</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-stack">STACK</a></li>
+					<li class="navbar--links-item"><a href="../index.html#section-education">FORMAÇÃO</a></li>
+					<li class="navbar--links-item"><a href="index.html" aria-current="page">BLOG</a></li>
+					<li class="navbar--links-item"><a href="#section-contact">CONTATO</a></li>
+				</ul>
+
+				<div class="icons-navbar">
+					<a class="clickable--icons" href="https://github.com/celoramalho" target="_blank" rel="noopener"
+						aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+					<a class="clickable--icons" href="https://medium.com/@celoramalho" target="_blank" rel="noopener"
+						aria-label="Medium"><i class="fab fa-medium" aria-hidden="true"></i></a>
+					<a class="clickable--icons" href="https://www.linkedin.com/in/marcelo-ramalho-de-rodrigues-7240381b9"
+						target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"
+							aria-hidden="true"></i></a>
+					<input type="checkbox" id="colortheme-checkbox">
+					<label for="colortheme-checkbox" class="fa-solid fa-circle-half-stroke clickable--icons"
+						title="Alternar tema claro/escuro"><span class="sr-only">Alternar tema</span></label>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Seletor de cenário do site -->
+		<div class="theme--buttom" id="theme-switcher">
+			<ul class="theme-cloud" id="theme-cloud" aria-label="Cenários disponíveis">
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="space" aria-pressed="true">
+						<span class="theme-cloud--label">Space</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Space</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="hiking" aria-pressed="false">
+						<span class="theme-cloud--label">Hiking</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Hiking</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="renascentista" aria-pressed="false">
+						<span class="theme-cloud--label">Renascentista</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Renascentista</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="journal" aria-pressed="false">
+						<span class="theme-cloud--label">Journal</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-feather-pointed"
+								aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Journal</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="minimalist" aria-pressed="false">
+						<span class="theme-cloud--label">Minimalist</span>
+						<span class="theme-cloud--icon"><i class="fa-regular fa-circle" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Minimalist</span>
+					</button>
+				</li>
+			</ul>
+
+			<button type="button" class="theme--buttom-toggle" id="theme-toggle" aria-expanded="false"
+				aria-controls="theme-cloud" title="Escolher cenário do site">
+				<i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+				<span class="sr-only">Escolher cenário do site</span>
+			</button>
+		</div>
+
+		<main>
+			<!-- =================== Capa + busca =================== -->
+			<section id="blog-topo" aria-labelledby="blog-title">
+				<div class="container">
+					<header class="section-header">
+						<p class="section-header--eyebrow">Blog</p>
+						<h1 class="section-header--title" id="blog-title">Notas sobre segurança e código</h1>
+						<p class="section-header--subtitle">Cibersegurança, identidade e acesso, infraestrutura e as
+							automações que nascem no meio do caminho. Escrevo o que eu gostaria de ter lido antes.</p>
+					</header>
+
+					<!-- ===== Aba de pesquisa ===== -->
+					<div class="blog-search" role="search">
+						<div class="blog-search--field">
+							<i class="fa-solid fa-magnifying-glass blog-search--icon" aria-hidden="true"></i>
+							<input type="search" id="blog-search-input" class="blog-search--input"
+								placeholder="Buscar por título, tema ou tag…" aria-label="Buscar artigos"
+								autocomplete="off">
+							<button type="button" class="blog-search--clear" id="blog-search-clear" hidden
+								aria-label="Limpar busca">
+								<i class="fa-solid fa-xmark" aria-hidden="true"></i>
+							</button>
+						</div>
+
+						<ul class="blog-filters" id="blog-filters" aria-label="Filtrar por categoria">
+							<li><button type="button" class="blog-filter" data-cat="todos"
+									aria-pressed="true">Todos</button></li>
+							<li><button type="button" class="blog-filter" data-cat="Cibersegurança"
+									aria-pressed="false">Cibersegurança</button></li>
+							<li><button type="button" class="blog-filter" data-cat="Programação"
+									aria-pressed="false">Programação</button></li>
+							<li><button type="button" class="blog-filter" data-cat="Infraestrutura"
+									aria-pressed="false">Infraestrutura</button></li>
+							<li><button type="button" class="blog-filter" data-cat="Carreira"
+									aria-pressed="false">Carreira</button></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- =================== Para você =================== -->
+			<section id="blog-foryou" aria-labelledby="foryou-title">
+				<div class="container container_curto">
+					<header class="section-header section-header_alinhado">
+						<p class="section-header--eyebrow">Para você</p>
+						<h2 class="section-header--title" id="foryou-title">Últimas publicações</h2>
+					</header>
+
+					<div class="foryou--grid">
+						<div id="foryou-destaque"></div>
+						<div class="foryou--lista" id="foryou-lista"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- =================== Todos os artigos =================== -->
+			<section id="blog-todos" aria-labelledby="blog-todos-title">
+				<div class="container container_curto">
+					<header class="section-header section-header_alinhado">
+						<h2 class="section-header--title" id="blog-todos-title">Todos os artigos</h2>
+						<p class="blog-count" id="blog-count"></p>
+					</header>
+
+					<div class="post-grid" id="post-grid"></div>
+
+					<p class="blog-vazio" id="blog-vazio" hidden>
+						<i class="fa-regular fa-face-frown" aria-hidden="true"></i>
+						Nenhum artigo encontrado. Tente outra palavra ou volte para <strong>Todos</strong>.
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<!-- =================== Contato =================== -->
+		<footer id="section-contact" aria-labelledby="contact-title">
+			<div class="container">
+				<header class="section-header reveal">
+					<p class="section-header--eyebrow">Contato</p>
+					<h2 class="section-header--title" id="contact-title">Vamos conversar</h2>
+					<p class="section-header--subtitle">Achou algum artigo útil, ou discorda de alguma coisa? Me chama.</p>
+				</header>
+
+				<ul class="contact--links reveal">
+					<li>
+						<a href="mailto:marceloramalho.info@gmail.com">
+							<i class="fa-regular fa-envelope" aria-hidden="true"></i>
+							<span>marceloramalho.info@gmail.com</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://medium.com/@celoramalho" target="_blank" rel="noopener">
+							<i class="fab fa-medium" aria-hidden="true"></i>
+							<span>Medium</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/celoramalho" target="_blank" rel="noopener">
+							<i class="fab fa-github" aria-hidden="true"></i>
+							<span>github.com/celoramalho</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/marcelo-ramalho-de-rodrigues-7240381b9" target="_blank"
+							rel="noopener">
+							<i class="fab fa-linkedin" aria-hidden="true"></i>
+							<span>LinkedIn</span>
+						</a>
+					</li>
+				</ul>
+
+				<p class="contact--copyright">© 2026 Marcelo Ramalho · Belo Horizonte, MG</p>
+			</div>
+		</footer>
+
+	</div>
+
+	<script src="../js/script.js"></script>
+	<script src="../js/posts.js"></script>
+	<script src="../js/blog.js"></script>
+</body>
+
+</html>
