@@ -462,6 +462,28 @@ html[data-site-theme="gruvbox"] .home--title h2 {
 	letter-spacing: -0.5px;
 }
 
+/* o card "Sobre Mim" é o único ponto em que a continuação da faixa passa
+   por baixo de um elemento com fundo opaco — mas o .reveal padrão faz esse
+   fundo entrar em fade de opacity 0→1 ao longo de 0.7s, e durante esse fade
+   a faixa fica visível "através" do card por instantes. Aqui ele pula reto
+   pro estado final (sem opacity/transform de transição): a faixa já não
+   aparece por baixo em nenhum momento, nem durante o reveal. */
+html[data-site-theme="gruvbox"] #section-about-me .about-me--block.reveal {
+	opacity: 1;
+	transform: none;
+	transition: none;
+}
+
+/* o card em si é position:static (sem z-index próprio), então mesmo com a
+   faixa em z-index:0 ele ainda perde a disputa de camadas — um elemento
+   position:absolute sempre fica acima de um elemento static, com ou sem
+   z-index. position:relative + z-index aqui garante que o card entre no
+   mesmo contexto de empilhamento e vença a faixa por cima dela. */
+html[data-site-theme="gruvbox"] #section-about-me .about-me--block {
+	position: relative;
+	z-index: 1;
+}
+
 /* "Ver currículo" (.home--cta-ghost) por padrão é arredondado e de borda
    fina — aqui ele troca para o mesmo desenho retangular e de borda grossa do
    "Sobre mim" (.saiba-mais-buttom) ao lado, incluindo o preenchimento que
@@ -648,13 +670,18 @@ html[data-site-theme="gruvbox"] .arte-tema_gruvbox {
    Dentro dela, 5 listras PARALELAS às bordas longas da tira: o gradiente vai
    "to right", ou seja, ao longo da LARGURA (90px → 150px), não do
    comprimento — por isso as 5 cores aparecem como faixas finas lado a lado,
-   todas correndo na mesma diagonal que a tira. */
+   todas correndo na mesma diagonal que a tira.
+   top/right em vw/vh (não %) de propósito: a faixa se repete em
+   .arte-gruvbox-faixas_continuacao dentro de um container de largura
+   diferente (o conteúdo da section, não a viewport inteira) — em %, o mesmo
+   valor resultaria em pixels diferentes e desalinharia a diagonal na emenda
+   entre as duas sections. Em vw/vh o pixel final é sempre o mesmo. */
 .arte-gruvbox-faixas {
 	position: absolute;
-	top: -6%;
-	right: -20%;
+	top: -6vh;
+	right: -20vw;
 	width: 220px;
-	height: 190%;
+	height: 190vh;
 	background: repeating-linear-gradient(to right,
 			var(--gruvbox-aqua) 0 44px,
 			var(--gruvbox-verde) 44px 88px,
@@ -675,22 +702,42 @@ html[data-site-theme="gruvbox"] .arte-tema_gruvbox {
 	filter: drop-shadow(0 24px 40px var(--card-shadow));
 }
 
-/* continuação da faixa na section "Sobre mim": mesmo ângulo e mesma
-   ancoragem (top/right) da faixa do herói, só que presa ao topo desta
-   section em vez do topo do herói — como as duas sections são blocos
-   empilhados sem espaço entre eles, a diagonal fecha sem emenda visível na
-   junção. É preciso repetir top/right/width/rotate em vez de só herdar a
-   classe porque o "top" de cada uma é relativo a um container diferente. */
-html[data-site-theme="gruvbox"] #section-about-me {
-	position: relative;
-	overflow: hidden;
+/* continuação da faixa: dois wrappers de overflow:hidden cortando a MESMA
+   diagonal em pontos diferentes não bastam para alinhar — cada um revela um
+   trecho da rotação relativo à SUA PRÓPRIA caixa (0 a height dele), então
+   mesmo com a faixa interna idêntica o recorte final sai diferente e a
+   diagonal parece pular na emenda.
+   A correção: este wrapper visível mede só 30vh e começa em top:100vh (onde
+   a section "Sobre mim" de fato começa) — mas por DENTRO dele a faixa não
+   usa mais a regra base (que assume top:0 do próprio wrapper); ela é
+   deslocada 100vh para cima do que a base diria, com
+   margin-top: -100vh no PRÓPRIO wrapper substituído por um segundo nível:
+   um "canvas" interno de 100vh (igual ao do herói) posicionado com
+   top: -100vh dentro do wrapper de 30vh, para que a faixa, ao ser
+   posicionada como se seu container tivesse 100vh, aterrisse exatamente na
+   continuação certa quando só os 30vh finais desse canvas ficam visíveis. */
+.arte-gruvbox-faixas-continuacao_wrapper {
+	display: none;
 }
 
-html[data-site-theme="gruvbox"] .arte-gruvbox-faixas_continuacao {
-	top: -6%;
-	right: -20%;
+html[data-site-theme="gruvbox"] .arte-gruvbox-faixas-continuacao_wrapper {
+	display: block;
+	position: absolute;
+	top: 100vh;
+	left: 0;
+	width: 100%;
 	height: 30vh;
+	overflow: hidden;
+	pointer-events: none;
 	z-index: 0;
+}
+
+html[data-site-theme="gruvbox"] .arte-gruvbox-faixas-continuacao_canvas {
+	position: absolute;
+	top: -100vh;
+	left: 0;
+	width: 100%;
+	height: 100vh;
 }
 
 /* cursor de terminal piscando na tela, no lugar das fatias coloridas —
@@ -1099,8 +1146,8 @@ html[data-site-theme="fantasy"] .arte-tema_fantasy {
 	}
 
 	.arte-gruvbox-faixas {
-		top: -6%;
-		right: -95%;
+		top: -6vh;
+		right: -95vw;
 		width: 60px;
 	}
 
