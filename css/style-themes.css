@@ -629,7 +629,7 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 	max-height: 88vh;
 }
 
-/* --- Gruvbox: faixas diagonais na largura toda, computador antigo no meio --- */
+/* --- Gruvbox: faixa diagonal na largura toda, computador antigo no meio --- */
 html[data-site-theme="gruvbox"] .arte-tema_gruvbox {
 	display: block;
 	position: absolute;
@@ -667,37 +667,28 @@ html[data-site-theme="gruvbox"] .arte-tema_gruvbox {
 
 .arte-gruvbox-pc {
 	position: absolute;
-	top: 54%;
-	right: 20%;
-	width: min(42vw, 560px);
+	top: 70%;
+	right: 8%;
+	width: min(32vw, 420px);
 	height: auto;
 	transform: translateY(-50%);
 	filter: drop-shadow(0 24px 40px var(--card-shadow));
 }
 
-/* tela piscando: 4 fatias horizontais, cada uma passeando pela paleta com um
-   delay diferente — nunca duas fatias mostram a mesma cor ao mesmo tempo */
-@keyframes arte-gruvbox-piscar {
-	0%, 100% { fill: var(--gruvbox-verde); }
-	20% { fill: var(--gruvbox-amarelo); }
-	40% { fill: var(--gruvbox-laranja); }
-	60% { fill: var(--gruvbox-vermelho); }
-	80% { fill: var(--gruvbox-aqua); }
+/* cursor de terminal piscando na tela, no lugar das fatias coloridas —
+   mesmo ritmo de um cursor de linha de comando (500ms aceso/apagado) */
+@keyframes arte-gruvbox-cursor {
+	0%, 49% { opacity: 1; }
+	50%, 100% { opacity: 0; }
 }
 
-.arte-gruvbox-tela {
-	animation: arte-gruvbox-piscar 4s steps(1) infinite;
+.arte-gruvbox-cursor {
+	animation: arte-gruvbox-cursor 1s steps(1) infinite;
 }
-
-.arte-gruvbox-tela_1 { animation-delay: 0s; }
-.arte-gruvbox-tela_2 { animation-delay: -1s; }
-.arte-gruvbox-tela_3 { animation-delay: -2s; }
-.arte-gruvbox-tela_4 { animation-delay: -3s; }
 
 @media (prefers-reduced-motion: reduce) {
-	.arte-gruvbox-tela {
+	.arte-gruvbox-cursor {
 		animation: none;
-		fill: var(--gruvbox-amarelo);
 	}
 }
 
