@@ -401,7 +401,6 @@ html[data-site-theme="minimalist"] .section-header--title::after {
 	height: 1px;
 }
 
-
 /* ===================== Gruvbox ===================== */
 /* paleta retrô-terrosa clássica (Pavel Pertsev): bg escuro/claro quebrado em
    "hard/soft", acentos saturados de baixo contraste. Os tokens --gruvbox-*
@@ -1146,9 +1145,24 @@ html[data-site-theme="fantasy"] .arte-tema_fantasy {
 	}
 
 	.arte-gruvbox-faixas {
-		top: -6vh;
-		right: -95vw;
-		width: 60px;
+		display: none;
+	}
+
+	html[data-site-theme="gruvbox"] .arte-gruvbox-faixas-continuacao_wrapper {
+		top: 100vh;
+		height: 10px;
+		overflow: visible;
+		background: repeating-linear-gradient(to right,
+			var(--gruvbox-aqua) 0 44px,
+			var(--gruvbox-verde) 44px 88px,
+			var(--gruvbox-amarelo) 88px 132px,
+			var(--gruvbox-laranja) 132px 176px,
+			var(--gruvbox-vermelho) 176px 220px);
+	}
+
+	html[data-site-theme="gruvbox"] .arte-gruvbox-faixas-continuacao_canvas {
+		top: 0;
+		height: 10px;
 	}
 
 	.theme-cloud--icon {
