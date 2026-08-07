@@ -1,5 +1,5 @@
 /* =========================================================================
-   Cenários do site (space, hiking, renascentista, journal, minimalist)
+   Cenários do site (space, hiking, fantasy, renaissance, journal, minimalist, gruvbox)
 
    O atributo data-site-theme fica no <html> (aplicado por um script inline
    no <head>, para não piscar). As variáveis são declaradas em `body` para
@@ -263,8 +263,8 @@ html[data-site-theme="fantasy"] body.dark {
 }
 
 
-/* ===================== Renascentista ===================== */
-html[data-site-theme="renascentista"] body {
+/* ===================== Renaissance ===================== */
+html[data-site-theme="renaissance"] body {
 	--accent: #9a6b1f;
 	--accent-soft: rgba(154, 107, 31, 0.11);
 	--background-color: #faf4e8;
@@ -279,7 +279,7 @@ html[data-site-theme="renascentista"] body {
 	--font-family-principal: Georgia, "Times New Roman", "Palatino Linotype", serif;
 }
 
-html[data-site-theme="renascentista"] body.dark {
+html[data-site-theme="renaissance"] body.dark {
 	--accent: #e2b45c;
 	--accent-soft: rgba(226, 180, 92, 0.14);
 	--background-color: #241d14;
@@ -294,9 +294,9 @@ html[data-site-theme="renascentista"] body.dark {
 }
 
 /* toque tipográfico: títulos em versalete */
-html[data-site-theme="renascentista"] .section-header--title,
-html[data-site-theme="renascentista"] .home--title h1,
-html[data-site-theme="renascentista"] .home--title h2 {
+html[data-site-theme="renaissance"] .section-header--title,
+html[data-site-theme="renaissance"] .home--title h1,
+html[data-site-theme="renaissance"] .home--title h2 {
 	font-variant: small-caps;
 	letter-spacing: 2px;
 }
@@ -402,6 +402,184 @@ html[data-site-theme="minimalist"] .section-header--title::after {
 }
 
 
+/* ===================== Gruvbox ===================== */
+/* paleta retrô-terrosa clássica (Pavel Pertsev): bg escuro/claro quebrado em
+   "hard/soft", acentos saturados de baixo contraste. Os tokens --gruvbox-*
+   são fixos (não trocam entre claro/escuro) porque servem só para a arte do
+   herói mostrar a paleta em si, não para acompanhar o tema. */
+html[data-site-theme="gruvbox"] body {
+	--accent: #af3a03;
+	--accent-soft: rgba(175, 58, 3, 0.12);
+	--background-color: #fbf1c7;
+	--sub-title-color: #3c3836;
+	--sub2-text-color: #bdae93;
+	--muted: rgba(60, 56, 54, 0.75);
+	/* bg2/bg3 oficiais do Gruvbox claro: um tom abaixo do fundo (#fbf1c7), não
+	   uma transparência dele — por isso o card se destaca em vez de sumir */
+	--card-bg: #ebdbb2;
+	--card-bg-hover: #d5c4a1;
+	--card-border: rgba(60, 56, 54, 0.18);
+	--card-shadow: rgba(60, 56, 54, 0.22);
+	--line-color: rgba(60, 56, 54, 0.2);
+	--font-family-principal: "JetBrains Mono", "Fira Code", Consolas, Menlo, monospace;
+
+	--gruvbox-vermelho: #cc241d;
+	--gruvbox-verde: #98971a;
+	--gruvbox-amarelo: #d79921;
+	--gruvbox-aqua: #689d6a;
+	--gruvbox-roxo: #b16286;
+	--gruvbox-laranja: #d65d0e;
+}
+
+html[data-site-theme="gruvbox"] body.dark {
+	--accent: #fe8019;
+	--accent-soft: rgba(254, 128, 25, 0.14);
+	--background-color: #282828;
+	--sub-title-color: #ebdbb2;
+	--sub2-text-color: #7c6f64;
+	--muted: rgba(235, 219, 178, 0.72);
+	/* bg1/bg2 oficiais do Gruvbox escuro: mesma lógica, um tom acima do fundo
+	   #282828 */
+	--card-bg: #3c3836;
+	--card-bg-hover: #504945;
+	--card-border: rgba(235, 219, 178, 0.16);
+	--card-shadow: rgba(0, 0, 0, 0.55);
+	--line-color: rgba(235, 219, 178, 0.16);
+
+	--gruvbox-vermelho: #fb4934;
+	--gruvbox-verde: #b8bb26;
+	--gruvbox-amarelo: #fabd2f;
+	--gruvbox-aqua: #8ec07c;
+	--gruvbox-roxo: #d3869b;
+	--gruvbox-laranja: #fe8019;
+}
+
+/* fonte monoespaçada nos títulos: reforça o clima de terminal/editor */
+html[data-site-theme="gruvbox"] .section-header--title,
+html[data-site-theme="gruvbox"] .home--title h1,
+html[data-site-theme="gruvbox"] .home--title h2 {
+	font-family: var(--font-family-principal);
+	letter-spacing: -0.5px;
+}
+
+/* "Ver currículo" (.home--cta-ghost) por padrão é arredondado e de borda
+   fina — aqui ele troca para o mesmo desenho retangular e de borda grossa do
+   "Sobre mim" (.saiba-mais-buttom) ao lado, incluindo o preenchimento que
+   desliza no hover, para os dois botões lerem como um par no mesmo estilo */
+html[data-site-theme="gruvbox"] .home--cta-ghost {
+	position: relative;
+	overflow: hidden;
+	border: 3px solid var(--sub-title-color);
+	border-radius: 0;
+	background-color: transparent;
+	font-weight: bold;
+	font-family: var(--font-family-principal);
+	transition: transform 0.25s ease;
+}
+
+html[data-site-theme="gruvbox"] .home--cta-ghost::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-color: var(--sub-title-color);
+	transform: translateX(-105%);
+	transition: transform 0.3s ease-in-out;
+}
+
+html[data-site-theme="gruvbox"] .home--cta-ghost:hover::before {
+	transform: translateX(0);
+}
+
+html[data-site-theme="gruvbox"] .home--cta-ghost,
+html[data-site-theme="gruvbox"] .home--cta-ghost i {
+	color: var(--sub-title-color);
+	transition: color 0.4s ease;
+}
+
+html[data-site-theme="gruvbox"] .home--cta-ghost:hover,
+html[data-site-theme="gruvbox"] .home--cta-ghost:hover i {
+	color: var(--background-color);
+	transform: none;
+}
+
+html[data-site-theme="gruvbox"] .timeline--card,
+html[data-site-theme="gruvbox"] .stack--card,
+html[data-site-theme="gruvbox"] .education--card {
+	border-radius: 6px;
+	border-left: 3px solid var(--accent);
+}
+
+/* cada card do stack pega uma cor diferente da paleta na borda esquerda e no
+   hover — o resto do site já usa --accent sozinho; aqui é onde o Gruvbox
+   mostra a paleta inteira, não só o par accent/accent-soft */
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+1) { border-left-color: var(--gruvbox-vermelho); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+2) { border-left-color: var(--gruvbox-amarelo); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+3) { border-left-color: var(--gruvbox-verde); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+4) { border-left-color: var(--gruvbox-aqua); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+5) { border-left-color: var(--gruvbox-roxo); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+6) { border-left-color: var(--gruvbox-laranja); }
+
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+1):hover { border-color: var(--gruvbox-vermelho); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+2):hover { border-color: var(--gruvbox-amarelo); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+3):hover { border-color: var(--gruvbox-verde); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+4):hover { border-color: var(--gruvbox-aqua); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+5):hover { border-color: var(--gruvbox-roxo); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+6):hover { border-color: var(--gruvbox-laranja); }
+
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+1) .stack--tags li:hover { border-color: var(--gruvbox-vermelho); color: var(--gruvbox-vermelho); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+2) .stack--tags li:hover { border-color: var(--gruvbox-amarelo); color: var(--gruvbox-amarelo); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+3) .stack--tags li:hover { border-color: var(--gruvbox-verde); color: var(--gruvbox-verde); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+4) .stack--tags li:hover { border-color: var(--gruvbox-aqua); color: var(--gruvbox-aqua); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+5) .stack--tags li:hover { border-color: var(--gruvbox-roxo); color: var(--gruvbox-roxo); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+6) .stack--tags li:hover { border-color: var(--gruvbox-laranja); color: var(--gruvbox-laranja); }
+
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+1) .stack--card-title i { background-color: color-mix(in srgb, var(--gruvbox-vermelho) 16%, transparent); color: var(--gruvbox-vermelho); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+2) .stack--card-title i { background-color: color-mix(in srgb, var(--gruvbox-amarelo) 16%, transparent); color: var(--gruvbox-amarelo); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+3) .stack--card-title i { background-color: color-mix(in srgb, var(--gruvbox-verde) 16%, transparent); color: var(--gruvbox-verde); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+4) .stack--card-title i { background-color: color-mix(in srgb, var(--gruvbox-aqua) 16%, transparent); color: var(--gruvbox-aqua); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+5) .stack--card-title i { background-color: color-mix(in srgb, var(--gruvbox-roxo) 16%, transparent); color: var(--gruvbox-roxo); }
+html[data-site-theme="gruvbox"] .stack--card:nth-child(6n+6) .stack--card-title i { background-color: color-mix(in srgb, var(--gruvbox-laranja) 16%, transparent); color: var(--gruvbox-laranja); }
+
+/* timeline: a bolinha (dot) da linha do tempo também cicla pela paleta */
+html[data-site-theme="gruvbox"] .timeline--item:nth-child(6n+1) .timeline--dot { background-color: var(--gruvbox-vermelho); }
+html[data-site-theme="gruvbox"] .timeline--item:nth-child(6n+2) .timeline--dot { background-color: var(--gruvbox-amarelo); }
+html[data-site-theme="gruvbox"] .timeline--item:nth-child(6n+3) .timeline--dot { background-color: var(--gruvbox-verde); }
+html[data-site-theme="gruvbox"] .timeline--item:nth-child(6n+4) .timeline--dot { background-color: var(--gruvbox-aqua); }
+html[data-site-theme="gruvbox"] .timeline--item:nth-child(6n+5) .timeline--dot { background-color: var(--gruvbox-roxo); }
+html[data-site-theme="gruvbox"] .timeline--item:nth-child(6n+6) .timeline--dot { background-color: var(--gruvbox-laranja); }
+
+/* header: os links do menu, ao passar o mouse, também ciclam pela paleta —
+   dá vida ao nav sem tirar a leitura (a linha por baixo já indica "hover") */
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+1) a:hover { color: var(--gruvbox-vermelho); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+2) a:hover { color: var(--gruvbox-amarelo); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+3) a:hover { color: var(--gruvbox-verde); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+4) a:hover { color: var(--gruvbox-aqua); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+5) a:hover { color: var(--gruvbox-roxo); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+6) a:hover { color: var(--gruvbox-laranja); }
+
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+1) a:hover::before,
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+1) a:hover::after { background-color: var(--gruvbox-vermelho); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+2) a:hover::before,
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+2) a:hover::after { background-color: var(--gruvbox-amarelo); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+3) a:hover::before,
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+3) a:hover::after { background-color: var(--gruvbox-verde); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+4) a:hover::before,
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+4) a:hover::after { background-color: var(--gruvbox-aqua); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+5) a:hover::before,
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+5) a:hover::after { background-color: var(--gruvbox-roxo); }
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+6) a:hover::before,
+html[data-site-theme="gruvbox"] .navbar--links li:nth-child(6n+6) a:hover::after { background-color: var(--gruvbox-laranja); }
+
+html[data-site-theme="gruvbox"] .clickable--icons:hover {
+	color: var(--gruvbox-aqua);
+}
+
+html[data-site-theme="gruvbox"] .navbar--site-logo:hover {
+	border-color: var(--gruvbox-laranja);
+}
+
+
 /* =========================================================================
    Arte do herói por cenário
    ========================================================================= */
@@ -413,9 +591,9 @@ html[data-site-theme="space"] .arte-tema_space {
 	display: block;
 }
 
-/* o display fica aqui, e não na regra de moldura abaixo, senão as cinco
-   artes venceriam o `display: none` e apareceriam todas de uma vez */
-html[data-site-theme="renascentista"] .arte-tema_renascentista,
+/* o display fica aqui, e não na regra de moldura abaixo, senão as artes
+   venceriam o `display: none` e apareceriam todas de uma vez */
+html[data-site-theme="renaissance"] .arte-tema_renaissance,
 html[data-site-theme="journal"] .arte-tema_journal,
 html[data-site-theme="minimalist"] .arte-tema_minimalist {
 	display: flex;
@@ -426,9 +604,9 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 	color: var(--accent);
 }
 
-/* moldura comum das artes que não são o tema space (hiking tem a sua, abaixo,
-   porque ocupa a largura toda) */
-.arte-tema_renascentista,
+/* moldura comum das artes que não são o tema space (hiking/fantasy/gruvbox
+   têm a sua, abaixo, porque ocupam a largura toda) */
+.arte-tema_renaissance,
 .arte-tema_journal,
 .arte-tema_minimalist {
 	position: absolute;
@@ -443,12 +621,84 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 	z-index: 0;
 }
 
-.arte-tema_renascentista svg,
+.arte-tema_renaissance svg,
 .arte-tema_journal svg,
 .arte-tema_minimalist svg {
 	width: 100%;
 	height: 100%;
 	max-height: 88vh;
+}
+
+/* --- Gruvbox: faixas diagonais na largura toda, computador antigo no meio --- */
+html[data-site-theme="gruvbox"] .arte-tema_gruvbox {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--background-color);
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* uma faixa só, reta, cortando o teto e a lateral direita — é uma tira
+   apoiada no canto superior direito (não um gradiente do fundo inteiro).
+   Dentro dela, 5 listras PARALELAS às bordas longas da tira: o gradiente vai
+   "to right", ou seja, ao longo da LARGURA (90px → 150px), não do
+   comprimento — por isso as 5 cores aparecem como faixas finas lado a lado,
+   todas correndo na mesma diagonal que a tira. */
+.arte-gruvbox-faixas {
+	position: absolute;
+	top: -6%;
+	right: -20%;
+	width: 220px;
+	height: 190%;
+	background: repeating-linear-gradient(to right,
+			var(--gruvbox-aqua) 0 44px,
+			var(--gruvbox-verde) 44px 88px,
+			var(--gruvbox-amarelo) 88px 132px,
+			var(--gruvbox-laranja) 132px 176px,
+			var(--gruvbox-vermelho) 176px 220px);
+	transform: rotate(34deg);
+	transform-origin: top right;
+}
+
+.arte-gruvbox-pc {
+	position: absolute;
+	top: 54%;
+	right: 20%;
+	width: min(42vw, 560px);
+	height: auto;
+	transform: translateY(-50%);
+	filter: drop-shadow(0 24px 40px var(--card-shadow));
+}
+
+/* tela piscando: 4 fatias horizontais, cada uma passeando pela paleta com um
+   delay diferente — nunca duas fatias mostram a mesma cor ao mesmo tempo */
+@keyframes arte-gruvbox-piscar {
+	0%, 100% { fill: var(--gruvbox-verde); }
+	20% { fill: var(--gruvbox-amarelo); }
+	40% { fill: var(--gruvbox-laranja); }
+	60% { fill: var(--gruvbox-vermelho); }
+	80% { fill: var(--gruvbox-aqua); }
+}
+
+.arte-gruvbox-tela {
+	animation: arte-gruvbox-piscar 4s steps(1) infinite;
+}
+
+.arte-gruvbox-tela_1 { animation-delay: 0s; }
+.arte-gruvbox-tela_2 { animation-delay: -1s; }
+.arte-gruvbox-tela_3 { animation-delay: -2s; }
+.arte-gruvbox-tela_4 { animation-delay: -3s; }
+
+@media (prefers-reduced-motion: reduce) {
+	.arte-gruvbox-tela {
+		animation: none;
+		fill: var(--gruvbox-amarelo);
+	}
 }
 
 /* --- Hiking: montanhas em camadas na largura toda --- */
@@ -599,7 +849,7 @@ html[data-site-theme="fantasy"] .arte-tema_fantasy {
 	fill: var(--montanha-arvore-perto);
 }
 
-/* --- Renascentista --- */
+/* --- Renaissance --- */
 .arte-traco {
 	opacity: 0.55;
 }
@@ -813,7 +1063,7 @@ html[data-site-theme="fantasy"] .arte-tema_fantasy {
 		opacity: 0.82;
 	}
 
-	.arte-tema_renascentista,
+	.arte-tema_renaissance,
 	.arte-tema_journal,
 	.arte-tema_minimalist {
 		top: auto;
@@ -824,10 +1074,25 @@ html[data-site-theme="fantasy"] .arte-tema_fantasy {
 	}
 
 	/* o texto do herói é alto no mobile: sobe um pouco para não cair sobre a
-	   crista das montanhas */
+	   crista das montanhas (hiking/fantasy) ou o monitor (gruvbox) */
 	html[data-site-theme="hiking"] .text-block-home,
-	html[data-site-theme="fantasy"] .text-block-home {
+	html[data-site-theme="fantasy"] .text-block-home,
+	html[data-site-theme="gruvbox"] .text-block-home {
 		margin-top: 150px;
+	}
+
+	/* no mobile o PC não cabe ao lado do texto — some do herói. A faixa
+	   encolhe e recua para o canto extremo, fora da coluna de texto (que
+	   ocupa a largura toda nesse breakpoint), do mesmo jeito que renaissance/
+	   journal/minimalist escondem sua arte quando não há espaço */
+	.arte-gruvbox-pc {
+		display: none;
+	}
+
+	.arte-gruvbox-faixas {
+		top: -6%;
+		right: -95%;
+		width: 60px;
 	}
 
 	.theme-cloud--icon {

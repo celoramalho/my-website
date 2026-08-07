@@ -31,11 +31,11 @@
 		if ('IntersectionObserver' in window) document.documentElement.classList.add('reveal-enabled');
 		try {
 			var temaSalvo = localStorage.getItem('siteTheme');
-			var temasValidos = ['space', 'hiking', 'fantasy', 'renascentista', 'journal', 'minimalist'];
+			var temasValidos = ['space', 'hiking', 'fantasy', 'renaissance', 'journal', 'minimalist', 'gruvbox'];
 			document.documentElement.dataset.siteTheme =
-				temasValidos.indexOf(temaSalvo) > -1 ? temaSalvo : 'space';
+				temasValidos.indexOf(temaSalvo) > -1 ? temaSalvo : 'gruvbox';
 		} catch (e) {
-			document.documentElement.dataset.siteTheme = 'space';
+			document.documentElement.dataset.siteTheme = 'gruvbox';
 		}
 	</script>
 </head>
@@ -88,10 +88,10 @@
 		<div class="theme--buttom" id="theme-switcher">
 			<ul class="theme-cloud" id="theme-cloud" aria-label="Cenários disponíveis">
 				<li>
-					<button type="button" class="theme-cloud--option" data-theme="space" aria-pressed="true">
-						<span class="theme-cloud--label">Space</span>
-						<span class="theme-cloud--icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
-						<span class="sr-only">Tema Space</span>
+					<button type="button" class="theme-cloud--option" data-theme="gruvbox" aria-pressed="true">
+						<span class="theme-cloud--label">Gruvbox</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-terminal" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Gruvbox</span>
 					</button>
 				</li>
 				<li>
@@ -99,13 +99,6 @@
 						<span class="theme-cloud--label">Hiking</span>
 						<span class="theme-cloud--icon"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i></span>
 						<span class="sr-only">Tema Hiking</span>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="theme-cloud--option" data-theme="renascentista" aria-pressed="false">
-						<span class="theme-cloud--label">Renascentista</span>
-						<span class="theme-cloud--icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
-						<span class="sr-only">Tema Renascentista</span>
 					</button>
 				</li>
 				<li>
@@ -121,6 +114,20 @@
 						<span class="theme-cloud--label">Minimalist</span>
 						<span class="theme-cloud--icon"><i class="fa-regular fa-circle" aria-hidden="true"></i></span>
 						<span class="sr-only">Tema Minimalist</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="renaissance" aria-pressed="false">
+						<span class="theme-cloud--label">Renaissance</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Renaissance</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="space" aria-pressed="false">
+						<span class="theme-cloud--label">Space</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Space</span>
 					</button>
 				</li>
 			</ul>

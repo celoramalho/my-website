@@ -76,7 +76,7 @@ if (themeSwitcher && themeToggle) {
 	};
 
 	const aplicarTema = (tema) => {
-		if (!temasValidos.includes(tema)) tema = 'space';
+		if (!temasValidos.includes(tema)) tema = 'gruvbox';
 		document.documentElement.dataset.siteTheme = tema;
 		marcarAtivo(tema);
 		try { localStorage.setItem('siteTheme', tema); } catch (e) { /* modo privado */ }
@@ -88,7 +88,7 @@ if (themeSwitcher && themeToggle) {
 	};
 
 	// o script inline do <head> já escolheu o tema; aqui só sincronizamos os botões
-	marcarAtivo(document.documentElement.dataset.siteTheme || 'space');
+	marcarAtivo(document.documentElement.dataset.siteTheme || 'gruvbox');
 
 	themeToggle.addEventListener('click', (evento) => {
 		evento.stopPropagation();
