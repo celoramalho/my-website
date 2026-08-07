@@ -134,11 +134,13 @@ html[data-site-theme="hiking"] body.dark {
 
 /* --- o resto da página segue a cor da montanha da frente ---------------- */
 /* só no index: as páginas internas (blog) continuam na variante clara */
-html[data-site-theme="hiking"] body:not(.body_interna) {
+html[data-site-theme="hiking"] body:not(.body_interna),
+html[data-site-theme="fantasy"] body:not(.body_interna) {
 	background-color: var(--montanha-fundo-pagina);
 }
 
-html[data-site-theme="hiking"] body:not(.body_interna) .body-2 {
+html[data-site-theme="hiking"] body:not(.body_interna) .body-2,
+html[data-site-theme="fantasy"] body:not(.body_interna) .body-2 {
 	background-image: linear-gradient(to bottom,
 			var(--montanha-frente) 0,
 			var(--montanha-frente) 130vh,
@@ -150,7 +152,10 @@ html[data-site-theme="hiking"] body:not(.body_interna) .body-2 {
    ficarem legíveis sobre a montanha; o herói fica de fora e segue branco */
 html[data-site-theme="hiking"] body:not(.body_interna) main > section:not(#section-home),
 html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > footer,
-html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > header.sticky {
+html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > header.sticky,
+html[data-site-theme="fantasy"] body:not(.body_interna) main > section:not(#section-home),
+html[data-site-theme="fantasy"] body:not(.body_interna) .body-2 > footer,
+html[data-site-theme="fantasy"] body:not(.body_interna) .body-2 > header.sticky {
 	--background-color: var(--montanha-frente);
 	--sub-title-color: #f1f8f3;
 	--sub2-text-color: rgba(241, 248, 243, 0.42);
@@ -165,8 +170,96 @@ html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > header.sticky {
 }
 
 /* a sombra padrão da header fixa usa a cor do texto — no escuro viraria brilho */
-html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > header.sticky {
+html[data-site-theme="hiking"] body:not(.body_interna) .body-2 > header.sticky,
+html[data-site-theme="fantasy"] body:not(.body_interna) .body-2 > header.sticky {
 	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ===================== Fantasy ===================== */
+/* Mesma engenharia do hiking — mesmas variáveis, mesmas classes de arte, mesmo
+   sol e mesma lua. O que muda é a paleta e o que a cena mostra: de dia o
+   Gandalf chegando de carroça e o dragão dormindo no cume; de noite a runa na
+   porta do hobbit, a Sociedade a caminho da montanha e o dragão levando ouro. */
+html[data-site-theme="fantasy"] body {
+	--accent: #6d4fa6;
+	--accent-soft: rgba(109, 79, 166, 0.10);
+	--background-color: #ffffff;
+	--sub-title-color: #2c2438;
+	--sub2-text-color: #b3aac4;
+	--muted: rgba(44, 36, 56, 0.72);
+	--card-bg: rgba(255, 255, 255, 0.8);
+	--card-bg-hover: #ffffff;
+	--card-border: rgba(44, 36, 56, 0.13);
+	--card-shadow: rgba(30, 20, 50, 0.22);
+	--line-color: rgba(44, 36, 56, 0.16);
+
+	/* as camadas distantes puxam para o lilás (perspectiva atmosférica) e as
+	   próximas para o verde do Condado */
+	--montanha-horizonte: #e6e3f0;
+	--montanha-longe: #cdc7e0;
+	--montanha-longe-sombra: #b9b2d2;
+	--montanha-meio: #9d95c0;
+	--montanha-meio-sombra: #8880ac;
+	--montanha-perto: #6f9a55;
+	--montanha-perto-sombra: #5d8546;
+	--montanha-frente: #33472a;
+	--montanha-fundo-pagina: #24331d;
+	--montanha-neve: #eceef7;
+	--montanha-sol: #f8dda2;
+	--montanha-sol-meio: #f0bf6a;
+	--montanha-sol-borda: #e0913f;
+	--montanha-lua: transparent;
+	--montanha-lua-sombra: transparent;
+	--montanha-lua-cratera: transparent;
+	--montanha-estrela: transparent;
+	--montanha-arvore: #2f5a2a;
+	--montanha-arvore-perto: #4a7a3a;
+	--montanha-passaro: #8a86a8;
+
+	--montanha-dia: 1;
+	--montanha-noite: 0;
+	--montanha-janela: #4a3b33;
+}
+
+html[data-site-theme="fantasy"] body.dark {
+	--accent: #d9b45a;
+	--accent-soft: rgba(217, 180, 90, 0.14);
+	--background-color: #1a1730;
+	--sub-title-color: #efeaf8;
+	--sub2-text-color: #6a6288;
+	--muted: rgba(239, 234, 248, 0.68);
+	--card-bg: rgba(255, 255, 255, 0.05);
+	--card-bg-hover: rgba(255, 255, 255, 0.085);
+	--card-border: rgba(255, 255, 255, 0.12);
+	--card-shadow: rgba(0, 0, 0, 0.6);
+	--line-color: rgba(255, 255, 255, 0.16);
+
+	--montanha-horizonte: #3c3860;
+	--montanha-longe: #322e52;
+	--montanha-longe-sombra: #2a2746;
+	--montanha-meio: #292545;
+	--montanha-meio-sombra: #221f3b;
+	--montanha-perto: #22301f;
+	--montanha-perto-sombra: #1b2719;
+	--montanha-frente: #141c12;
+	--montanha-fundo-pagina: #0e140d;
+	/* a neve à noite fica no tom da lua, não branca, senão o cume vira um borrão */
+	--montanha-neve: #8f93b0;
+	--montanha-sol: transparent;
+	--montanha-sol-meio: transparent;
+	--montanha-sol-borda: transparent;
+	--montanha-lua: #e8f1ec;
+	--montanha-lua-sombra: #b5cbc0;
+	--montanha-lua-cratera: #93aa9d;
+	--montanha-estrela: #d6cff0;
+	--montanha-arvore: #0f1a0d;
+	--montanha-arvore-perto: #162413;
+	--montanha-passaro: #6f6a90;
+
+	--montanha-dia: 0;
+	--montanha-noite: 1;
+	--montanha-janela: #f6d98f;
 }
 
 
@@ -359,7 +452,8 @@ html[data-site-theme="minimalist"] .arte-tema_minimalist {
 }
 
 /* --- Hiking: montanhas em camadas na largura toda --- */
-html[data-site-theme="hiking"] .arte-tema_hiking {
+html[data-site-theme="hiking"] .arte-tema_hiking,
+html[data-site-theme="fantasy"] .arte-tema_fantasy {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -374,7 +468,8 @@ html[data-site-theme="hiking"] .arte-tema_hiking {
 	z-index: 0;
 }
 
-.arte-tema_hiking svg {
+.arte-tema_hiking svg,
+.arte-tema_fantasy svg {
 	position: absolute;
 	bottom: 0;
 	/* ancorado à direita: quando a cena é maior que a tela, o que sai de quadro
@@ -442,12 +537,14 @@ html[data-site-theme="hiking"] .arte-tema_hiking {
    da janela troca de cor. Como no sol e na lua, quem manda é a variável — o
    fill-opacity é herdado pelos <path> de dentro do grupo, que continuam com as
    cores literais deles. */
-.arte-acampamento-dia {
+.arte-acampamento-dia,
+.arte-cena-dia {
 	fill-opacity: var(--montanha-dia);
 	transition: fill-opacity 0.5s ease;
 }
 
-.arte-acampamento-noite {
+.arte-acampamento-noite,
+.arte-cena-noite {
 	fill-opacity: var(--montanha-noite);
 	transition: fill-opacity 0.5s ease;
 }
@@ -605,11 +702,12 @@ html[data-site-theme="hiking"] .arte-tema_hiking {
 }
 
 /* abre de baixo para cima, uma atrás da outra */
-.theme--buttom_open li:nth-child(5) .theme-cloud--option { transition-delay: 0.03s; }
-.theme--buttom_open li:nth-child(4) .theme-cloud--option { transition-delay: 0.07s; }
-.theme--buttom_open li:nth-child(3) .theme-cloud--option { transition-delay: 0.11s; }
-.theme--buttom_open li:nth-child(2) .theme-cloud--option { transition-delay: 0.15s; }
-.theme--buttom_open li:nth-child(1) .theme-cloud--option { transition-delay: 0.19s; }
+.theme--buttom_open li:nth-child(6) .theme-cloud--option { transition-delay: 0.03s; }
+.theme--buttom_open li:nth-child(5) .theme-cloud--option { transition-delay: 0.07s; }
+.theme--buttom_open li:nth-child(4) .theme-cloud--option { transition-delay: 0.11s; }
+.theme--buttom_open li:nth-child(3) .theme-cloud--option { transition-delay: 0.15s; }
+.theme--buttom_open li:nth-child(2) .theme-cloud--option { transition-delay: 0.19s; }
+.theme--buttom_open li:nth-child(1) .theme-cloud--option { transition-delay: 0.23s; }
 
 .theme-cloud--label {
 	padding: 6px 13px;
@@ -727,7 +825,8 @@ html[data-site-theme="hiking"] .arte-tema_hiking {
 
 	/* o texto do herói é alto no mobile: sobe um pouco para não cair sobre a
 	   crista das montanhas */
-	html[data-site-theme="hiking"] .text-block-home {
+	html[data-site-theme="hiking"] .text-block-home,
+	html[data-site-theme="fantasy"] .text-block-home {
 		margin-top: 150px;
 	}
 

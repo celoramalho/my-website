@@ -31,7 +31,7 @@
 		if ('IntersectionObserver' in window) document.documentElement.classList.add('reveal-enabled');
 		try {
 			var temaSalvo = localStorage.getItem('siteTheme');
-			var temasValidos = ['space', 'hiking', 'renascentista', 'journal', 'minimalist'];
+			var temasValidos = ['space', 'hiking', 'fantasy', 'renascentista', 'journal', 'minimalist'];
 			document.documentElement.dataset.siteTheme =
 				temasValidos.indexOf(temaSalvo) > -1 ? temaSalvo : 'space';
 		} catch (e) {

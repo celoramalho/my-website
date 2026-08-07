@@ -32,7 +32,7 @@
 		// aplica o tema salvo antes da primeira pintura, para não piscar
 		try {
 			var temaSalvo = localStorage.getItem('siteTheme');
-			var temasValidos = ['space', 'hiking', 'renascentista', 'journal', 'minimalist'];
+			var temasValidos = ['space', 'hiking', 'fantasy', 'renascentista', 'journal', 'minimalist'];
 			document.documentElement.dataset.siteTheme =
 				temasValidos.indexOf(temaSalvo) > -1 ? temaSalvo : 'space';
 		} catch (e) {
@@ -100,6 +100,13 @@
 						<span class="theme-cloud--label">Hiking</span>
 						<span class="theme-cloud--icon"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i></span>
 						<span class="sr-only">Tema Hiking</span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="theme-cloud--option" data-theme="fantasy" aria-pressed="false">
+						<span class="theme-cloud--label">Fantasy</span>
+						<span class="theme-cloud--icon"><i class="fa-solid fa-dragon" aria-hidden="true"></i></span>
+						<span class="sr-only">Tema Fantasy</span>
 					</button>
 				</li>
 				<li>
@@ -515,6 +522,292 @@
 								<path fill="#8a6a3f" d="M1236 516h4v4h-4z" />
 							</g>
 						</g>
+					</svg>
+				</div>
+
+				<!-- ===== Cenário: Fantasy ===== -->
+				<!-- Mesma construção do hiking: mesmas classes de camada, mesmo sol e
+				     mesma lua, mesma grade de pixel. O que muda são as cores (paleta
+				     fantasy em css/style-themes.css), o relevo e os personagens. -->
+				<div class="arte-tema arte-tema_fantasy" aria-hidden="true">
+					<svg viewBox="0 0 1440 620" xmlns="http://www.w3.org/2000/svg" focusable="false">
+							<defs>
+								<!-- árvores redondas do Condado, na grade de 4u -->
+								<path id="arvore-g" d="M-4 -36h12v4h-12zM-8 -32h20v4h-20zM-12 -28h28v4h-28zM-16 -24h36v4h-36zM-16 -20h36v4h-36zM-12 -16h28v4h-28zM-8 -12h20v4h-20zM0 -8h4v4h-4zM0 -4h4v4h-4z" />
+								<path id="arvore-p" d="M0 -24h4v4h-4zM-4 -20h12v4h-12zM-8 -16h20v4h-20zM-4 -12h12v4h-12zM0 -8h4v4h-4zM0 -4h4v4h-4z" />
+							</defs>
+
+							<!-- estrelas: só aparecem de noite (var --montanha-estrela) -->
+							<path class="arte-estrelas" data-parallax="0.34"
+								d="M686 42h7v7h-7zM798 28h7v7h-7zM1050 35h14v14h-14zM1120 91h7v7h-7zM1015 140h7v7h-7zM1176 21h7v7h-7zM1246 63h14v14h-14zM1330 28h7v7h-7zM1400 105h7v7h-7zM924 224h7v7h-7zM868 245h7v7h-7zM1078 210h7v7h-7zM1358 154h7v7h-7zM700 245h7v7h-7z" />
+
+							<!-- sol e lua: os mesmos do hiking, mesmas classes e mesmo lugar -->
+							<g class="arte-sol" data-parallax="0.3">
+								<g class="arte-sol-pos">
+									<g class="floating-element">
+										<path class="arte-sol-corpo"
+											d="M899 52h28v7h-28zM885 59h42v7h-42zM871 66h63v7h-63zM864 73h70v7h-70zM864 80h77v7h-77zM857 87h84v7h-84zM857 94h84v7h-84zM850 101h84v7h-84zM850 108h84v7h-84zM850 115h77v7h-77zM850 122h70v7h-70zM864 129h49v7h-49zM878 136h21v7h-21z" />
+										<path class="arte-sol-meio"
+											d="M927 52h14v7h-14zM927 59h28v7h-28zM934 66h35v7h-35zM934 73h35v7h-35zM941 80h28v7h-28zM941 87h28v7h-28zM941 94h28v7h-28zM934 101h35v7h-35zM934 108h35v7h-35zM927 115h35v7h-35zM920 122h42v7h-42zM850 129h14v7h-14zM913 129h49v7h-49zM850 136h28v7h-28zM899 136h56v7h-56zM857 143h91v7h-91zM857 150h84v7h-84zM864 157h70v7h-70zM864 164h49v7h-49z" />
+										<path class="arte-sol-borda"
+											d="M969 73h7v7h-7zM969 80h7v7h-7zM969 87h14v7h-14zM969 94h14v7h-14zM969 101h21v7h-21zM969 108h21v7h-21zM962 115h28v7h-28zM962 122h28v7h-28zM962 129h28v7h-28zM955 136h35v7h-35zM948 143h35v7h-35zM941 150h42v7h-42zM934 157h42v7h-42zM913 164h63v7h-63zM871 171h98v7h-98zM885 178h70v7h-70zM899 185h42v7h-42z" />
+										<path class="arte-lua-corpo"
+											d="M899 52h42v7h-42zM913 59h42v7h-42zM920 66h49v7h-49zM927 73h49v7h-49zM934 80h42v7h-42zM941 87h42v7h-42zM941 94h42v7h-42zM941 101h49v7h-49zM948 108h42v7h-42zM948 115h42v7h-42zM948 122h42v7h-42zM948 129h42v7h-42zM941 136h49v7h-49zM941 143h42v7h-42zM941 150h42v7h-42zM934 157h42v7h-42zM927 164h49v7h-49zM920 171h49v7h-49zM913 178h42v7h-42zM899 185h42v7h-42z" />
+										<path class="arte-lua-sombra"
+											d="M899 52h14v7h-14zM913 59h14v7h-14zM920 66h14v7h-14zM927 73h14v7h-14zM934 80h14v7h-14zM941 87h14v7h-14zM941 94h14v7h-14zM941 101h14v7h-14zM948 108h14v7h-14zM948 115h14v7h-14zM948 122h14v7h-14zM948 129h14v7h-14zM941 136h14v7h-14zM941 143h14v7h-14zM941 150h14v7h-14zM934 157h14v7h-14zM927 164h14v7h-14zM920 171h14v7h-14zM913 178h14v7h-14zM899 185h14v7h-14z" />
+										<path class="arte-lua-cratera"
+											d="M955 73h7v7h-7zM962 87h7v7h-7zM955 94h21v7h-21zM962 101h7v7h-7zM969 122h14v7h-14zM969 129h7v7h-7zM969 136h7v7h-7zM962 150h7v7h-7zM955 164h7v7h-7zM941 171h7v7h-7z" />
+									</g>
+								</g>
+							</g>
+
+							<g class="arte-camada arte-camada_horizonte" data-parallax="0.26">
+								<path d="M176 620V612H184V604H192V596H200V588H208V580H216V572H224V564H232V556H240V548H248V532H256V524H264V516H272V508H280V500H288V492H296V484H304V476H312V468H320H328H336V476H344H352H360V484H368H376H384V492H392H400H408V500H416H424H432V508H440H448V516H456H464V508H472H480H488V500H496H504V492H512H520V484H528H536V476H544H552H560V468H568H576V460H584H592V452H600H608H616V444H624H632V452H640H648H656V460H664H672H680V468H688H696H704V476H712H720H728V484H736H744H752H760V492H768H776H784H792V484H800H808V476H816H824V468H832H840V460H848H856V452H864H872V444H880H888V436H896H904H912V444H920H928H936V452H944H952H960V460H968H976H984V468H992H1000V476H1008H1016H1024V484H1032H1040H1048V476H1056H1064H1072V468H1080H1088V460H1096H1104V452H1112H1120H1128V444H1136H1144V436H1152H1160V428H1168H1176H1184H1192H1200V436H1208H1216H1224V444H1232H1240H1248V452H1256H1264V460H1272H1280H1288V468H1296H1304H1312V476H1320H1328H1336V468H1344H1352H1360H1368V460H1376H1384H1392H1400V452H1408H1416H1424H1432V444H1440V620Z" />
+							</g>
+
+							<g class="arte-camada arte-camada_longe" data-parallax="0.2">
+								<path d="M416 620V612H424V596H432V588H440V580H448V564H456V556H464V540H472V532H480V516H488V508H496V492H504V484H512V476H520V460H528V452H536V436H544V428H552V412H560V404H568V388H576V380H584V364H592V356H600V348H608V332H616V324H624V332H632V340H640H648V348H656V356H664V364H672H680V372H688V380H696V388H704V396H712H720V404H728V412H736V420H744V428H752H760H768H776V420H784H792V412H800H808V404H816V396H824H832V388H840H848V380H856V372H864H872V364H880H888V372H896V380H904V388H912H920V396H928V404H936V412H944H952V420H960V428H968V436H976H984V444H992V452H1000H1008H1016V444H1024H1032V436H1040H1048V428H1056H1064V420H1072H1080V412H1088H1096V404H1104H1112V396H1120H1128V388H1136H1144H1152V380H1160H1168H1176V372H1184H1192V364H1200H1208H1216V356H1224H1232H1240V348H1248H1256H1264H1272H1280V356H1288H1296V364H1304H1312V372H1320H1328V380H1336H1344H1352V388H1360H1368V396H1376H1384V404H1392H1400V412H1408H1416H1424V420H1432H1440V620Z" />
+								<path class="arte-sombra arte-sombra_longe"
+									d="M616 324h8v32h-8zM624 332h8v80h-8zM632 340h8v136h-8zM640 340h8v192h-8zM648 348h8v240h-8zM656 356h8v264h-8zM664 364h16v256h-16zM680 372h8v248h-8zM688 380h8v240h-8zM696 388h8v232h-8zM704 396h16v224h-16zM720 404h8v216h-8zM728 412h8v208h-8zM736 420h8v200h-8zM744 428h16v192h-16z" />
+							</g>
+
+							<!-- a Montanha Solitária: cume achatado e nevado, onde o dragão fica -->
+							<g class="arte-camada arte-camada_meio" data-parallax="0.14">
+								<path d="M736 620V612H744V604H752H760V596H768V588H776V580H784V572H792H800V564H808V556H816V548H824H832V540H840V532H848V524H856V516H864H872V508H880V500H888V492H896H904V484H912V476H920H928V468H936V460H944H952V452H960V444H968V436H976V428H984V420H992V404H1000V396H1008V380H1016V372H1024V356H1032V348H1040V332H1048V324H1056V308H1064V284H1072V268H1080V244H1088V228H1096V204H1104V180H1112V116H1120V108H1128V100H1136H1144H1152H1160H1168V108H1176H1184V116H1192V108H1200H1208H1216H1224H1232H1240V140H1248V172H1256V196H1264V220H1272V244H1280V260H1288V284H1296V308H1304V324H1312V332H1320V348H1328V356H1336V364H1344V380H1352V388H1360V396H1368V412H1376V420H1384V428H1392V436H1400H1408V444H1416V452H1424H1432V460H1440V620Z" />
+								<path class="arte-sombra arte-sombra_meio"
+									d="M1184 116h8v88h-8zM1192 124h8v160h-8zM1200 132h8v240h-8zM1208 140h8v320h-8zM1216 148h8v400h-8zM1224 156h8v464h-8zM1232 164h8v456h-8zM1240 172h8v448h-8zM1248 180h8v440h-8zM1256 196h8v424h-8zM1264 220h8v400h-8zM1272 244h8v376h-8zM1280 260h8v360h-8zM1288 284h8v336h-8zM1296 308h8v312h-8zM1304 324h8v296h-8zM1312 332h8v288h-8zM1320 348h8v272h-8zM1328 356h8v264h-8zM1336 364h8v256h-8zM1344 380h8v240h-8zM1352 388h8v232h-8zM1360 396h8v224h-8zM1368 412h8v208h-8zM1376 420h8v200h-8zM1384 428h8v192h-8zM1392 436h16v184h-16zM1408 444h8v176h-8zM1416 452h16v168h-16zM1432 460h8v160h-8z" />
+								<path class="arte-neve"
+									d="M1144 100h8v8h-8zM1120 108h48v8h-48zM1216 108h16v8h-16zM1120 116h112v8h-112zM1120 124h112v8h-112zM1120 132h120v8h-120zM1120 140h24v8h-24zM1152 140h56v8h-56zM1224 140h16v8h-16zM1120 148h8v8h-8zM1168 148h24v8h-24zM1176 156h8v8h-8z" />
+							</g>
+
+							<!-- o dragão: de dia dorme no cume, de noite voa levando ouro -->
+							<g class="arte-cena-dia">
+								<!-- Dragão dormindo — 22x7 px de 4u, base y=112
+								     ...........###........
+								     ....#####..#####......
+								     ..###############.....
+								     .#################....
+								     .##########rrr####....
+								     ..#################...
+								     ...################...
+								     # corpo, r chifre/crista dourada -->
+								<path fill="#7a3a2a"
+									d="M1168 84h12v4h-12zM1140 88h20v4h-20zM1168 88h20v4h-20zM1132 92h60v4h-60zM1128 96h68v4h-68zM1128 100h40v4h-40zM1180 100h16v4h-16zM1132 104h68v4h-68zM1136 108h64v4h-64z" />
+								<path fill="#f2d06a"
+									d="M1168 100h12v4h-12z" />
+							</g>
+
+							<g class="arte-cena-noite">
+								<!-- Dragão voando de perfil — 30x11 px de 4u, base y=64 (bem no alto: no
+								     celular a faixa de céu livre é estreita e ele cairia sobre o botão)
+								     ..........WW..................
+								     .........WWWW.................
+								     ........WWWWWW................
+								     .......WWWWWWWW..........B....
+								     ......WWWWWWWWWW........BBB...
+								     .....WWWWWWWWWWWW.....BBBBBB..
+								     ....WW.WWW.WWWWWWW..BBBB......
+								     ...BBBBBBBBBBBBBBBBBB.........
+								     ..BBBBBBBggggBBBBBB...........
+								     .BB....BBB....BBB.............
+								     B........B......B.............
+								     W membrana da asa (tom mais escuro, para separar do corpo),
+								     B corpo, pescoço, cauda e patas, g ouro na barriga -->
+								<path fill="#5c2a1f"
+									d="M720 20h8v4h-8zM716 24h16v4h-16zM712 28h24v4h-24zM708 32h32v4h-32zM704 36h40v4h-40zM700 40h48v4h-48zM696 44h8v4h-8zM708 44h12v4h-12zM724 44h28v4h-28z" />
+								<path fill="#7a3a2a"
+									d="M780 32h4v4h-4zM776 36h12v4h-12zM768 40h24v4h-24zM760 44h16v4h-16zM692 48h72v4h-72zM688 52h28v4h-28zM732 52h24v4h-24zM684 56h8v4h-8zM708 56h12v4h-12zM736 56h12v4h-12zM680 60h4v4h-4zM716 60h4v4h-4zM744 60h4v4h-4z" />
+								<path fill="#e0b256"
+									d="M716 52h16v4h-16z" />
+								<!-- moedas caindo -->
+								<path fill="#e0b256"
+									d="M812 26h8v4h-8zM812 30h8v4h-8z" />
+								<path fill="#e0b256"
+									d="M840 44h8v4h-8zM840 48h8v4h-8z" />
+								<path fill="#e0b256"
+									d="M792 58h8v4h-8zM792 62h8v4h-8z" />
+							</g>
+
+							<g class="arte-camada arte-camada_perto" data-parallax="0.06">
+								<path d="M0 620V612H8H16V604H24H32V596H40H48V588H56H64V580H72H80V572H88H96V564H104H112V556H120H128H136H144V564H152H160H168H176V572H184H192H200H208H216V580H224H232H240H248H256V588H264V580H272H280V572H288H296V564H304H312H320V556H328H336V548H344H352V540H360H368V532H376H384H392V524H400H408V516H416H424H432V524H440H448H456V532H464H472H480V540H488H496H504V548H512H520H528V556H536H544H552V564H560H568H576V572H584V564H592H600H608H616V556H624H632H640V548H648H656H664H672V540H680H688H696V532H704H712H720H728H736V540H744H752H760V548H768H776H784V556H792H800H808V564H816H824V572H832H840H848V580H856H864H872V572H880H888H896H904V564H912H920H928V556H936H944H952H960V548H968H976H984V540H992H1000H1008H1016V548H1024H1032H1040H1048V556H1056H1064H1072H1080V564H1088H1096H1104H1112V572H1120H1128H1136H1144H1152H1160H1168V564H1176H1184H1192V556H1200H1208H1216H1224V548H1232H1240H1248V540H1256H1264H1272H1280H1288H1296H1304H1312H1320H1328V548H1336H1344H1352H1360H1368V556H1376H1384H1392H1400H1408V564H1416H1424H1432H1440V620Z" />
+								<g class="arte-pinheiros arte-pinheiros_perto">
+									<use href="#arvore-p" transform="translate(300 556)" />
+									<use href="#arvore-p" transform="translate(640 548)" />
+									<use href="#arvore-p" transform="translate(1080 556)" />
+									<use href="#arvore-p" transform="translate(1330 548)" />
+								</g>
+							</g>
+
+							<!-- camada da frente: mesma do hiking, para a emenda com a página -->
+							<g class="arte-camada arte-camada_frente">
+								<path d="M-24 660V580H-16H-8V572H0H8H16H24H32H40H48H56V564H72H80H88H96H104H112H120H128H136H144H152H160H168H176H184H192H200H208H216H224H232H240H248H256H264H272H280H288H296H304H312H320H328H336H344H352H360V572H368H376H384H392H400H408H416H424H432V580H440H448H456H464H472H480V588H488H496H504H512H520H528H536H544V596H552H560H568H576H584H592H600H608H616H624H632H640H648V604H656H664H672H680H688H696H704H712H720H728H736V596H744H752H760H768H776H784H792H800H808H816H824H832H840V588H848H856H864H872H880H888H896H904V580H912H920H928H936H944V572H952H960H968H976H984H992V564H1000H1008H1016H1024H1032H1040H1048V556H1056H1064H1072H1080H1088H1096H1104H1112H1120H1128H1136H1144H1152H1160H1168V548H1176H1184H1192H1200H1208V556H1216H1224H1232H1240H1248H1256H1264H1272H1280H1288H1296H1304H1312H1320H1328H1336V564H1344H1352H1360H1368H1376H1384H1392V572H1400H1408H1416H1424H1432H1440V580H1448H1456H1464V660Z" />
+								<g class="arte-pinheiros">
+									<use href="#arvore-g" transform="translate(250 570)" />
+									<use href="#arvore-p" transform="translate(340 568)" />
+									<use href="#arvore-p" transform="translate(430 578)" />
+									<use href="#arvore-p" transform="translate(700 608)" />
+									<use href="#arvore-g" transform="translate(940 576)" />
+									<use href="#arvore-p" transform="translate(1010 570)" />
+									<use href="#arvore-g" transform="translate(1250 560)" />
+									<use href="#arvore-p" transform="translate(1330 566)" />
+									<use href="#arvore-p" transform="translate(1410 574)" />
+								</g>
+
+								<!-- Toca do hobbit — 30x24 px de 4u, base y=578
+								     ...................ss.........
+								     ..................ss..........
+								     ................cc............
+								     ................cc............
+								     ...........GGGGGcc............
+								     .........GGGGGGGccqq..........
+								     .......GGGGGGGGGccqqqq........
+								     ......GGGGGGGGGGGGqqqqq.......
+								     .....GGGGGGGGGGGGGqqqqqq......
+								     ....GGGGGGGGGGGGGGGqqqqqq.....
+								     ....GGGGGGGGGGGGGGGGqqqqq.....
+								     ...GGGGGGGGGGGGGGGGGqqqqqq....
+								     ..GGGGGGGGGGGGGGGGGGGqqqqqq...
+								     ..GGGGGGffGGGGGGGGGGGqqqqqq...
+								     ..eeeeffffffeeeeeeeeeeeeeEE...
+								     .eeeeffDDDDffeeeeeeeWWWWeEEE..
+								     .eeeefDDDDDDfeeeeeeWWyyWWeEE..
+								     .eeeffDDkDDDffeeeeeWyyyyWeEE..
+								     eeeeffDDDDDDffeeeeeWyyyyWeeEE.
+								     eeeeefDDDDDDfeeeeeeWWyyWWeeEE.
+								     eeeeeffDDDDffeeeeeeeWWWWeeeeE.
+								     eeeeeeffffffeeeeeeeeeeeeeeeee.
+								     eeeeeeeeffeeeeeeeeeeeeeeeeeee.
+								     eeeeeeeeeeeeeeeeeeeeeeeeeeeee.
+								     G/q grama e sombra, e/E terra, f aro da porta, D porta, k maçaneta,
+								     W caixilho, y vidro (troca com o tema), c chaminé, s fumaça -->
+								<path fill="#b9c6bd"
+									d="M112 482h8v4h-8zM108 486h8v4h-8z" />
+								<path fill="#6b5a4a"
+									d="M100 490h8v4h-8zM100 494h8v4h-8zM100 498h8v4h-8zM100 502h8v4h-8zM100 506h8v4h-8z" />
+								<path fill="#77a852"
+									d="M80 498h20v4h-20zM72 502h28v4h-28zM64 506h36v4h-36zM60 510h48v4h-48zM56 514h52v4h-52zM52 518h60v4h-60zM52 522h64v4h-64zM48 526h68v4h-68zM44 530h76v4h-76zM44 534h24v4h-24zM76 534h44v4h-44z" />
+								<path fill="#5b8a3e"
+									d="M108 502h8v4h-8zM108 506h16v4h-16zM108 510h20v4h-20zM108 514h24v4h-24zM112 518h24v4h-24zM116 522h20v4h-20zM116 526h24v4h-24zM120 530h24v4h-24zM120 534h24v4h-24z" />
+								<path fill="#7a5233"
+									d="M68 534h8v4h-8zM60 538h24v4h-24zM56 542h8v4h-8zM80 542h8v4h-8zM56 546h4v4h-4zM84 546h4v4h-4zM52 550h8v4h-8zM84 550h8v4h-8zM52 554h8v4h-8zM84 554h8v4h-8zM56 558h4v4h-4zM84 558h4v4h-4zM56 562h8v4h-8zM80 562h8v4h-8zM60 566h24v4h-24zM68 570h8v4h-8z" />
+								<path fill="#a98b62"
+									d="M44 538h16v4h-16zM84 538h52v4h-52zM40 542h16v4h-16zM88 542h28v4h-28zM132 542h4v4h-4zM40 546h16v4h-16zM88 546h24v4h-24zM136 546h4v4h-4zM40 550h12v4h-12zM92 550h20v4h-20zM136 550h4v4h-4zM36 554h16v4h-16zM92 554h20v4h-20zM136 554h8v4h-8zM36 558h20v4h-20zM88 558h24v4h-24zM136 558h8v4h-8zM36 562h20v4h-20zM88 562h28v4h-28zM132 562h16v4h-16zM36 566h24v4h-24zM84 566h68v4h-68zM36 570h32v4h-32zM76 570h76v4h-76zM36 574h116v4h-116z" />
+								<path fill="#8a6f4d"
+									d="M136 538h8v4h-8zM136 542h12v4h-12zM140 546h8v4h-8zM140 550h8v4h-8zM144 554h8v4h-8zM144 558h8v4h-8zM148 562h4v4h-4z" />
+								<path fill="#2f5f2c"
+									d="M64 542h16v4h-16zM60 546h24v4h-24zM60 550h8v4h-8zM72 550h12v4h-12zM60 554h24v4h-24zM60 558h24v4h-24zM64 562h16v4h-16z" />
+								<path fill="#7a5233"
+									d="M116 542h16v4h-16zM112 546h8v4h-8zM128 546h8v4h-8zM112 550h4v4h-4zM132 550h4v4h-4zM112 554h4v4h-4zM132 554h4v4h-4zM112 558h8v4h-8zM128 558h8v4h-8zM116 562h16v4h-16z" />
+								<path class="arte-janela" d="M120 546h8v4h-8zM116 550h16v4h-16zM116 554h16v4h-16zM120 558h8v4h-8z" />
+								<path fill="#e8c46a"
+									d="M68 550h4v4h-4z" />
+
+								<g class="arte-cena-noite">
+									<!-- a runa que Gandalf deixa na porta: o X do futhark, o "G" dele -->
+									<path fill="#a8d8ff"
+										d="M68 526h4v4h-4zM84 526h4v4h-4zM72 530h4v4h-4zM80 530h4v4h-4zM76 534h4v4h-4zM72 538h4v4h-4zM80 538h4v4h-4zM68 542h4v4h-4zM84 542h4v4h-4z" />
+								</g>
+
+								<g class="arte-cena-dia">
+									<!-- Gandalf chegando de carroça — 25x12 px de 4u, base y=600
+									     ...........P.............
+									     ..........PPP............
+									     .........PPPPP...........
+									     ..HH......BBB............
+									     .HHH......GGG............
+									     ..HHH....wwwwwwwwwwwwww..
+									     ..HHHHHHHwwwwwwwwwwwwww..
+									     HHHHHHHHHwwwwwwwwwwwwww..
+									     HHHHHHHH.w.oo......oo.w..
+									     H..HH..H...oooo..oooo....
+									     H..HH..H...oooo..oooo....
+									     H..HH..H....oo....oo.....
+									     H cavalo, P chapéu, B barba, G manto, w caixa, o rodas -->
+									<path fill="#5d5a66"
+										d="M780 552h4v4h-4zM776 556h12v4h-12zM772 560h20v4h-20z" />
+									<path fill="#6b4a34"
+										d="M744 564h8v4h-8zM740 568h12v4h-12zM744 572h12v4h-12zM744 576h28v4h-28zM736 580h36v4h-36zM736 584h32v4h-32zM736 588h4v4h-4zM748 588h8v4h-8zM764 588h4v4h-4zM736 592h4v4h-4zM748 592h8v4h-8zM764 592h4v4h-4zM736 596h4v4h-4zM748 596h8v4h-8zM764 596h4v4h-4z" />
+									<path fill="#e6e3dc"
+										d="M776 564h12v4h-12z" />
+									<path fill="#9c99a6"
+										d="M776 568h12v4h-12z" />
+									<path fill="#8a5a34"
+										d="M772 572h56v4h-56zM772 576h56v4h-56zM772 580h56v4h-56zM772 584h4v4h-4zM824 584h4v4h-4z" />
+									<path fill="#4a3a2a"
+										d="M780 584h8v4h-8zM812 584h8v4h-8zM780 588h16v4h-16zM804 588h16v4h-16zM780 592h16v4h-16zM804 592h16v4h-16zM784 596h8v4h-8zM808 596h8v4h-8z" />
+								</g>
+
+								<g class="arte-cena-noite">
+									<!-- a Sociedade a caminho da montanha: cada um com 4 unidades por
+									     pixel, altura e acessório diferentes (cajado, espada, arco, machado) -->
+									<!-- Gandalf -->
+									<path fill="#8e8b98"
+										d="M578 560h4v4h-4zM574 564h12v4h-12zM570 568h16v4h-16z" />
+									<path fill="#a08a5a"
+										d="M586 560h4v4h-4zM586 564h4v4h-4zM586 568h4v4h-4zM586 572h4v4h-4zM586 576h4v4h-4zM586 580h4v4h-4zM586 584h4v4h-4zM586 588h4v4h-4zM586 592h4v4h-4zM586 596h4v4h-4z" />
+									<path fill="#e6e3dc"
+										d="M574 572h12v4h-12z" />
+									<path fill="#9c99a6"
+										d="M574 576h12v4h-12zM570 580h16v4h-16zM574 584h12v4h-12zM574 588h12v4h-12zM574 592h4v4h-4zM582 592h4v4h-4z" />
+									<path fill="#3a3226"
+										d="M574 596h4v4h-4zM582 596h4v4h-4z" />
+									<!-- Aragorn -->
+									<path fill="#5a4636"
+										d="M618 564h4v4h-4zM614 568h12v4h-12z" />
+									<path fill="#5a4a3a"
+										d="M614 572h12v4h-12zM610 576h20v4h-20zM614 580h12v4h-12zM614 584h12v4h-12zM614 588h4v4h-4zM622 588h4v4h-4zM610 592h4v4h-4zM622 592h4v4h-4z" />
+									<path fill="#c8c4d0"
+										d="M630 576h4v4h-4zM630 580h4v4h-4zM630 584h4v4h-4zM630 588h4v4h-4zM630 592h4v4h-4zM630 596h4v4h-4z" />
+									<path fill="#3a3226"
+										d="M610 596h4v4h-4zM622 596h4v4h-4z" />
+									<!-- Legolas -->
+									<path fill="#e8d9a0"
+										d="M662 572h4v4h-4zM658 576h12v4h-12z" />
+									<path fill="#7d9a6a"
+										d="M658 580h12v4h-12zM654 584h20v4h-20zM658 588h12v4h-12zM658 592h12v4h-12zM658 596h4v4h-4zM666 596h4v4h-4zM658 600h4v4h-4zM666 600h4v4h-4z" />
+									<path fill="#b9a06a"
+										d="M674 580h4v4h-4zM674 584h4v4h-4zM674 588h4v4h-4zM674 592h4v4h-4zM674 596h4v4h-4zM674 600h4v4h-4zM674 604h4v4h-4z" />
+									<path fill="#3a3226"
+										d="M658 604h4v4h-4zM666 604h4v4h-4z" />
+									<!-- Gimli -->
+									<path fill="#b06038"
+										d="M706 580h4v4h-4zM702 584h12v4h-12z" />
+									<path fill="#c0bcc8"
+										d="M714 584h4v4h-4zM714 588h4v4h-4zM714 592h4v4h-4zM714 596h4v4h-4z" />
+									<path fill="#b06038"
+										d="M702 588h12v4h-12zM698 604h4v4h-4zM710 604h4v4h-4z" />
+									<path fill="#7a4a2a"
+										d="M698 592h16v4h-16zM698 596h16v4h-16zM698 600h4v4h-4zM710 600h4v4h-4z" />
+									<!-- Frodo -->
+									<path fill="#8a6a4a"
+										d="M746 572h4v4h-4zM742 576h12v4h-12z" />
+									<path fill="#4a6a8a"
+										d="M742 580h12v4h-12zM738 584h20v4h-20zM742 588h12v4h-12zM742 592h4v4h-4zM750 592h4v4h-4z" />
+									<path fill="#3a3226"
+										d="M742 596h4v4h-4zM750 596h4v4h-4z" />
+									<!-- Sam -->
+									<path fill="#c9a05a"
+										d="M782 572h4v4h-4zM778 576h12v4h-12z" />
+									<path fill="#8a7a4a"
+										d="M778 580h12v4h-12zM774 584h20v4h-20zM778 588h12v4h-12zM774 592h4v4h-4zM786 592h4v4h-4z" />
+									<path fill="#3a3226"
+										d="M774 596h4v4h-4zM786 596h4v4h-4z" />
+									<!-- Merry -->
+									<path fill="#8a6a4a"
+										d="M826 572h4v4h-4zM822 576h12v4h-12z" />
+									<path fill="#6a5a7a"
+										d="M822 580h12v4h-12zM818 584h20v4h-20zM822 588h12v4h-12zM822 592h4v4h-4zM830 592h4v4h-4z" />
+									<path fill="#3a3226"
+										d="M822 596h4v4h-4zM830 596h4v4h-4z" />
+									<!-- Pippin -->
+									<path fill="#c9a05a"
+										d="M870 564h4v4h-4zM866 568h12v4h-12z" />
+									<path fill="#7a6a4a"
+										d="M866 572h12v4h-12zM862 576h20v4h-20zM866 580h12v4h-12zM862 584h4v4h-4zM874 584h4v4h-4z" />
+									<path fill="#3a3226"
+										d="M862 588h4v4h-4zM874 588h4v4h-4z" />
+								</g>
+							</g>
 					</svg>
 				</div>
 

@@ -116,16 +116,16 @@ if (themeSwitcher && themeToggle) {
 }
 
 
-/* ===================== Parallax do cenário Hiking ===================== */
+/* ===================== Parallax dos cenários ===================== */
 /* Cada camada tem um data-parallax: quanto maior, mais ela "atrasa" ao rolar,
    o que dá a sensação de distância. A camada da frente fica em 0 (sem
-   atributo), para a emenda com a cor da página não se mexer. */
-const cenarioMontanhas = document.querySelector('.arte-tema_hiking');
+   atributo), para a emenda com a cor da página não se mexer. Vale para
+   qualquer cenário — hoje hiking e fantasy. */
 const semAnimacao = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-if (cenarioMontanhas && !semAnimacao.matches) {
+if (!semAnimacao.matches) {
 	const camadas = Array.from(
-		cenarioMontanhas.querySelectorAll('[data-parallax]'),
+		document.querySelectorAll('.arte-tema [data-parallax]'),
 		(el) => ({ el, fator: parseFloat(el.dataset.parallax) || 0 })
 	);
 
