@@ -675,6 +675,24 @@ html[data-site-theme="gruvbox"] .arte-tema_gruvbox {
 	filter: drop-shadow(0 24px 40px var(--card-shadow));
 }
 
+/* continuação da faixa na section "Sobre mim": mesmo ângulo e mesma
+   ancoragem (top/right) da faixa do herói, só que presa ao topo desta
+   section em vez do topo do herói — como as duas sections são blocos
+   empilhados sem espaço entre eles, a diagonal fecha sem emenda visível na
+   junção. É preciso repetir top/right/width/rotate em vez de só herdar a
+   classe porque o "top" de cada uma é relativo a um container diferente. */
+html[data-site-theme="gruvbox"] #section-about-me {
+	position: relative;
+	overflow: hidden;
+}
+
+html[data-site-theme="gruvbox"] .arte-gruvbox-faixas_continuacao {
+	top: -6%;
+	right: -20%;
+	height: 30vh;
+	z-index: 0;
+}
+
 /* cursor de terminal piscando na tela, no lugar das fatias coloridas —
    mesmo ritmo de um cursor de linha de comando (500ms aceso/apagado) */
 @keyframes arte-gruvbox-cursor {
