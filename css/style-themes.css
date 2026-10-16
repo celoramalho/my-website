@@ -235,24 +235,26 @@ html[data-site-theme="fantasy"] body.dark {
 	--card-shadow: rgba(0, 0, 0, 0.6);
 	--line-color: rgba(255, 255, 255, 0.16);
 
-	--montanha-horizonte: #3c3860;
-	--montanha-longe: #322e52;
-	--montanha-longe-sombra: #2a2746;
-	--montanha-meio: #292545;
-	--montanha-meio-sombra: #221f3b;
-	--montanha-perto: #22301f;
-	--montanha-perto-sombra: #1b2719;
-	--montanha-frente: #141c12;
-	--montanha-fundo-pagina: #0e140d;
-	/* a neve à noite fica no tom da lua, não branca, senão o cume vira um borrão */
-	--montanha-neve: #8f93b0;
+	/* de noite a cena troca inteira para Mordor: as camadas de montanha
+	   deixam de puxar para o lilás (não há mais céu estrelado ao fundo, é o
+	   céu em brasa pintado direto no SVG) e passam a tons de rocha queimada */
+	--montanha-horizonte: #7a2f22;
+	--montanha-longe: #4a231c;
+	--montanha-longe-sombra: #3a1b16;
+	--montanha-meio: #2c1712;
+	--montanha-meio-sombra: #200f0c;
+	--montanha-perto: #1c0f0c;
+	--montanha-perto-sombra: #150a08;
+	--montanha-frente: #100907;
+	--montanha-fundo-pagina: #0a0605;
+	--montanha-neve: #6b4a3a;
 	--montanha-sol: transparent;
 	--montanha-sol-meio: transparent;
 	--montanha-sol-borda: transparent;
 	--montanha-lua: #e8f1ec;
 	--montanha-lua-sombra: #b5cbc0;
 	--montanha-lua-cratera: #93aa9d;
-	--montanha-estrela: #d6cff0;
+	--montanha-estrela: #f0c9a8;
 	--montanha-arvore: #0f1a0d;
 	--montanha-arvore-perto: #162413;
 	--montanha-passaro: #6f6a90;
@@ -771,6 +773,14 @@ html[data-site-theme="fantasy"] .arte-tema_fantasy {
 	overflow: hidden;
 	pointer-events: none;
 	z-index: 0;
+}
+
+/* de noite a cena vira Mordor: o topo da tela (acima do SVG, que só cobre os
+   últimos 620px de viewBox) precisa continuar vermelho-escuro, não a cor de
+   fundo lilás usada no resto da página — por isso este container recebe uma
+   cor própria só nesse tema+modo, sem mexer em --background-color global */
+html[data-site-theme="fantasy"] body.dark .arte-tema_fantasy {
+	background-color: #3a0f0c;
 }
 
 .arte-tema_hiking svg,
